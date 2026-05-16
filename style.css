@@ -154,3 +154,19 @@ textarea {
 .table-header div {
   padding-left: 6px;
 }
+
+
+input[readonly] {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  font-size: 14px;
+
+  font-family: 'Inter', sans-serif;
+
+  color: #555;
+}
