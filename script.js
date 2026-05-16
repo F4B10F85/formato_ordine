@@ -113,7 +113,13 @@ function createOrderRow() {
 
     <!-- IMMAGINE -->
     <div class="field-box image-box">
-      IMG
+    
+      <img
+        class="product-image"
+        src=""
+        alt="Immagine prodotto"
+      />
+    
     </div>
 
     <!-- TAGLIA -->
@@ -234,6 +240,8 @@ function createOrderRow() {
 
   const caramellaInput = row.querySelector(".caramella-select");
 
+  const productImage = row.querySelector(".product-image");
+
   /* ---------------------- */
   /* CAMBIO ARTICOLO */
   /* ---------------------- */
@@ -270,6 +278,8 @@ if (articoloSelect.value === "collare-standard") {
     Non disponibile
   </option>
 `;
+  productImage.src =
+  "assets/images/collare-standard.jpg";
 }
 
 /* COLLARE CARAMELLA */
@@ -312,6 +322,8 @@ if (articoloSelect.value === "collare-caramella") {
     Senza tassello
   </option>
 `;
+  productImage.src =
+  "assets/images/collare-caramella.jpg";
 }
 
   });
