@@ -286,6 +286,8 @@ if (articoloSelect.value === "collare-standard") {
 
 productImage.style.display = "block";
 
+});  
+  
 /* COLLARE CARAMELLA */
 
 if (articoloSelect.value === "collare-caramella") {
