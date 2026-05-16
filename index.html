@@ -19,111 +19,129 @@
 
   <div class="page-container">
 
-    <h1 class="page-title">Configuratore Ordine Cliente</h1>
+    <h1 class="page-title">
+      Configuratore Ordine Cliente
+    </h1>
 
-    <div class="order-grid">
+    <!-- HEADER COLONNE -->
 
-      <div class="field-group">
-        <label>Articolo</label>
+    <div class="table-header">
 
+      <div>Articolo</div>
+      <div>Immagine</div>
+      <div>Taglia / Lunghezza</div>
+      <div>Altezza Collare</div>
+      <div>Spessore Guinzaglio</div>
+      <div>Colore Pelle</div>
+      <div>Colore Foglie</div>
+      <div>Colore Cristalli</div>
+      <div>Opzioni Caramella</div>
+      <div>Quantità</div>
+      <div>Note</div>
+
+    </div>
+
+    <!-- RIGHE ORDINE -->
+
+    <div id="orderRows">
+
+      <div class="order-row">
+
+        <!-- ARTICOLO -->
+        <div class="field-box">
+          <select>
+            <option>Seleziona</option>
+            <option>Collare</option>
+            <option>Guinzaglio</option>
+            <option>Pettorina</option>
+          </select>
+        </div>
+
+        <!-- IMMAGINE -->
+        <div class="field-box image-box">
+          IMG
+        </div>
+
+        <!-- TAGLIA -->
         <div class="field-box">
           <select>
             <option>Seleziona</option>
           </select>
         </div>
-      </div>
 
-      <div class="field-group">
-        <label>Taglia / Lunghezza</label>
-
+        <!-- ALTEZZA -->
         <div class="field-box">
           <select>
             <option>Seleziona</option>
           </select>
         </div>
-      </div>
 
-      <div class="field-group">
-        <label>Altezza Collare</label>
-
+        <!-- SPESSORE -->
         <div class="field-box">
           <select>
             <option>Seleziona</option>
           </select>
         </div>
-      </div>
 
-      <div class="field-group">
-        <label>Spessore Guinzaglio</label>
-
+        <!-- COLORE PELLE -->
         <div class="field-box">
           <select>
             <option>Seleziona</option>
           </select>
         </div>
-      </div>
 
-      <div class="field-group">
-        <label>Colore Pelle</label>
-
+        <!-- COLORE FOGLIE -->
         <div class="field-box">
           <select>
             <option>Seleziona</option>
           </select>
         </div>
-      </div>
 
-      <div class="field-group">
-        <label>Colore Foglie</label>
-
+        <!-- COLORE CRISTALLI -->
         <div class="field-box">
           <select>
             <option>Seleziona</option>
           </select>
         </div>
-      </div>
 
-      <div class="field-group">
-        <label>Colore Cristalli</label>
-
+        <!-- CARAMELLA -->
         <div class="field-box">
           <select>
             <option>Seleziona</option>
           </select>
         </div>
-      </div>
 
-      <div class="field-group">
-        <label>Opzioni Caramella</label>
-
-        <div class="field-box">
-          <select>
-            <option>Seleziona</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="field-group">
-        <label>Quantità</label>
-
+        <!-- QUANTITA -->
         <div class="field-box">
           <select>
             <option>1</option>
+            <option>2</option>
+            <option>3</option>
           </select>
         </div>
-      </div>
 
-      <div class="field-group notes-group">
-        <label>Note</label>
-
-        <div class="field-box">
-          <textarea placeholder="Inserisci eventuali note..."></textarea>
+        <!-- NOTE -->
+        <div class="field-box notes-box">
+          <textarea placeholder="Note riga ordine..."></textarea>
         </div>
+
       </div>
 
     </div>
 
+    <!-- PULSANTE AGGIUNGI -->
+
+    <div class="add-row-container">
+
+      <button id="addRowBtn">
+        +
+      </button>
+
+    </div>
+
   </div>
+
+  <script src="script.js"></script>
 
 </body>
 
