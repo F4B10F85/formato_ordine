@@ -112,14 +112,7 @@ function createOrderRow() {
     </div>
 
     <!-- IMMAGINE -->
-    <div class="field-box image-box">
-    
-      <img
-        class="product-image hidden-image"
-        alt="Immagine prodotto"
-      />
-    
-    </div>
+    <div class="field-box image-box"></div>
 
     <!-- TAGLIA -->
     <div class="field-box">
@@ -239,17 +232,17 @@ function createOrderRow() {
 
   const caramellaInput = row.querySelector(".caramella-select");
 
-  const productImage = row.querySelector(".product-image");
+  
 
   /* ---------------------- */
   /* CAMBIO ARTICOLO */
   /* ---------------------- */
 
   articoloSelect.addEventListener("change", () => {
-
-    productImage.classList.add("hidden-image");
-    
-    productImage.removeAttribute("src");
+  
+  const imageBox = row.querySelector(".image-box");
+  
+  imageBox.innerHTML = "";
     
     tagliaSelect.innerHTML =
       `<option value="">Seleziona</option>`;
@@ -281,10 +274,13 @@ if (articoloSelect.value === "collare-standard") {
     Non disponibile
   </option>
 `;
-  productImage.src =
-  "assets/images/collare_standard.jpg";
-
-productImage.classList.remove("hidden-image");
+imageBox.innerHTML = `
+  <img
+    class="product-image"
+    src="assets/images/collare_standard.jpg"
+    alt="Collare caramella"
+  />
+`;
 
 } 
   
@@ -328,10 +324,13 @@ if (articoloSelect.value === "collare-caramella") {
     Senza tassello
   </option>
 `;
-  productImage.src =
-  "assets/images/collare_caramella.jpg";
-
-productImage.classList.remove("hidden-image");
+imageBox.innerHTML = `
+  <img
+    class="product-image"
+    src="assets/images/collare_caramella.jpg"
+    alt="Collare standard"
+  />
+`;
   }
   });
 
