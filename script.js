@@ -5,7 +5,7 @@ const addRowBtn = document.getElementById("addRowBtn");
 /* DATI CONFIGURATORE */
 /* ---------------------- */
 
-const taglieCollare = [
+const taglieCollareStandard = [
   "XXS (light)",
   "XS (light)",
   "S (light)",
@@ -13,6 +13,14 @@ const taglieCollare = [
   "M",
   "L",
   "XL",
+  "Personalizzata"
+];
+
+const taglieCollareCaramella = [
+  "XS",
+  "S",
+  "M",
+  "L",
   "Personalizzata"
 ];
 
@@ -96,6 +104,10 @@ function createOrderRow() {
           Collare standard
         </option>
 
+        <option value="collare-caramella">
+          Collare caramella
+        </option>
+      
       </select>
     </div>
 
@@ -176,14 +188,18 @@ function createOrderRow() {
       </select>
     </div>
 
-    <!-- CARAMELLA -->
-    <div class="field-box">
-      <input
-        type="text"
-        value="Non disponibile"
-        readonly
-      />
-    </div>
+      <!-- CARAMELLA -->
+      <div class="field-box">
+      
+        <select class="caramella-select">
+      
+          <option value="">
+            Non disponibile
+          </option>
+      
+        </select>
+      
+      </div>
 
      <!-- QUANTITA -->
   <div class="field-box quantity-box">
@@ -216,6 +232,8 @@ function createOrderRow() {
 
   const spessoreInput = row.querySelector(".spessore-input");
 
+  const caramellaInput = row.querySelector(".caramella-select");
+
   /* ---------------------- */
   /* CAMBIO ARTICOLO */
   /* ---------------------- */
@@ -225,23 +243,76 @@ function createOrderRow() {
     tagliaSelect.innerHTML =
       `<option value="">Seleziona</option>`;
 
-    if (articoloSelect.value === "collare-standard") {
-    
-      spessoreInput.value = "Non disponibile";
-    
-      taglieCollare.forEach(taglia => {
-    
-        const option = document.createElement("option");
-    
-        option.value = taglia;
-    
-        option.textContent = taglia;
-    
-        tagliaSelect.appendChild(option);
-    
-      });
-    
-    }
+if (articoloSelect.value === "collare-standard") {
+
+  spessoreInput.value = "Non disponibile";
+
+  caramellaInput.value = "Non disponibile";
+
+  altezzaInput.value = "";
+
+  foglieSelect.disabled = false;
+  foglieSelect.style.opacity = "1";
+
+  taglieCollareStandard.forEach(taglia => {
+
+    const option = document.createElement("option");
+
+    option.value = taglia;
+
+    option.textContent = taglia;
+
+    tagliaSelect.appendChild(option);
+
+  });
+  caramellaInput.innerHTML = `
+  <option>
+    Non disponibile
+  </option>
+`;
+}
+
+/* COLLARE CARAMELLA */
+
+if (articoloSelect.value === "collare-caramella") {
+
+  spessoreInput.value = "Non disponibile";
+
+  altezzaInput.value = "";
+
+  foglieSelect.disabled = false;
+  foglieSelect.style.opacity = "1";
+
+  caramellaInput.value = "";
+
+  caramellaInput.readOnly = false;
+
+  taglieCollareCaramella.forEach(taglia => {
+
+    const option = document.createElement("option");
+
+    option.value = taglia;
+
+    option.textContent = taglia;
+
+    tagliaSelect.appendChild(option);
+
+  });
+
+    caramellaInput.innerHTML = `
+  <option value="">
+    Seleziona
+  </option>
+
+  <option value="con-tassello">
+    Con tassello
+  </option>
+
+  <option value="senza-tassello">
+    Senza tassello
+  </option>
+`;
+}
 
   });
 
