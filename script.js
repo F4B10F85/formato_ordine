@@ -127,7 +127,7 @@ function createOrderRow() {
     <div class="field-box">
       <input
         type="text"
-        value="Non disponibile"
+        class="spessore-input"
         readonly
       />
     </div>
@@ -214,6 +214,8 @@ function createOrderRow() {
 
   const foglieSelect = row.querySelector(".foglie-select");
 
+  const spessoreInput = row.querySelector(".spessore-input");
+
   /* ---------------------- */
   /* CAMBIO ARTICOLO */
   /* ---------------------- */
@@ -224,19 +226,21 @@ function createOrderRow() {
       `<option value="">Seleziona</option>`;
 
     if (articoloSelect.value === "collare-standard") {
-
+    
+      spessoreInput.value = "Non disponibile";
+    
       taglieCollare.forEach(taglia => {
-
+    
         const option = document.createElement("option");
-
+    
         option.value = taglia;
-
+    
         option.textContent = taglia;
-
+    
         tagliaSelect.appendChild(option);
-
+    
       });
-
+    
     }
 
   });
