@@ -282,7 +282,7 @@ if (articoloSelect.value === "collare-standard") {
   </option>
 `;
   productImage.src =
-  "assets/images/collare-standard.jpg";
+  "assets/images/collare_standard.jpg";
 
 productImage.style.display = "block";
 
@@ -329,7 +329,7 @@ if (articoloSelect.value === "collare-caramella") {
   </option>
 `;
   productImage.src =
-  "assets/images/collare-caramella.jpg";
+  "assets/images/collare_caramella.jpg";
 
 productImage.style.display = "block";
   }
