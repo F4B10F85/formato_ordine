@@ -115,8 +115,7 @@ function createOrderRow() {
     <div class="field-box image-box">
     
       <img
-        class="product-image"
-        src=""
+        class="product-image hidden-image"
         alt="Immagine prodotto"
       />
     
