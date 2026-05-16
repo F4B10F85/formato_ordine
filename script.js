@@ -185,13 +185,12 @@ function createOrderRow() {
 
     <!-- QUANTITA -->
     <div class="field-box">
-      <select>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
+      <input
+        type="number"
+        min="1"
+        class="quantity-input"
+        placeholder="0"
+      />
     </div>
 
     <!-- NOTE -->
