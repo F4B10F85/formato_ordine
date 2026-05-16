@@ -248,6 +248,9 @@ function createOrderRow() {
 
   articoloSelect.addEventListener("change", () => {
 
+    productImage.style.display = "none";
+    productImage.src = "";
+    
     tagliaSelect.innerHTML =
       `<option value="">Seleziona</option>`;
 
@@ -279,8 +282,9 @@ if (articoloSelect.value === "collare-standard") {
   </option>
 `;
   productImage.src =
-  "assets/images/collare_standard.jpg";
-}
+  "assets/images/collare-standard.jpg";
+
+productImage.style.display = "block";
 
 /* COLLARE CARAMELLA */
 
@@ -323,8 +327,9 @@ if (articoloSelect.value === "collare-caramella") {
   </option>
 `;
   productImage.src =
-  "assets/images/collare_caramella.jpg";
-}
+  "assets/images/collare-caramella.jpg";
+
+productImage.style.display = "block";
 
   });
 
