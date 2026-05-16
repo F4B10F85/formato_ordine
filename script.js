@@ -247,8 +247,9 @@ function createOrderRow() {
 
   articoloSelect.addEventListener("change", () => {
 
-    productImage.style.display = "none";
-    productImage.src = "";
+    productImage.classList.add("hidden-image");
+    
+    productImage.removeAttribute("src");
     
     tagliaSelect.innerHTML =
       `<option value="">Seleziona</option>`;
@@ -283,7 +284,7 @@ if (articoloSelect.value === "collare-standard") {
   productImage.src =
   "assets/images/collare_standard.jpg";
 
-productImage.style.display = "block";
+productImage.classList.remove("hidden-image");
 
 } 
   
@@ -330,7 +331,7 @@ if (articoloSelect.value === "collare-caramella") {
   productImage.src =
   "assets/images/collare_caramella.jpg";
 
-productImage.style.display = "block";
+productImage.classList.remove("hidden-image");
   }
   });
 
