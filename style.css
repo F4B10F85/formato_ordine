@@ -89,17 +89,22 @@ body {
 }
 
 select,
-textarea {
+textarea,
+input {
   width: 100%;
 
-  border: none;
-  outline: none;
+  border: none !important;
+  outline: none !important;
 
-  background: transparent;
+  background: transparent !important;
+
+  box-shadow: none !important;
 
   font-size: 14px;
 
   font-family: 'Inter', sans-serif;
+
+  color: #222;
 }
 
 textarea {
@@ -169,4 +174,18 @@ input[readonly] {
   font-family: 'Inter', sans-serif;
 
   color: #555;
+}
+
+.quantity-input {
+  appearance: textfield;
+}
+
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[readonly] {
+  cursor: default;
 }
