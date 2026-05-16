@@ -7,43 +7,55 @@
 body {
   background: #f5f6f8;
   font-family: 'Inter', sans-serif;
-  color: #222;
   padding: 40px;
+  color: #222;
 }
 
 .page-container {
-  max-width: 1600px;
-  margin: auto;
+  width: 100%;
+  overflow-x: auto;
 }
 
 .page-title {
   font-size: 32px;
   font-weight: 700;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
-.order-grid {
+.table-header,
+.order-row {
   display: grid;
 
   grid-template-columns:
-    repeat(9, minmax(180px, 1fr));
+    180px
+    120px
+    180px
+    180px
+    180px
+    180px
+    180px
+    180px
+    180px
+    120px
+    300px;
 
-  gap: 20px;
-
-  overflow-x: auto;
-  padding-bottom: 10px;
+  gap: 16px;
+  align-items: start;
 }
 
-.field-group {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.table-header {
+  margin-bottom: 16px;
+  padding: 0 4px;
 }
 
-.field-group label {
+.table-header div {
   font-size: 14px;
-  font-weight: 600;
-  color: #444;
+  font-weight: 700;
+  color: #555;
+}
+
+.order-row {
+  margin-bottom: 20px;
 }
 
 .field-box {
@@ -51,20 +63,20 @@ body {
 
   border-radius: 18px;
 
-  padding: 14px 16px;
-
-  border: 1px solid #e2e5ea;
+  border: 1px solid #e3e7ed;
 
   min-height: 64px;
+
+  padding: 14px 16px;
 
   display: flex;
   align-items: center;
 
-  transition: 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .field-box:hover {
-  border-color: #c7ccd4;
+  border-color: #c8d0db;
 
   box-shadow:
     0 4px 12px rgba(0,0,0,0.05);
@@ -79,30 +91,48 @@ textarea {
 
   background: transparent;
 
-  font-size: 15px;
-
-  color: #222;
+  font-size: 14px;
 
   font-family: 'Inter', sans-serif;
 }
 
 textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: 80px;
 }
 
-.notes-group {
-  grid-column: span 2;
+.image-box {
+  justify-content: center;
+
+  font-size: 13px;
+  color: #999;
 }
 
-@media (max-width: 1100px) {
+.notes-box {
+  align-items: flex-start;
+}
 
-  .order-grid {
-    grid-template-columns: 1fr;
-  }
+.add-row-container {
+  margin-top: 20px;
+}
 
-  .notes-group {
-    grid-column: span 1;
-  }
+#addRowBtn {
+  width: 60px;
+  height: 60px;
 
+  border: none;
+
+  border-radius: 50%;
+
+  background: #111;
+  color: white;
+
+  font-size: 32px;
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+#addRowBtn:hover {
+  transform: scale(1.05);
 }
