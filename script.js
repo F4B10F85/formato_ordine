@@ -125,9 +125,11 @@ function createOrderRow() {
 
     <!-- SPESSORE -->
     <div class="field-box">
-      <select>
-        <option>Seleziona</option>
-      </select>
+      <input
+        type="text"
+        value="Non disponibile"
+        readonly
+      />
     </div>
 
     <!-- COLORE PELLE -->
@@ -183,15 +185,15 @@ function createOrderRow() {
       />
     </div>
 
-    <!-- QUANTITA -->
-    <div class="field-box">
-      <input
-        type="number"
-        min="1"
-        class="quantity-input"
-        placeholder="0"
-      />
-    </div>
+     <!-- QUANTITA -->
+  <div class="field-box quantity-box">
+    <input
+      type="number"
+      min="1"
+      class="quantity-input"
+      placeholder="0"
+    />
+  </div>
 
     <!-- NOTE -->
     <div class="field-box notes-box">
