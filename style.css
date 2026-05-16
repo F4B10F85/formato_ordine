@@ -13,7 +13,10 @@ body {
 
 .page-container {
   width: 100%;
+
   overflow-x: auto;
+
+  padding-bottom: 20px;
 }
 
 .page-title {
@@ -27,20 +30,23 @@ body {
   display: grid;
 
   grid-template-columns:
-    180px
-    120px
-    180px
-    180px
-    180px
-    180px
-    180px
-    180px
-    180px
-    120px
-    300px;
+    minmax(180px, 180px)
+    minmax(120px, 120px)
+    minmax(180px, 180px)
+    minmax(180px, 180px)
+    minmax(180px, 180px)
+    minmax(180px, 180px)
+    minmax(180px, 180px)
+    minmax(180px, 180px)
+    minmax(180px, 180px)
+    minmax(120px, 120px)
+    minmax(300px, 300px);
 
   gap: 16px;
-  align-items: start;
+
+  width: max-content;
+
+  align-items: stretch;
 }
 
 .table-header {
@@ -135,4 +141,16 @@ textarea {
 
 #addRowBtn:hover {
   transform: scale(1.05);
+}
+
+.order-row {
+  margin-bottom: 18px;
+}
+
+.table-header {
+  margin-bottom: 14px;
+}
+
+.table-header div {
+  padding-left: 6px;
 }
