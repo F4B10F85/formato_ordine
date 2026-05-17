@@ -248,6 +248,16 @@ function createOrderRow() {
       <textarea placeholder="Note riga ordine..."></textarea>
 
     </div>
+    
+    <!-- DELETE -->
+    <div class="field-box delete-box">
+    
+      <button class="delete-row-btn">
+        🗑
+      </button>
+    
+    </div>
+
 
   `;
 
@@ -268,6 +278,8 @@ function createOrderRow() {
   const caramellaBox = row.querySelector(".caramella-box");
 
   const imageBox = row.querySelector(".image-box");
+
+  const deleteBtn = row.querySelector(".delete-row-btn");
 
   /* ---------------------- */
   /* CAMBIO ARTICOLO */
@@ -475,8 +487,16 @@ function createOrderRow() {
 
   });
 
+deleteBtn.addEventListener("click", () => {
+
+  row.remove();
+
+});
+  
   return row;
 }
+
+
 
 /* ---------------------- */
 /* RIGA INIZIALE */
