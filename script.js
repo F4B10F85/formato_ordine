@@ -366,9 +366,8 @@ imageBox.innerHTML = `
   />
 `;
   }
-  });
 
-/* COLLARE MANIGLIA */
+
 
 /* COLLARE MANIGLIA */
 
@@ -452,37 +451,7 @@ if (articoloSelect.value === "collare-maniglia") {
 
   });
 
-  /* ALTEZZA SELEZIONABILE */
-
-  altezzaBox.innerHTML = `
-    <select class="altezza-select">
-      <option value="">
-        Seleziona
-      </option>
-
-      ${altezzeCollareManiglia.map(altezza =>
-        `<option>${altezza}</option>`
-      ).join("")}
-    </select>
-  `;
-
-  /* IMMAGINE */
-
-  imageBox.innerHTML = `
-    <img
-      class="product-image"
-      src="assets/images/collare_maniglia.jpg"
-      alt="Collare con maniglia"
-    />
-  `;
-
 }
-
-
-
-
-
-
 
 
   
