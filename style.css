@@ -332,33 +332,36 @@ input[readonly] {
 
 .delete-row-btn {
 
-  width: 42px;
-  height: 42px;
+  width: 52px;
+  height: 64px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
+  align-self: center;
+
   border: none;
 
-  border-radius: 12px;
+  border-radius: 16px;
 
-  background: transparent;
+  background: #f1f3f6;
 
   cursor: pointer;
 
-  font-size: 20px;
+  font-size: 24px;
+  font-weight: 600;
 
-  color: #888;
+  color: #7d8794;
 
   transition: all 0.2s ease;
 }
 
 .delete-row-btn:hover {
 
-  background: #f1f3f6;
+  background: #ffe9ec;
 
   color: #d11a2a;
 
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
