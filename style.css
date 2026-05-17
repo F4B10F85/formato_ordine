@@ -252,5 +252,67 @@ input[readonly] {
   border-radius: 10px;
 }
 
+.delete-box {
+  justify-content: center;
+}
 
+.delete-row-btn {
+
+  width: 42px;
+  height: 42px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #f1f3f6;
+
+  cursor: pointer;
+
+  font-size: 18px;
+
+  transition: all 0.2s ease;
+}
+
+.delete-row-btn:hover {
+
+  background: #e3e7ed;
+
+  transform: scale(1.05);
+}
+
+.controls-row {
+
+  display: flex;
+  gap: 14px;
+
+  margin-top: 20px;
+}
+
+#clearAllBtn {
+
+  height: 56px;
+
+  padding: 0 22px;
+
+  border: none;
+
+  border-radius: 16px;
+
+  background: #eceff3;
+
+  color: #444;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+#clearAllBtn:hover {
+
+  background: #dfe5ec;
+}
 
