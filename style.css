@@ -30,18 +30,18 @@ body {
   display: grid;
 
   grid-template-columns:
-    minmax(180px, 180px)
-    minmax(120px, 120px)
-    minmax(180px, 180px)
-    minmax(180px, 180px)
-    minmax(180px, 180px)
-    minmax(180px, 180px)
-    minmax(180px, 180px)
-    minmax(180px, 180px)
-    minmax(180px, 180px)
-    minmax(120px, 120px)
-    minmax(300px, 300px)
-    60px;
+    180px   /* articolo */
+    120px   /* immagine */
+    180px   /* taglia */
+    180px   /* altezza */
+    180px   /* spessore */
+    180px   /* pelle */
+    180px   /* foglie */
+    180px   /* cristalli */
+    180px   /* caramella */
+    120px   /* quantità */
+    300px   /* note */
+    60px;   /* cestino */
 
   gap: 16px;
 
