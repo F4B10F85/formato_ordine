@@ -24,6 +24,14 @@ const taglieCollareCaramella = [
   "Personalizzata"
 ];
 
+const taglieCollareManiglia = [
+  "S",
+  "M",
+  "L",
+  "XL",
+  "Personalizzata"
+];
+
 const altezzeCollare = {
   "XXS (light)": "1,5 cm",
   "XS (light)": "1,5 cm",
@@ -34,6 +42,13 @@ const altezzeCollare = {
   "XL": "3 cm",
   "Personalizzata": "Personalizzata"
 };
+
+const altezzeCollareManiglia = [
+  "3 cm",
+  "4 cm",
+  "5 cm",
+  "Personalizzata"
+];
 
 const coloriPelle = [
   "giallo",
@@ -107,7 +122,11 @@ function createOrderRow() {
         <option value="collare-caramella">
           Collare caramella
         </option>
-      
+
+        <option value="collare-maniglia">
+        Collare con maniglia
+        </option>
+            
       </select>
     </div>
 
@@ -124,13 +143,15 @@ function createOrderRow() {
     </div>
 
     <!-- ALTEZZA -->
-    <div class="field-box">
+    <div class="field-box altezza-box">
+    
       <input
         type="text"
         class="altezza-input"
         placeholder="-"
         readonly
       />
+    
     </div>
 
     <!-- SPESSORE -->
@@ -226,6 +247,8 @@ function createOrderRow() {
 
   const altezzaInput = row.querySelector(".altezza-input");
 
+  const altezzaBox = row.querySelector(".altezza-box");
+
   const foglieSelect = row.querySelector(".foglie-select");
 
   const spessoreInput = row.querySelector(".spessore-input");
@@ -243,10 +266,21 @@ function createOrderRow() {
   const imageBox = row.querySelector(".image-box");
   
   imageBox.innerHTML = "";
+
+    altezzaBox.innerHTML = `
+  <input
+    type="text"
+    class="altezza-input"
+    placeholder="-"
+    readonly
+  />
+`;
     
     tagliaSelect.innerHTML =
       `<option value="">Seleziona</option>`;
 
+/* COLLARE STANDARD */
+    
 if (articoloSelect.value === "collare-standard") {
 
   spessoreInput.value = "Non disponibile";
@@ -334,6 +368,69 @@ imageBox.innerHTML = `
   }
   });
 
+/* COLLARE MANIGLIA */
+
+if (articoloSelect.value === "collare-maniglia") {
+
+  spessoreInput.value = "Non disponibile";
+
+  foglieSelect.disabled = false;
+  foglieSelect.style.opacity = "1";
+
+  caramellaInput.innerHTML = `
+    <option>
+      Non disponibile
+    </option>
+  `;
+
+  /* TAGLIE */
+
+  taglieCollareManiglia.forEach(taglia => {
+
+    const option = document.createElement("option");
+
+    option.value = taglia;
+
+    option.textContent = taglia;
+
+    tagliaSelect.appendChild(option);
+
+  });
+
+  /* ALTEZZA SELEZIONABILE */
+
+  altezzaBox.innerHTML = `
+    <select class="altezza-select">
+      <option value="">
+        Seleziona
+      </option>
+
+      ${altezzeCollareManiglia.map(altezza =>
+        `<option>${altezza}</option>`
+      ).join("")}
+    </select>
+  `;
+
+  /* IMMAGINE */
+
+  imageBox.innerHTML = `
+    <img
+      class="product-image"
+      src="assets/images/collare_maniglia.jpg"
+      alt="Collare con maniglia"
+    />
+  `;
+
+}
+
+
+
+
+
+
+
+
+  
   /* ---------------------- */
   /* CAMBIO TAGLIA */
   /* ---------------------- */
