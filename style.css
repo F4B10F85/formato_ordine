@@ -373,3 +373,30 @@ input[readonly] {
   box-shadow:
     0 0 0 3px rgba(209,26,42,0.08);
 }
+
+#validateBtn {
+
+  height: 56px;
+
+  padding: 0 22px;
+
+  border: none !important;
+
+  border-radius: 16px;
+
+  background: #222 !important;
+
+  color: white !important;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+#validateBtn:hover {
+
+  transform: translateY(-2px);
+}
