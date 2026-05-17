@@ -132,40 +132,31 @@ textarea {
   width: 56px;
   height: 56px;
 
-  border: none;
+  border: none !important;
 
   border-radius: 16px;
 
-  background: #1F6556;
+  background-color: #1F6556 !important;
+  background-image: none !important;
 
-  color: white;
+  color: white !important;
 
   font-size: 30px;
   font-weight: 300;
 
   cursor: pointer;
 
-  transition: all 0.2s ease;
-
   display: flex;
   align-items: center;
   justify-content: center;
 
+  transition: all 0.2s ease;
+
   box-shadow:
     0 4px 12px rgba(0,0,0,0.08);
-}
 
-#addRowBtn:hover {
-
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 8px 18px rgba(0,0,0,0.12);
-}
-
-#addRowBtn:active {
-
-  transform: scale(0.96);
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .order-row {
