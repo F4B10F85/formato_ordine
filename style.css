@@ -341,5 +341,10 @@ input[readonly] {
   transition: all 0.2s ease;
 }
 
+#clearAllBtn:hover {
 
+  background: #f1f3f6 !important;
+
+  transform: translateY(-2px);
+}
 
