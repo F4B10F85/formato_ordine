@@ -1,5 +1,6 @@
 const orderRows = document.getElementById("orderRows");
 const addRowBtn = document.getElementById("addRowBtn");
+const clearAllBtn = document.getElementById("clearAllBtn");
 
 /* ---------------------- */
 /* DATI CONFIGURATORE */
@@ -509,6 +510,14 @@ orderRows.appendChild(createOrderRow());
 /* ---------------------- */
 
 addRowBtn.addEventListener("click", () => {
+
+  orderRows.appendChild(createOrderRow());
+
+});
+
+clearAllBtn.addEventListener("click", () => {
+
+  orderRows.innerHTML = "";
 
   orderRows.appendChild(createOrderRow());
 
