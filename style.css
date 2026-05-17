@@ -40,7 +40,8 @@ body {
     minmax(180px, 180px)
     minmax(180px, 180px)
     minmax(120px, 120px)
-    minmax(300px, 300px);
+    minmax(300px, 300px)
+    minmax(80px, 80px);
 
   gap: 16px;
 
