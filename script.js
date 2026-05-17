@@ -124,9 +124,9 @@ function createOrderRow() {
         </option>
 
         <option value="collare-maniglia">
-        Collare con maniglia
+          Collare con maniglia
         </option>
-            
+
       </select>
     </div>
 
@@ -144,14 +144,14 @@ function createOrderRow() {
 
     <!-- ALTEZZA -->
     <div class="field-box altezza-box">
-    
+
       <input
         type="text"
         class="altezza-input"
         placeholder="-"
         readonly
       />
-    
+
     </div>
 
     <!-- SPESSORE -->
@@ -166,6 +166,7 @@ function createOrderRow() {
     <!-- COLORE PELLE -->
     <div class="field-box">
       <select class="pelle-select">
+
         <option value="">
           Seleziona
         </option>
@@ -207,28 +208,30 @@ function createOrderRow() {
       </select>
     </div>
 
-      <!-- CARAMELLA -->
-      <div class="field-box">
-      
-        <select class="caramella-select">
-      
-          <option value="">
-            Non disponibile
-          </option>
-      
-        </select>
-      
-      </div>
+    <!-- CARAMELLA -->
+    <div class="field-box">
 
-     <!-- QUANTITA -->
-  <div class="field-box quantity-box">
-    <input
-      type="number"
-      min="1"
-      class="quantity-input"
-      placeholder="0"
-    />
-  </div>
+      <select class="caramella-select">
+
+        <option value="">
+          Non disponibile
+        </option>
+
+      </select>
+
+    </div>
+
+    <!-- QUANTITA -->
+    <div class="field-box quantity-box">
+
+      <input
+        type="number"
+        min="1"
+        class="quantity-input"
+        placeholder="0"
+      />
+
+    </div>
 
     <!-- NOTE -->
     <div class="field-box notes-box">
@@ -245,8 +248,6 @@ function createOrderRow() {
 
   const tagliaSelect = row.querySelector(".taglia-select");
 
-  const altezzaInput = row.querySelector(".altezza-input");
-
   const altezzaBox = row.querySelector(".altezza-box");
 
   const foglieSelect = row.querySelector(".foglie-select");
@@ -255,235 +256,175 @@ function createOrderRow() {
 
   const caramellaInput = row.querySelector(".caramella-select");
 
-  
+  const imageBox = row.querySelector(".image-box");
 
   /* ---------------------- */
   /* CAMBIO ARTICOLO */
   /* ---------------------- */
 
   articoloSelect.addEventListener("change", () => {
-  
-  const imageBox = row.querySelector(".image-box");
-  
-  imageBox.innerHTML = "";
+
+    /* RESET */
+
+    imageBox.innerHTML = "";
+
+    tagliaSelect.innerHTML = `
+      <option value="">
+        Seleziona
+      </option>
+    `;
 
     altezzaBox.innerHTML = `
-  <input
-    type="text"
-    class="altezza-input"
-    placeholder="-"
-    readonly
-  />
-`;
-    
-    tagliaSelect.innerHTML =
-      `<option value="">Seleziona</option>`;
+      <input
+        type="text"
+        class="altezza-input"
+        placeholder="-"
+        readonly
+      />
+    `;
 
-/* COLLARE STANDARD */
-    
-if (articoloSelect.value === "collare-standard") {
+    foglieSelect.disabled = false;
+    foglieSelect.style.opacity = "1";
 
-  spessoreInput.value = "Non disponibile";
+    /* ---------------------- */
+    /* COLLARE STANDARD */
+    /* ---------------------- */
 
-  caramellaInput.value = "Non disponibile";
+    if (articoloSelect.value === "collare-standard") {
 
-  altezzaInput.value = "";
+      taglieCollareStandard.forEach(taglia => {
 
-  foglieSelect.disabled = false;
-  foglieSelect.style.opacity = "1";
+        const option = document.createElement("option");
 
-  taglieCollareStandard.forEach(taglia => {
+        option.value = taglia;
 
-    const option = document.createElement("option");
+        option.textContent = taglia;
 
-    option.value = taglia;
+        tagliaSelect.appendChild(option);
 
-    option.textContent = taglia;
+      });
 
-    tagliaSelect.appendChild(option);
+      spessoreInput.value = "Non disponibile";
+
+      caramellaInput.innerHTML = `
+        <option>
+          Non disponibile
+        </option>
+      `;
+
+      imageBox.innerHTML = `
+        <img
+          class="product-image"
+          src="assets/images/collare_standard.jpg"
+          alt="Collare standard"
+        />
+      `;
+    }
+
+    /* ---------------------- */
+    /* COLLARE CARAMELLA */
+    /* ---------------------- */
+
+    if (articoloSelect.value === "collare-caramella") {
+
+      taglieCollareCaramella.forEach(taglia => {
+
+        const option = document.createElement("option");
+
+        option.value = taglia;
+
+        option.textContent = taglia;
+
+        tagliaSelect.appendChild(option);
+
+      });
+
+      spessoreInput.value = "Non disponibile";
+
+      caramellaInput.innerHTML = `
+        <option value="">
+          Seleziona
+        </option>
+
+        <option value="con-tassello">
+          Con tassello
+        </option>
+
+        <option value="senza-tassello">
+          Senza tassello
+        </option>
+      `;
+
+      imageBox.innerHTML = `
+        <img
+          class="product-image"
+          src="assets/images/collare_caramella.jpg"
+          alt="Collare caramella"
+        />
+      `;
+    }
+
+    /* ---------------------- */
+    /* COLLARE MANIGLIA */
+    /* ---------------------- */
+
+    if (articoloSelect.value === "collare-maniglia") {
+
+      taglieCollareManiglia.forEach(taglia => {
+
+        const option = document.createElement("option");
+
+        option.value = taglia;
+
+        option.textContent = taglia;
+
+        tagliaSelect.appendChild(option);
+
+      });
+
+      spessoreInput.value = "Non disponibile";
+
+      caramellaInput.innerHTML = `
+        <option>
+          Non disponibile
+        </option>
+      `;
+
+      altezzaBox.innerHTML = `
+        <select class="altezza-select">
+
+          <option value="">
+            Seleziona
+          </option>
+
+          ${altezzeCollareManiglia.map(altezza =>
+            `<option>${altezza}</option>`
+          ).join("")}
+
+        </select>
+      `;
+
+      imageBox.innerHTML = `
+        <img
+          class="product-image"
+          src="assets/images/collare_maniglia.jpg"
+          alt="Collare con maniglia"
+        />
+      `;
+    }
 
   });
-  caramellaInput.innerHTML = `
-  <option>
-    Non disponibile
-  </option>
-`;
-imageBox.innerHTML = `
-  <img
-    class="product-image"
-    src="assets/images/collare_standard.jpg"
-    alt="Collare caramella"
-  />
-`;
 
-} 
-  
-/* COLLARE CARAMELLA */
-
-if (articoloSelect.value === "collare-caramella") {
-
-  spessoreInput.value = "Non disponibile";
-
-  altezzaInput.value = "";
-
-  foglieSelect.disabled = false;
-  foglieSelect.style.opacity = "1";
-
-  caramellaInput.value = "";
-
-  caramellaInput.readOnly = false;
-
-  taglieCollareCaramella.forEach(taglia => {
-
-    const option = document.createElement("option");
-
-    option.value = taglia;
-
-    option.textContent = taglia;
-
-    tagliaSelect.appendChild(option);
-
-  });
-
-    caramellaInput.innerHTML = `
-  <option value="">
-    Seleziona
-  </option>
-
-  <option value="con-tassello">
-    Con tassello
-  </option>
-
-  <option value="senza-tassello">
-    Senza tassello
-  </option>
-`;
-imageBox.innerHTML = `
-  <img
-    class="product-image"
-    src="assets/images/collare_caramella.jpg"
-    alt="Collare standard"
-  />
-`;
-  }
-
-
-
-/* COLLARE MANIGLIA */
-
-if (articoloSelect.value === "collare-maniglia") {
-
-  tagliaSelect.innerHTML =
-    `<option value="">Seleziona</option>`;
-
-  taglieCollareManiglia.forEach(taglia => {
-
-    const option = document.createElement("option");
-
-    option.value = taglia;
-
-    option.textContent = taglia;
-
-    tagliaSelect.appendChild(option);
-
-  });
-
-  spessoreInput.value = "Non disponibile";
-
-  foglieSelect.disabled = false;
-  foglieSelect.style.opacity = "1";
-
-  caramellaInput.innerHTML = `
-    <option>
-      Non disponibile
-    </option>
-  `;
-
-  altezzaBox.innerHTML = `
-    <select class="altezza-select">
-
-      <option value="">
-        Seleziona
-      </option>
-
-      ${altezzeCollareManiglia.map(altezza =>
-        `<option>${altezza}</option>`
-      ).join("")}
-
-    </select>
-  `;
-
-  imageBox.innerHTML = `
-    <img
-      class="product-image"
-      src="assets/images/collare_maniglia.jpg"
-      alt="Collare con maniglia"
-    />
-  `;
-
-}
-
-
-  
-  /* RESET TAGLIE */
-
-  tagliaSelect.innerHTML =
-    `<option value="">Seleziona</option>`;
-
-
-
-  /* SPESSORE */
-
-  spessoreInput.value = "Non disponibile";
-
-  /* FOGLIE */
-
-  foglieSelect.disabled = false;
-  foglieSelect.style.opacity = "1";
-
-  /* CARAMELLA */
-
-  caramellaInput.innerHTML = `
-    <option>
-      Non disponibile
-    </option>
-  `;
-
-  /* ALTEZZA */
-
-  altezzaBox.innerHTML = `
-    <select class="altezza-select">
-
-      <option value="">
-        Seleziona
-      </option>
-
-      ${altezzeCollareManiglia.map(altezza =>
-        `<option>${altezza}</option>`
-      ).join("")}
-
-    </select>
-  `;
-
-  /* IMMAGINE */
-
-  imageBox.innerHTML = `
-    <img
-      class="product-image"
-      src="assets/images/collare_maniglia.jpg"
-      alt="Collare con maniglia"
-    />
-  `;
-
-}
-
-});
-  
   /* ---------------------- */
   /* CAMBIO TAGLIA */
   /* ---------------------- */
 
   tagliaSelect.addEventListener("change", () => {
+
+    const altezzaInput =
+      row.querySelector(".altezza-input");
+
+    if (!altezzaInput) return;
 
     const selectedTaglia = tagliaSelect.value;
 
