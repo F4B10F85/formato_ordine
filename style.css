@@ -260,6 +260,8 @@ input[readonly] {
   border-radius: 10px;
 }
 
-
+#addRowBtn {
+  background: #30203A !important;
+}
 
 
