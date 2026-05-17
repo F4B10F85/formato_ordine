@@ -250,15 +250,11 @@ function createOrderRow() {
 
     </div>
     
-    <!-- DELETE -->
-    <div class="field-box delete-box">
-    
-      <button class="delete-row-btn">
-        🗑
-      </button>
-    
-    </div>
 
+    <!-- ELIMINA RIGA -->
+    <div class="delete-row-btn">
+      🗑
+    </div>
 
   `;
 
@@ -492,6 +488,10 @@ deleteBtn.addEventListener("click", () => {
 
   row.remove();
 
+});
+
+deleteBtn.addEventListener("click", () => {
+  row.remove();
 });
   
   return row;
