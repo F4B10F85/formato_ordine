@@ -145,18 +145,35 @@ const products = {
     caramella: "Non disponibile"
   },
 
-  "poop-bag": {
-    nome: "Poop bag",
-    image: "poop_bag.jpg",
+"pettorina": {
+  nome: "Pettorina",
 
-    tagliaFixed: "Non disponibile",
+  image: "pettorina.jpg",
 
-    altezzaFixed: "Non disponibile",
+  taglie: [
+    "XXS (light)",
+    "XS (light)",
+    "S (light)",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "Personalizzata"
+  ],
 
-    spessore: "Non disponibile",
+  altezzaFixed: "Non disponibile",
 
-    caramella: "Non disponibile"
-  },
+  spessore: "Non disponibile",
+
+  caramella: "Non disponibile",
+
+  foglieDisabled: [
+    "XXS (light)",
+    "XS (light)"
+  ]
+},
+  
+
 
   "guinzaglio-standard": {
     nome: "Guinzaglio standard",
@@ -192,6 +209,21 @@ const products = {
     caramella: "Non disponibile"
   }
 };
+
+  "poop-bag": {
+    nome: "Poop bag",
+    image: "poop_bag.jpg",
+
+    tagliaFixed: "Non disponibile",
+
+    altezzaFixed: "Non disponibile",
+
+    spessore: "Non disponibile",
+
+    caramella: "Non disponibile"
+  },
+
+
 
 /* ---------------------- */
 /* UTILS */
