@@ -509,6 +509,16 @@ orderRows.appendChild(createOrderRow());
 /* NUOVA RIGA */
 /* ---------------------- */
 
+const clearAllBtn = document.getElementById("clearAllBtn");
+
+clearAllBtn.addEventListener("click", () => {
+
+  orderRows.innerHTML = "";
+
+  orderRows.appendChild(createOrderRow());
+
+});
+
 addRowBtn.addEventListener("click", () => {
 
   orderRows.appendChild(createOrderRow());
