@@ -13,9 +13,7 @@ body {
 
 .page-container {
   width: 100%;
-
   overflow-x: auto;
-
   padding-bottom: 20px;
 }
 
@@ -25,23 +23,28 @@ body {
   margin-bottom: 30px;
 }
 
+/* ---------------------- */
+/* GRID */
+/* ---------------------- */
+
 .table-header,
 .order-row {
+
   display: grid;
 
   grid-template-columns:
-    180px   /* articolo */
-    120px   /* immagine */
-    180px   /* taglia */
-    180px   /* altezza */
-    180px   /* spessore */
-    180px   /* pelle */
-    180px   /* foglie */
-    180px   /* cristalli */
-    180px   /* caramella */
-    120px   /* quantità */
-    300px   /* note */
-    60px;   /* cestino */
+    180px
+    120px
+    180px
+    180px
+    180px
+    180px
+    180px
+    180px
+    180px
+    120px
+    300px
+    60px;
 
   gap: 16px;
 
@@ -51,7 +54,7 @@ body {
 }
 
 .table-header {
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   padding: 0 4px;
 }
 
@@ -59,13 +62,19 @@ body {
   font-size: 14px;
   font-weight: 700;
   color: #555;
+  padding-left: 6px;
 }
 
 .order-row {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
+/* ---------------------- */
+/* BOX */
+/* ---------------------- */
+
 .field-box {
+
   background: white;
 
   border-radius: 18px;
@@ -83,15 +92,21 @@ body {
 }
 
 .field-box:hover {
+
   border-color: #c8d0db;
 
   box-shadow:
     0 4px 12px rgba(0,0,0,0.05);
 }
 
+/* ---------------------- */
+/* INPUT */
+/* ---------------------- */
+
 select,
 textarea,
 input {
+
   width: 100%;
 
   border: none !important;
@@ -113,121 +128,54 @@ textarea {
   min-height: 80px;
 }
 
+input[readonly] {
+  cursor: default;
+  color: #555;
+}
+
+/* ---------------------- */
+/* IMAGE */
+/* ---------------------- */
+
 .image-box {
+
   justify-content: center;
+  align-items: center;
+
+  padding: 6px;
 
   font-size: 13px;
   color: #999;
 }
 
+.product-image {
+
+  width: 100%;
+  height: 70px;
+
+  object-fit: contain;
+
+  border-radius: 10px;
+}
+
+/* ---------------------- */
+/* NOTE */
+/* ---------------------- */
+
 .notes-box {
   align-items: flex-start;
 }
 
-.add-row-container {
-  margin-top: 20px;
-
-  display: flex;
-  gap: 14px;
-}
-
-#addRowBtn,
-#clearAllBtn {
-
-  height: 56px;
-
-  border: none !important;
-
-  border-radius: 16px;
-
-  background: #1F6556 !important;
-
-  color: white !important;
-
-  font-size: 18px;
-  font-weight: 500;
-
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: 10px;
-
-  padding: 0 22px;
-
-  transition: all 0.2s ease;
-
-  box-shadow:
-    0 4px 12px rgba(0,0,0,0.08);
-
-  appearance: none;
-  -webkit-appearance: none;
-}
-
-#addRowBtn:hover,
-#clearAllBtn:hover {
-
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 8px 18px rgba(0,0,0,0.12);
-}
-
-#addRowBtn:active,
-#clearAllBtn:active {
-
-  transform: scale(0.96);
-}
-
-.order-row {
-  margin-bottom: 18px;
-}
-
-.table-header {
-  margin-bottom: 14px;
-}
-
-.table-header div {
-  padding-left: 6px;
-}
-
-
-input[readonly] {
-  width: 100%;
-
-  border: none;
-  outline: none;
-
-  background: transparent;
-
-  font-size: 14px;
-
-  font-family: 'Inter', sans-serif;
-
-  color: #555;
-}
-
-.quantity-input {
-  appearance: textfield;
-}
-
-.quantity-input::-webkit-outer-spin-button,
-.quantity-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[readonly] {
-  cursor: default;
-}
+/* ---------------------- */
+/* QUANTITY */
+/* ---------------------- */
 
 .quantity-box {
   padding: 0 16px;
 }
 
 .quantity-input {
+
   width: 100%;
 
   height: 38px;
@@ -257,21 +205,126 @@ input[readonly] {
   border-color: #b8c0cc !important;
 }
 
-.image-box {
-  justify-content: center;
+/* ---------------------- */
+/* CONTROLS */
+/* ---------------------- */
+
+.add-row-container {
+
+  margin-top: 20px;
+
+  display: flex;
+
+  gap: 14px;
+}
+
+/* ---------------------- */
+/* ADD BUTTON */
+/* ---------------------- */
+
+#addRowBtn {
+
+  height: 56px;
+
+  padding: 0 22px;
+
+  border: none !important;
+
+  border-radius: 16px;
+
+  background: #1F6556 !important;
+
+  color: white !important;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  font-family: 'Inter', sans-serif;
+
+  cursor: pointer;
+
+  display: flex;
   align-items: center;
+  justify-content: center;
 
-  padding: 6px;
+  gap: 10px;
+
+  transition: all 0.2s ease;
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.08);
+
+  appearance: none;
+  -webkit-appearance: none;
 }
 
-.product-image {
-  width: 100%;
-  height: 70px;
+#addRowBtn:hover {
 
-  object-fit: contain;
+  transform: translateY(-2px);
 
-  border-radius: 10px;
+  box-shadow:
+    0 8px 18px rgba(0,0,0,0.12);
 }
+
+#addRowBtn:active {
+  transform: scale(0.96);
+}
+
+/* ---------------------- */
+/* CLEAR BUTTON */
+/* ---------------------- */
+
+#clearAllBtn {
+
+  height: 56px;
+
+  padding: 0 22px;
+
+  border: none !important;
+
+  border-radius: 16px;
+
+  background: #1F6556 !important;
+
+  color: white !important;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  font-family: 'Inter', sans-serif;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  transition: all 0.2s ease;
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.08);
+
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+#clearAllBtn:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 18px rgba(0,0,0,0.12);
+}
+
+#clearAllBtn:active {
+  transform: scale(0.96);
+}
+
+/* ---------------------- */
+/* DELETE ROW */
+/* ---------------------- */
 
 .delete-box {
   justify-content: center;
@@ -309,42 +362,3 @@ input[readonly] {
 
   transform: scale(1.08);
 }
-
-.controls-row {
-
-  display: flex;
-
-  gap: 14px;
-
-  margin-top: 20px;
-}
-
-#clearAllBtn {
-
-  height: 56px;
-
-  padding: 0 22px;
-
-  border: none !important;
-
-  border-radius: 16px;
-
-  background: #1F6556 !important;
-
-  color: white !important;
-
-  font-size: 14px;
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition: all 0.2s ease;
-}
-
-#clearAllBtn:hover {
-
-  background: #1F6556 !important;
-
-  transform: translateY(-2px);
-}
-
