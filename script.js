@@ -136,9 +136,11 @@ function createOrderRow() {
     <!-- TAGLIA -->
     <div class="field-box">
       <select class="taglia-select">
+
         <option value="">
           Seleziona
         </option>
+
       </select>
     </div>
 
@@ -156,15 +158,18 @@ function createOrderRow() {
 
     <!-- SPESSORE -->
     <div class="field-box">
+
       <input
         type="text"
         class="spessore-input"
         readonly
       />
+
     </div>
 
     <!-- COLORE PELLE -->
     <div class="field-box">
+
       <select class="pelle-select">
 
         <option value="">
@@ -176,10 +181,12 @@ function createOrderRow() {
         ).join("")}
 
       </select>
+
     </div>
 
     <!-- COLORE FOGLIE -->
     <div class="field-box">
+
       <select class="foglie-select">
 
         <option value="">
@@ -191,11 +198,13 @@ function createOrderRow() {
         ).join("")}
 
       </select>
+
     </div>
 
     <!-- COLORE CRISTALLI -->
     <div class="field-box">
-      <select>
+
+      <select class="cristalli-select">
 
         <option value="">
           Seleziona
@@ -206,18 +215,18 @@ function createOrderRow() {
         ).join("")}
 
       </select>
+
     </div>
 
     <!-- CARAMELLA -->
-    <div class="field-box">
+    <div class="field-box caramella-box">
 
-      <select class="caramella-select">
-
-        <option value="">
-          Non disponibile
-        </option>
-
-      </select>
+      <input
+        type="text"
+        class="caramella-input"
+        value="Non disponibile"
+        readonly
+      />
 
     </div>
 
@@ -235,7 +244,9 @@ function createOrderRow() {
 
     <!-- NOTE -->
     <div class="field-box notes-box">
+
       <textarea placeholder="Note riga ordine..."></textarea>
+
     </div>
 
   `;
@@ -254,7 +265,7 @@ function createOrderRow() {
 
   const spessoreInput = row.querySelector(".spessore-input");
 
-  const caramellaInput = row.querySelector(".caramella-select");
+  const caramellaBox = row.querySelector(".caramella-box");
 
   const imageBox = row.querySelector(".image-box");
 
@@ -286,6 +297,8 @@ function createOrderRow() {
     foglieSelect.disabled = false;
     foglieSelect.style.opacity = "1";
 
+    spessoreInput.value = "";
+
     /* ---------------------- */
     /* COLLARE STANDARD */
     /* ---------------------- */
@@ -306,10 +319,13 @@ function createOrderRow() {
 
       spessoreInput.value = "Non disponibile";
 
-      caramellaInput.innerHTML = `
-        <option>
-          Non disponibile
-        </option>
+      caramellaBox.innerHTML = `
+        <input
+          type="text"
+          class="caramella-input"
+          value="Non disponibile"
+          readonly
+        />
       `;
 
       imageBox.innerHTML = `
@@ -341,18 +357,22 @@ function createOrderRow() {
 
       spessoreInput.value = "Non disponibile";
 
-      caramellaInput.innerHTML = `
-        <option value="">
-          Seleziona
-        </option>
+      caramellaBox.innerHTML = `
+        <select class="caramella-select">
 
-        <option value="con-tassello">
-          Con tassello
-        </option>
+          <option value="">
+            Seleziona
+          </option>
 
-        <option value="senza-tassello">
-          Senza tassello
-        </option>
+          <option value="con-tassello">
+            Con tassello
+          </option>
+
+          <option value="senza-tassello">
+            Senza tassello
+          </option>
+
+        </select>
       `;
 
       imageBox.innerHTML = `
@@ -382,14 +402,6 @@ function createOrderRow() {
 
       });
 
-      spessoreInput.value = "Non disponibile";
-
-      caramellaInput.innerHTML = `
-        <option>
-          Non disponibile
-        </option>
-      `;
-
       altezzaBox.innerHTML = `
         <select class="altezza-select">
 
@@ -402,6 +414,17 @@ function createOrderRow() {
           ).join("")}
 
         </select>
+      `;
+
+      spessoreInput.value = "Non disponibile";
+
+      caramellaBox.innerHTML = `
+        <input
+          type="text"
+          class="caramella-input"
+          value="Non disponibile"
+          readonly
+        />
       `;
 
       imageBox.innerHTML = `
@@ -421,8 +444,7 @@ function createOrderRow() {
 
   tagliaSelect.addEventListener("change", () => {
 
-    const altezzaInput =
-      row.querySelector(".altezza-input");
+    const altezzaInput = row.querySelector(".altezza-input");
 
     if (!altezzaInput) return;
 
@@ -449,7 +471,6 @@ function createOrderRow() {
       foglieSelect.disabled = false;
 
       foglieSelect.style.opacity = "1";
-
     }
 
   });
