@@ -373,6 +373,58 @@ imageBox.innerHTML = `
 
 if (articoloSelect.value === "collare-maniglia") {
 
+  tagliaSelect.innerHTML =
+    `<option value="">Seleziona</option>`;
+
+  taglieCollareManiglia.forEach(taglia => {
+
+    const option = document.createElement("option");
+
+    option.value = taglia;
+
+    option.textContent = taglia;
+
+    tagliaSelect.appendChild(option);
+
+  });
+
+  spessoreInput.value = "Non disponibile";
+
+  foglieSelect.disabled = false;
+  foglieSelect.style.opacity = "1";
+
+  caramellaInput.innerHTML = `
+    <option>
+      Non disponibile
+    </option>
+  `;
+
+  altezzaBox.innerHTML = `
+    <select class="altezza-select">
+
+      <option value="">
+        Seleziona
+      </option>
+
+      ${altezzeCollareManiglia.map(altezza =>
+        `<option>${altezza}</option>`
+      ).join("")}
+
+    </select>
+  `;
+
+  imageBox.innerHTML = `
+    <img
+      class="product-image"
+      src="assets/images/collare_maniglia.jpg"
+      alt="Collare con maniglia"
+    />
+  `;
+
+}
+
+
+  
   /* RESET TAGLIE */
 
   tagliaSelect.innerHTML =
@@ -422,22 +474,6 @@ if (articoloSelect.value === "collare-maniglia") {
       alt="Collare con maniglia"
     />
   `;
-
-}
-
-  /* TAGLIE */
-
-  taglieCollareManiglia.forEach(taglia => {
-
-    const option = document.createElement("option");
-
-    option.value = taglia;
-
-    option.textContent = taglia;
-
-    tagliaSelect.appendChild(option);
-
-  });
 
 }
 
