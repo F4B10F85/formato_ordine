@@ -378,19 +378,7 @@ if (articoloSelect.value === "collare-maniglia") {
   tagliaSelect.innerHTML =
     `<option value="">Seleziona</option>`;
 
-  /* TAGLIE */
 
-  taglieCollareManiglia.forEach(taglia => {
-
-    const option = document.createElement("option");
-
-    option.value = taglia;
-
-    option.textContent = taglia;
-
-    tagliaSelect.appendChild(option);
-
-  });
 
   /* SPESSORE */
 
@@ -453,7 +441,7 @@ if (articoloSelect.value === "collare-maniglia") {
 
 }
 
-
+});
   
   /* ---------------------- */
   /* CAMBIO TAGLIA */
