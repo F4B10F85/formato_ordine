@@ -207,8 +207,8 @@ const products = {
     ],
 
     caramella: "Non disponibile"
-  }
-};
+  },
+
 
   "poop-bag": {
     nome: "Poop bag",
@@ -223,7 +223,7 @@ const products = {
     caramella: "Non disponibile"
   },
 
-
+};
 
 /* ---------------------- */
 /* UTILS */
