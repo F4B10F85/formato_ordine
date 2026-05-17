@@ -400,3 +400,13 @@ input[readonly] {
 
   transform: translateY(-2px);
 }
+
+.plus-icon {
+
+  font-size: 28px;
+
+  line-height: 1;
+
+  display: flex;
+  align-items: center;
+}
