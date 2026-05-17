@@ -27,6 +27,8 @@ const coloriPelle = [
 ];
 
 const coloriFoglie = [
+  "SENZA FOGLIE",
+  
   "bianco",
   "beige",
   "taupe",
@@ -43,6 +45,8 @@ const coloriFoglie = [
 ];
 
 const coloriCristalli = [
+  "SENZA CRISTALLI",
+  
   "bianco",
   "topaz",
   "verde",
