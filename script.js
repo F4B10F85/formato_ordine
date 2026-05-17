@@ -1,6 +1,7 @@
 const orderRows = document.getElementById("orderRows");
 const addRowBtn = document.getElementById("addRowBtn");
 const clearAllBtn = document.getElementById("clearAllBtn");
+const validateBtn = document.getElementById("validateBtn");
 
 /* ---------------------- */
 /* DATI GLOBALI */
@@ -626,5 +627,183 @@ clearAllBtn.addEventListener("click", () => {
   orderRows.appendChild(
     createOrderRow()
   );
+
+});
+
+function validateOrders() {
+
+  let isValid = true;
+
+  /* RESET ERRORI */
+
+  document
+    .querySelectorAll(".field-error")
+    .forEach(el => {
+      el.classList.remove("field-error");
+    });
+
+  const rows =
+    document.querySelectorAll(".order-row");
+
+  rows.forEach(row => {
+
+    /* ARTICOLO */
+
+    const articolo =
+      row.querySelector(".articolo-select");
+
+    if (
+      articolo &&
+      !articolo.value
+    ) {
+
+      articolo
+        .closest(".field-box")
+        .classList.add("field-error");
+
+      isValid = false;
+    }
+
+    /* TAGLIA */
+
+    const taglia =
+      row.querySelector(".taglia-select");
+
+    if (
+      taglia &&
+      !taglia.value
+    ) {
+
+      taglia
+        .closest(".field-box")
+        .classList.add("field-error");
+
+      isValid = false;
+    }
+
+    /* SPESSORE */
+
+    const spessore =
+      row.querySelector(".spessore-select");
+
+    if (
+      spessore &&
+      !spessore.value
+    ) {
+
+      spessore
+        .closest(".field-box")
+        .classList.add("field-error");
+
+      isValid = false;
+    }
+
+    /* PELLE */
+
+    const pelle =
+      row.querySelector(".pelle-select");
+
+    if (
+      pelle &&
+      !pelle.value
+    ) {
+
+      pelle
+        .closest(".field-box")
+        .classList.add("field-error");
+
+      isValid = false;
+    }
+
+    /* FOGLIE */
+
+    const foglie =
+      row.querySelector(".foglie-select");
+
+    if (
+      foglie &&
+      !foglie.value
+    ) {
+
+      foglie
+        .closest(".field-box")
+        .classList.add("field-error");
+
+      isValid = false;
+    }
+
+    /* CRISTALLI */
+
+    const cristalli =
+      row.querySelector(".cristalli-select");
+
+    if (
+      cristalli &&
+      !cristalli.value
+    ) {
+
+      cristalli
+        .closest(".field-box")
+        .classList.add("field-error");
+
+      isValid = false;
+    }
+
+    /* CARAMELLA */
+
+    const caramella =
+      row.querySelector(".caramella-select");
+
+    if (
+      caramella &&
+      !caramella.value
+    ) {
+
+      caramella
+        .closest(".field-box")
+        .classList.add("field-error");
+
+      isValid = false;
+    }
+
+    /* QUANTITA */
+
+    const quantity =
+      row.querySelector(".quantity-input");
+
+    if (
+      quantity &&
+      (
+        !quantity.value ||
+        Number(quantity.value) <= 0
+      )
+    ) {
+
+      quantity
+        .closest(".field-box")
+        .classList.add("field-error");
+
+      isValid = false;
+    }
+
+  });
+
+  /* RISULTATO */
+
+  if (isValid) {
+
+    alert("Ordine completo ✅");
+
+  } else {
+
+    alert(
+      "Compila tutti i campi obbligatori."
+    );
+  }
+}
+
+validateBtn.addEventListener("click", () => {
+
+  validateOrders();
 
 });
