@@ -508,39 +508,48 @@ function createOrderRow() {
     const tagliaSelect =
       row.querySelector(".taglia-select");
 
-    if (tagliaSelect && product.altezze) {
+    if (tagliaSelect) {
 
-      tagliaSelect.addEventListener("change", () => {
-
-        const altezzaInput =
-          row.querySelector(".altezza-input");
-
-        if (!altezzaInput) return;
-
+    tagliaSelect.addEventListener("change", () => {
+    
+      const selectedTaglia = tagliaSelect.value;
+    
+      /* ALTEZZA */
+    
+      const altezzaInput =
+        row.querySelector(".altezza-input");
+    
+      if (
+        altezzaInput &&
+        product.altezze
+      ) {
+    
         altezzaInput.value =
-          product.altezze[tagliaSelect.value] || "";
-
-        /* DISABILITA FOGLIE */
-
-        if (
-          product.foglieDisabled &&
-          product.foglieDisabled.includes(
-            tagliaSelect.value
-          )
-        ) {
-
-          foglieBox.innerHTML = createReadonlyInput(
-            "Non disponibile"
-          );
-
-        } else {
-
-          foglieBox.innerHTML = createSelect(
-            coloriFoglie,
-            "foglie-select"
-          );
-        }
-      });
+          product.altezze[selectedTaglia] || "";
+      }
+    
+      /* FOGLIE */
+    
+      if (
+        product.foglieDisabled &&
+        product.foglieDisabled.includes(
+          selectedTaglia
+        )
+      ) {
+    
+        foglieBox.innerHTML = createReadonlyInput(
+          "Non disponibile"
+        );
+    
+      } else {
+    
+        foglieBox.innerHTML = createSelect(
+          coloriFoglie,
+          "foglie-select"
+        );
+      }
+    
+    });
     }
 
     /* SPESSORE EVENT */
