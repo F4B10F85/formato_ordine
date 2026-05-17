@@ -3,53 +3,8 @@ const addRowBtn = document.getElementById("addRowBtn");
 const clearAllBtn = document.getElementById("clearAllBtn");
 
 /* ---------------------- */
-/* DATI CONFIGURATORE */
+/* DATI GLOBALI */
 /* ---------------------- */
-
-const taglieCollareStandard = [
-  "XXS (light)",
-  "XS (light)",
-  "S (light)",
-  "S",
-  "M",
-  "L",
-  "XL",
-  "Personalizzata"
-];
-
-const taglieCollareCaramella = [
-  "XS",
-  "S",
-  "M",
-  "L",
-  "Personalizzata"
-];
-
-const taglieCollareManiglia = [
-  "S",
-  "M",
-  "L",
-  "XL",
-  "Personalizzata"
-];
-
-const altezzeCollare = {
-  "XXS (light)": "1,5 cm",
-  "XS (light)": "1,5 cm",
-  "S (light)": "2 cm",
-  "S": "2 cm",
-  "M": "2,5 cm",
-  "L": "3 cm",
-  "XL": "3 cm",
-  "Personalizzata": "Personalizzata"
-};
-
-const altezzeCollareManiglia = [
-  "3 cm",
-  "4 cm",
-  "5 cm",
-  "Personalizzata"
-];
 
 const coloriPelle = [
   "giallo",
@@ -97,6 +52,180 @@ const coloriCristalli = [
 ];
 
 /* ---------------------- */
+/* CONFIGURAZIONE ARTICOLI */
+/* ---------------------- */
+
+const products = {
+
+  "collare-standard": {
+    nome: "Collare standard",
+    image: "collare_standard.jpg",
+
+    taglie: [
+      "XXS (light)",
+      "XS (light)",
+      "S (light)",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "Personalizzata"
+    ],
+
+    altezze: {
+      "XXS (light)": "1,5 cm",
+      "XS (light)": "1,5 cm",
+      "S (light)": "2 cm",
+      "S": "2 cm",
+      "M": "2,5 cm",
+      "L": "3 cm",
+      "XL": "3 cm",
+      "Personalizzata": "Personalizzata"
+    },
+
+    spessore: "Non disponibile",
+
+    caramella: "Non disponibile",
+
+    foglieDisabled: [
+      "XXS (light)",
+      "XS (light)"
+    ]
+  },
+
+  "collare-caramella": {
+    nome: "Collare caramella",
+    image: "collare_caramella.jpg",
+
+    taglie: [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "Personalizzata"
+    ],
+
+    altezze: {
+      "XS": "1,5 cm",
+      "S": "2 cm",
+      "M": "2,5 cm",
+      "L": "3 cm",
+      "Personalizzata": "Personalizzata"
+    },
+
+    spessore: "Non disponibile",
+
+    caramellaOptions: [
+      "Con tassello",
+      "Senza tassello"
+    ]
+  },
+
+  "collare-maniglia": {
+    nome: "Collare con maniglia",
+    image: "collare_maniglia.jpg",
+
+    taglie: [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "Personalizzata"
+    ],
+
+    altezzeSelect: [
+      "3 cm",
+      "4 cm",
+      "5 cm",
+      "Personalizzata"
+    ],
+
+    spessore: "Non disponibile",
+
+    caramella: "Non disponibile"
+  },
+
+  "poop-bag": {
+    nome: "Poop bag",
+    image: "poop_bag.jpg",
+
+    tagliaFixed: "Non disponibile",
+
+    altezzaFixed: "Non disponibile",
+
+    spessore: "Non disponibile",
+
+    caramella: "Non disponibile"
+  },
+
+  "guinzaglio-standard": {
+    nome: "Guinzaglio standard",
+    image: "guinzaglio_standard.jpg",
+
+    tagliaFixed: "120 cm",
+
+    altezzaFixed: "Non disponibile",
+
+    spessori: [
+      "1,5 cm light",
+      "1,5 cm small",
+      "2 cm"
+    ],
+
+    caramella: "Non disponibile"
+  },
+
+  "guinzaglio-regolabile": {
+    nome: "Guinzaglio regolabile",
+    image: "guinzaglio_regolabile.jpg",
+
+    tagliaFixed: "180 cm",
+
+    altezzaFixed: "Non disponibile",
+
+    spessori: [
+      "1,5 cm light",
+      "1,5 cm small",
+      "2 cm"
+    ],
+
+    caramella: "Non disponibile"
+  }
+};
+
+/* ---------------------- */
+/* UTILS */
+/* ---------------------- */
+
+function createReadonlyInput(value) {
+
+  return `
+    <input
+      type="text"
+      value="${value}"
+      readonly
+    />
+  `;
+}
+
+function createSelect(options, className) {
+
+  return `
+    <select class="${className}">
+      <option value="">
+        Seleziona
+      </option>
+
+      ${options.map(option => `
+        <option value="${option}">
+          ${option}
+        </option>
+      `).join("")}
+    </select>
+  `;
+}
+
+/* ---------------------- */
 /* CREAZIONE RIGA */
 /* ---------------------- */
 
@@ -117,17 +246,11 @@ function createOrderRow() {
           Seleziona
         </option>
 
-        <option value="collare-standard">
-          Collare standard
-        </option>
-
-        <option value="collare-caramella">
-          Collare caramella
-        </option>
-
-        <option value="collare-maniglia">
-          Collare con maniglia
-        </option>
+        ${Object.entries(products).map(([key, product]) => `
+          <option value="${key}">
+            ${product.nome}
+          </option>
+        `).join("")}
 
       </select>
 
@@ -137,14 +260,12 @@ function createOrderRow() {
     <div class="field-box image-box"></div>
 
     <!-- TAGLIA -->
-    <div class="field-box">
+    <div class="field-box taglia-box">
 
       <select class="taglia-select">
-
         <option value="">
           Seleziona
         </option>
-
       </select>
 
     </div>
@@ -162,76 +283,42 @@ function createOrderRow() {
     </div>
 
     <!-- SPESSORE -->
-    <div class="field-box">
+    <div class="field-box spessore-box">
 
       <input
         type="text"
         class="spessore-input"
+        placeholder="-"
         readonly
       />
 
     </div>
 
-    <!-- COLORE PELLE -->
+    <!-- PELLE -->
     <div class="field-box">
 
-      <select class="pelle-select">
-
-        <option value="">
-          Seleziona
-        </option>
-
-        ${coloriPelle.map(colore =>
-          `<option>${colore}</option>`
-        ).join("")}
-
-      </select>
+      ${createSelect(coloriPelle, "pelle-select")}
 
     </div>
 
-    <!-- COLORE FOGLIE -->
-    <div class="field-box">
+    <!-- FOGLIE -->
+    <div class="field-box foglie-box">
 
-      <select class="foglie-select">
-
-        <option value="">
-          Seleziona
-        </option>
-
-        ${coloriFoglie.map(colore =>
-          `<option>${colore}</option>`
-        ).join("")}
-
-      </select>
+      ${createSelect(coloriFoglie, "foglie-select")}
 
     </div>
 
-    <!-- COLORE CRISTALLI -->
+    <!-- CRISTALLI -->
     <div class="field-box">
 
-      <select class="cristalli-select">
-
-        <option value="">
-          Seleziona
-        </option>
-
-        ${coloriCristalli.map(colore =>
-          `<option>${colore}</option>`
-        ).join("")}
-
-      </select>
+      ${createSelect(coloriCristalli, "cristalli-select")}
 
     </div>
 
     <!-- CARAMELLA -->
     <div class="field-box caramella-box">
 
-      <input
-        type="text"
-        class="caramella-input"
-        value="Non disponibile"
-        readonly
-      />
+      ${createReadonlyInput("Non disponibile")}
 
     </div>
 
@@ -254,11 +341,10 @@ function createOrderRow() {
 
     </div>
 
-    <!-- ELIMINA -->
+    <!-- DELETE -->
     <div class="delete-row-btn">
       🗑
     </div>
-
   `;
 
   /* ---------------------- */
@@ -267,17 +353,17 @@ function createOrderRow() {
 
   const articoloSelect = row.querySelector(".articolo-select");
 
-  const tagliaSelect = row.querySelector(".taglia-select");
+  const imageBox = row.querySelector(".image-box");
+
+  const tagliaBox = row.querySelector(".taglia-box");
 
   const altezzaBox = row.querySelector(".altezza-box");
 
-  const foglieSelect = row.querySelector(".foglie-select");
+  const spessoreBox = row.querySelector(".spessore-box");
 
-  const spessoreInput = row.querySelector(".spessore-input");
+  const foglieBox = row.querySelector(".foglie-box");
 
   const caramellaBox = row.querySelector(".caramella-box");
-
-  const imageBox = row.querySelector(".image-box");
 
   const deleteBtn = row.querySelector(".delete-row-btn");
 
@@ -287,203 +373,176 @@ function createOrderRow() {
 
   articoloSelect.addEventListener("change", () => {
 
-    /* RESET */
+    const product = products[articoloSelect.value];
 
-    imageBox.innerHTML = "";
+    if (!product) return;
 
-    tagliaSelect.innerHTML = `
-      <option value="">
-        Seleziona
-      </option>
-    `;
+    /* IMMAGINE */
 
-    altezzaBox.innerHTML = `
-      <input
-        type="text"
-        class="altezza-input"
-        placeholder="-"
-        readonly
+    imageBox.innerHTML = `
+      <img
+        class="product-image"
+        src="assets/images/${product.image}"
+        alt="${product.nome}"
       />
     `;
 
-    foglieSelect.disabled = false;
-    foglieSelect.style.opacity = "1";
+    /* TAGLIA */
 
-    spessoreInput.value = "";
+    if (product.tagliaFixed) {
 
-    caramellaBox.innerHTML = `
-      <input
-        type="text"
-        class="caramella-input"
-        value="Non disponibile"
-        readonly
-      />
-    `;
-
-    /* ---------------------- */
-    /* COLLARE STANDARD */
-    /* ---------------------- */
-
-    if (articoloSelect.value === "collare-standard") {
-
-      taglieCollareStandard.forEach(taglia => {
-
-        const option = document.createElement("option");
-
-        option.value = taglia;
-
-        option.textContent = taglia;
-
-        tagliaSelect.appendChild(option);
-
-      });
-
-      spessoreInput.value = "Non disponibile";
-
-      imageBox.innerHTML = `
-        <img
-          class="product-image"
-          src="assets/images/collare_standard.jpg"
-          alt="Collare standard"
-        />
-      `;
-    }
-
-    /* ---------------------- */
-    /* COLLARE CARAMELLA */
-    /* ---------------------- */
-
-    if (articoloSelect.value === "collare-caramella") {
-
-      taglieCollareCaramella.forEach(taglia => {
-
-        const option = document.createElement("option");
-
-        option.value = taglia;
-
-        option.textContent = taglia;
-
-        tagliaSelect.appendChild(option);
-
-      });
-
-      spessoreInput.value = "Non disponibile";
-
-      caramellaBox.innerHTML = `
-
-        <select class="caramella-select">
-
-          <option value="">
-            Seleziona
-          </option>
-
-          <option value="con-tassello">
-            Con tassello
-          </option>
-
-          <option value="senza-tassello">
-            Senza tassello
-          </option>
-
-        </select>
-
-      `;
-
-      imageBox.innerHTML = `
-        <img
-          class="product-image"
-          src="assets/images/collare_caramella.jpg"
-          alt="Collare caramella"
-        />
-      `;
-    }
-
-    /* ---------------------- */
-    /* COLLARE MANIGLIA */
-    /* ---------------------- */
-
-    if (articoloSelect.value === "collare-maniglia") {
-
-      taglieCollareManiglia.forEach(taglia => {
-
-        const option = document.createElement("option");
-
-        option.value = taglia;
-
-        option.textContent = taglia;
-
-        tagliaSelect.appendChild(option);
-
-      });
-
-      altezzaBox.innerHTML = `
-
-        <select class="altezza-select">
-
-          <option value="">
-            Seleziona
-          </option>
-
-          ${altezzeCollareManiglia.map(altezza =>
-            `<option>${altezza}</option>`
-          ).join("")}
-
-        </select>
-
-      `;
-
-      spessoreInput.value = "Non disponibile";
-
-      imageBox.innerHTML = `
-        <img
-          class="product-image"
-          src="assets/images/collare_maniglia.jpg"
-          alt="Collare con maniglia"
-        />
-      `;
-    }
-
-  });
-
-  /* ---------------------- */
-  /* CAMBIO TAGLIA */
-  /* ---------------------- */
-
-  tagliaSelect.addEventListener("change", () => {
-
-    const altezzaInput = row.querySelector(".altezza-input");
-
-    if (!altezzaInput) return;
-
-    const selectedTaglia = tagliaSelect.value;
-
-    altezzaInput.value =
-      altezzeCollare[selectedTaglia] || "";
-
-    /* DISABILITA FOGLIE LIGHT */
-
-    if (
-      selectedTaglia === "XXS (light)" ||
-      selectedTaglia === "XS (light)"
-    ) {
-
-      foglieSelect.disabled = true;
-
-      foglieSelect.value = "";
-
-      foglieSelect.style.opacity = "0.5";
+      tagliaBox.innerHTML = createReadonlyInput(
+        product.tagliaFixed
+      );
 
     } else {
 
-      foglieSelect.disabled = false;
+      tagliaBox.innerHTML = createSelect(
+        product.taglie,
+        "taglia-select"
+      );
+    }
 
-      foglieSelect.style.opacity = "1";
+    /* ALTEZZA */
+
+    if (product.altezzaFixed) {
+
+      altezzaBox.innerHTML = createReadonlyInput(
+        product.altezzaFixed
+      );
+
+    } else if (product.altezzeSelect) {
+
+      altezzaBox.innerHTML = createSelect(
+        product.altezzeSelect,
+        "altezza-select"
+      );
+
+    } else {
+
+      altezzaBox.innerHTML = `
+        <input
+          type="text"
+          class="altezza-input"
+          readonly
+        />
+      `;
+    }
+
+    /* SPESSORE */
+
+    if (product.spessori) {
+
+      spessoreBox.innerHTML = createSelect(
+        product.spessori,
+        "spessore-select"
+      );
+
+    } else {
+
+      spessoreBox.innerHTML = createReadonlyInput(
+        product.spessore
+      );
+    }
+
+    /* CARAMELLA */
+
+    if (product.caramellaOptions) {
+
+      caramellaBox.innerHTML = createSelect(
+        product.caramellaOptions,
+        "caramella-select"
+      );
+
+    } else {
+
+      caramellaBox.innerHTML = createReadonlyInput(
+        product.caramella
+      );
+    }
+
+    /* RESET FOGLIE */
+
+    foglieBox.innerHTML = createSelect(
+      coloriFoglie,
+      "foglie-select"
+    );
+
+    const foglieSelect =
+      row.querySelector(".foglie-select");
+
+    /* TAGLIA EVENT */
+
+    const tagliaSelect =
+      row.querySelector(".taglia-select");
+
+    if (tagliaSelect && product.altezze) {
+
+      tagliaSelect.addEventListener("change", () => {
+
+        const altezzaInput =
+          row.querySelector(".altezza-input");
+
+        if (!altezzaInput) return;
+
+        altezzaInput.value =
+          product.altezze[tagliaSelect.value] || "";
+
+        /* DISABILITA FOGLIE */
+
+        if (
+          product.foglieDisabled &&
+          product.foglieDisabled.includes(
+            tagliaSelect.value
+          )
+        ) {
+
+          foglieBox.innerHTML = createReadonlyInput(
+            "Non disponibile"
+          );
+
+        } else {
+
+          foglieBox.innerHTML = createSelect(
+            coloriFoglie,
+            "foglie-select"
+          );
+        }
+      });
+    }
+
+    /* SPESSORE EVENT */
+
+    const spessoreSelect =
+      row.querySelector(".spessore-select");
+
+    if (spessoreSelect) {
+
+      spessoreSelect.addEventListener("change", () => {
+
+        if (
+          spessoreSelect.value === "1,5 cm light" ||
+          spessoreSelect.value === "1,5 cm small"
+        ) {
+
+          foglieBox.innerHTML = createReadonlyInput(
+            "Non disponibile"
+          );
+
+        } else {
+
+          foglieBox.innerHTML = createSelect(
+            coloriFoglie,
+            "foglie-select"
+          );
+        }
+      });
     }
 
   });
 
   /* ---------------------- */
-  /* ELIMINA RIGA */
+  /* DELETE ROW */
   /* ---------------------- */
 
   deleteBtn.addEventListener("click", () => {
@@ -499,7 +558,9 @@ function createOrderRow() {
 /* RIGA INIZIALE */
 /* ---------------------- */
 
-orderRows.appendChild(createOrderRow());
+orderRows.appendChild(
+  createOrderRow()
+);
 
 /* ---------------------- */
 /* AGGIUNGI RIGA */
@@ -507,7 +568,9 @@ orderRows.appendChild(createOrderRow());
 
 addRowBtn.addEventListener("click", () => {
 
-  orderRows.appendChild(createOrderRow());
+  orderRows.appendChild(
+    createOrderRow()
+  );
 
 });
 
@@ -519,6 +582,8 @@ clearAllBtn.addEventListener("click", () => {
 
   orderRows.innerHTML = "";
 
-  orderRows.appendChild(createOrderRow());
+  orderRows.appendChild(
+    createOrderRow()
+  );
 
 });
