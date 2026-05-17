@@ -110,6 +110,7 @@ function createOrderRow() {
 
     <!-- ARTICOLO -->
     <div class="field-box">
+
       <select class="articolo-select">
 
         <option value="">
@@ -129,6 +130,7 @@ function createOrderRow() {
         </option>
 
       </select>
+
     </div>
 
     <!-- IMMAGINE -->
@@ -136,6 +138,7 @@ function createOrderRow() {
 
     <!-- TAGLIA -->
     <div class="field-box">
+
       <select class="taglia-select">
 
         <option value="">
@@ -143,6 +146,7 @@ function createOrderRow() {
         </option>
 
       </select>
+
     </div>
 
     <!-- ALTEZZA -->
@@ -249,9 +253,8 @@ function createOrderRow() {
       <textarea placeholder="Note riga ordine..."></textarea>
 
     </div>
-    
 
-    <!-- ELIMINA RIGA -->
+    <!-- ELIMINA -->
     <div class="delete-row-btn">
       🗑
     </div>
@@ -308,6 +311,15 @@ function createOrderRow() {
 
     spessoreInput.value = "";
 
+    caramellaBox.innerHTML = `
+      <input
+        type="text"
+        class="caramella-input"
+        value="Non disponibile"
+        readonly
+      />
+    `;
+
     /* ---------------------- */
     /* COLLARE STANDARD */
     /* ---------------------- */
@@ -327,15 +339,6 @@ function createOrderRow() {
       });
 
       spessoreInput.value = "Non disponibile";
-
-      caramellaBox.innerHTML = `
-        <input
-          type="text"
-          class="caramella-input"
-          value="Non disponibile"
-          readonly
-        />
-      `;
 
       imageBox.innerHTML = `
         <img
@@ -367,6 +370,7 @@ function createOrderRow() {
       spessoreInput.value = "Non disponibile";
 
       caramellaBox.innerHTML = `
+
         <select class="caramella-select">
 
           <option value="">
@@ -382,6 +386,7 @@ function createOrderRow() {
           </option>
 
         </select>
+
       `;
 
       imageBox.innerHTML = `
@@ -412,6 +417,7 @@ function createOrderRow() {
       });
 
       altezzaBox.innerHTML = `
+
         <select class="altezza-select">
 
           <option value="">
@@ -423,18 +429,10 @@ function createOrderRow() {
           ).join("")}
 
         </select>
+
       `;
 
       spessoreInput.value = "Non disponibile";
-
-      caramellaBox.innerHTML = `
-        <input
-          type="text"
-          class="caramella-input"
-          value="Non disponibile"
-          readonly
-        />
-      `;
 
       imageBox.innerHTML = `
         <img
@@ -462,7 +460,7 @@ function createOrderRow() {
     altezzaInput.value =
       altezzeCollare[selectedTaglia] || "";
 
-    /* DISABILITA FOGLIE */
+    /* DISABILITA FOGLIE LIGHT */
 
     if (
       selectedTaglia === "XXS (light)" ||
@@ -484,20 +482,18 @@ function createOrderRow() {
 
   });
 
-deleteBtn.addEventListener("click", () => {
+  /* ---------------------- */
+  /* ELIMINA RIGA */
+  /* ---------------------- */
 
-  row.remove();
+  deleteBtn.addEventListener("click", () => {
 
-});
+    row.remove();
 
-deleteBtn.addEventListener("click", () => {
-  row.remove();
-});
-  
+  });
+
   return row;
 }
-
-
 
 /* ---------------------- */
 /* RIGA INIZIALE */
@@ -506,24 +502,18 @@ deleteBtn.addEventListener("click", () => {
 orderRows.appendChild(createOrderRow());
 
 /* ---------------------- */
-/* NUOVA RIGA */
+/* AGGIUNGI RIGA */
 /* ---------------------- */
-
-const clearAllBtn = document.getElementById("clearAllBtn");
-
-clearAllBtn.addEventListener("click", () => {
-
-  orderRows.innerHTML = "";
-
-  orderRows.appendChild(createOrderRow());
-
-});
 
 addRowBtn.addEventListener("click", () => {
 
   orderRows.appendChild(createOrderRow());
 
 });
+
+/* ---------------------- */
+/* CANCELLA TUTTO */
+/* ---------------------- */
 
 clearAllBtn.addEventListener("click", () => {
 
