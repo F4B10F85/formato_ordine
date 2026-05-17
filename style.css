@@ -365,3 +365,11 @@ input[readonly] {
 
   transform: scale(1.05);
 }
+
+.field-error {
+
+  border: 1px solid #d11a2a !important;
+
+  box-shadow:
+    0 0 0 3px rgba(209,26,42,0.08);
+}
