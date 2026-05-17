@@ -370,18 +370,73 @@ imageBox.innerHTML = `
 
 /* COLLARE MANIGLIA */
 
+/* COLLARE MANIGLIA */
+
 if (articoloSelect.value === "collare-maniglia") {
+
+  /* RESET TAGLIE */
+
+  tagliaSelect.innerHTML =
+    `<option value="">Seleziona</option>`;
+
+  /* TAGLIE */
+
+  taglieCollareManiglia.forEach(taglia => {
+
+    const option = document.createElement("option");
+
+    option.value = taglia;
+
+    option.textContent = taglia;
+
+    tagliaSelect.appendChild(option);
+
+  });
+
+  /* SPESSORE */
 
   spessoreInput.value = "Non disponibile";
 
+  /* FOGLIE */
+
   foglieSelect.disabled = false;
   foglieSelect.style.opacity = "1";
+
+  /* CARAMELLA */
 
   caramellaInput.innerHTML = `
     <option>
       Non disponibile
     </option>
   `;
+
+  /* ALTEZZA */
+
+  altezzaBox.innerHTML = `
+    <select class="altezza-select">
+
+      <option value="">
+        Seleziona
+      </option>
+
+      ${altezzeCollareManiglia.map(altezza =>
+        `<option>${altezza}</option>`
+      ).join("")}
+
+    </select>
+  `;
+
+  /* IMMAGINE */
+
+  imageBox.innerHTML = `
+    <img
+      class="product-image"
+      src="assets/images/collare_maniglia.jpg"
+      alt="Collare con maniglia"
+    />
+  `;
+
+}
 
   /* TAGLIE */
 
