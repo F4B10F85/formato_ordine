@@ -1203,8 +1203,8 @@ if (logoBase64) {
     "PNG",
     12,
     8,
-    72,
-    24
+    70,
+    34
   );
 }
 
@@ -1387,7 +1387,7 @@ const quantity =
 /* FOOTER PREMIUM */
 /* ---------------------- */
 
-const footerY = 188;
+const footerY = 194;
 
 /* fascia verde */
 
