@@ -1525,13 +1525,13 @@ doc.setTextColor(255,255,255);
 doc.text(
   "www.kithopet.com",
   20,
-  202
+  204
 );
 
 doc.text(
   "commercial@kithopet.com",
   120,
-  202
+  204
 );
 
 /* icona instagram */
@@ -1561,7 +1561,7 @@ if (instagramBase64) {
 doc.text(
   "kitho.pet",
   231,
-  202
+  204
 );
 
   /* SAVE */
