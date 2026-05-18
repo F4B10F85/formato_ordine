@@ -410,3 +410,90 @@ input[readonly] {
   display: flex;
   align-items: center;
 }
+
+/* ---------------------- */
+/* RIEPILOGO ORDINE */
+/* ---------------------- */
+
+.summary-box {
+
+  background: white;
+
+  border-radius: 22px;
+
+  padding: 24px;
+
+  margin-top: 10px;
+  margin-bottom: 24px;
+
+  border: 1px solid #e3e7ed;
+
+  box-shadow:
+    0 4px 14px rgba(0,0,0,0.04);
+}
+
+.summary-title {
+
+  font-size: 20px;
+  font-weight: 700;
+
+  margin-bottom: 20px;
+
+  color: #222;
+}
+
+.summary-grid {
+
+  display: flex;
+
+  gap: 16px;
+
+  flex-wrap: wrap;
+
+  margin-bottom: 20px;
+}
+
+.summary-card {
+
+  min-width: 180px;
+
+  background: #f7f8fa;
+
+  border-radius: 16px;
+
+  padding: 18px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.summary-label {
+
+  font-size: 13px;
+
+  color: #666;
+}
+
+.summary-value {
+
+  font-size: 28px;
+  font-weight: 700;
+
+  color: #1F6556;
+}
+
+.summary-value.warning {
+
+  color: #d11a2a;
+}
+
+.summary-products {
+
+  font-size: 14px;
+
+  line-height: 1.6;
+
+  color: #444;
+}
