@@ -234,7 +234,7 @@ input[readonly] {
 
   border-radius: 16px;
 
-  background: #3880d1 !important;
+  background: #1F6556 !important;
 
   color: white !important;
 
@@ -258,6 +258,11 @@ input[readonly] {
 
   appearance: none;
   -webkit-appearance: none;
+}
+
+#exportPdfBtn {
+
+  background: #4388d1 !important;
 }
 
 #addRowBtn:hover,
