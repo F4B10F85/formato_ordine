@@ -1154,6 +1154,37 @@ async function exportPDF() {
 
 
 /* ---------------------- */
+/* LOGO */
+/* ---------------------- */
+
+let logoBase64 = "";
+
+try {
+
+  const response = await fetch("logo.png");
+
+  const blob = await response.blob();
+
+  logoBase64 = await new Promise((resolve) => {
+
+    const reader = new FileReader();
+
+    reader.onloadend = () => resolve(reader.result);
+
+    reader.readAsDataURL(blob);
+
+  });
+
+} catch (error) {
+
+  console.log("Logo non trovato");
+
+}
+
+
+  
+
+/* ---------------------- */
 /* HEADER PREMIUM */
 /* ---------------------- */
 
