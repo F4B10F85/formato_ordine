@@ -64,6 +64,10 @@ body {
   padding: 12px 4px;
 
   margin-bottom: 14px;
+
+  background: #f5f6f8;
+
+  width: max-content;
 }
 
 .table-header-wrapper {
@@ -78,9 +82,6 @@ body {
 
   border-bottom: 1px solid #dfe5ec;
   
-  width: max-content;
-
-  padding-right: 40px;
 }
 
 .table-header div {
