@@ -1511,17 +1511,3 @@ exportPdfBtn.addEventListener("click", () => {
 
 });
 
-
-.customer-box {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-.customer-box input {
-  flex: 1;
-  padding: 12px;
-  border: 1px solid #d7d7d7;
-  border-radius: 10px;
-  font-size: 14px;
-  background: white;
-}
