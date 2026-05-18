@@ -592,11 +592,18 @@ function createOrderRow() {
   /* ---------------------- */
 
   deleteBtn.addEventListener("click", () => {
-
+  
     row.remove();
-
+  
+    saveOrders();
+  
   });
+  
+  row.addEventListener("change", saveOrders);
+  
+  row.addEventListener("input", saveOrders);
 
+  
   return row;
 }
 
@@ -604,9 +611,13 @@ function createOrderRow() {
 /* RIGA INIZIALE */
 /* ---------------------- */
 
-orderRows.appendChild(
-  createOrderRow()
-);
+loadOrders();
+
+if (!orderRows.children.length) {
+
+  orderRows.appendChild(createOrderRow());
+
+}
 
 /* ---------------------- */
 /* AGGIUNGI RIGA */
@@ -614,9 +625,9 @@ orderRows.appendChild(
 
 addRowBtn.addEventListener("click", () => {
 
-  orderRows.appendChild(
-    createOrderRow()
-  );
+  orderRows.appendChild(createOrderRow());
+
+  saveOrders();
 
 });
 
@@ -626,11 +637,13 @@ addRowBtn.addEventListener("click", () => {
 
 clearAllBtn.addEventListener("click", () => {
 
+  sessionStorage.removeItem(
+    "configuratoreOrdini"
+  );
+
   orderRows.innerHTML = "";
 
-  orderRows.appendChild(
-    createOrderRow()
-  );
+  orderRows.appendChild(createOrderRow());
 
 });
 
@@ -811,3 +824,143 @@ validateBtn.addEventListener("click", () => {
   validateOrders();
 
 });
+
+function saveOrders() {
+
+  const rows = document.querySelectorAll(".order-row");
+
+  const orders = [];
+
+  rows.forEach(row => {
+
+    const orderData = {
+
+      articolo:
+        row.querySelector(".articolo-select")?.value || "",
+
+      taglia:
+        row.querySelector(".taglia-select")?.value || "",
+
+      altezza:
+        row.querySelector(".altezza-input")?.value ||
+        row.querySelector(".altezza-select")?.value ||
+        "",
+
+      spessore:
+        row.querySelector(".spessore-input")?.value || "",
+
+      pelle:
+        row.querySelector(".pelle-select")?.value || "",
+
+      foglie:
+        row.querySelector(".foglie-select")?.value || "",
+
+      cristalli:
+        row.querySelector(".cristalli-select")?.value || "",
+
+      caramella:
+        row.querySelector(".caramella-select")?.value ||
+        row.querySelector(".caramella-input")?.value ||
+        "",
+
+      quantita:
+        row.querySelector(".quantity-input")?.value || "",
+
+      note:
+        row.querySelector("textarea")?.value || ""
+
+    };
+
+    orders.push(orderData);
+
+  });
+
+  sessionStorage.setItem(
+    "configuratoreOrdini",
+    JSON.stringify(orders)
+  );
+}
+
+function loadOrders() {
+
+  const savedOrders =
+    sessionStorage.getItem("configuratoreOrdini");
+
+  if (!savedOrders) return;
+
+  const orders = JSON.parse(savedOrders);
+
+  orderRows.innerHTML = "";
+
+  orders.forEach(data => {
+
+    const row = createOrderRow();
+
+    orderRows.appendChild(row);
+
+    const articoloSelect =
+      row.querySelector(".articolo-select");
+
+    articoloSelect.value = data.articolo;
+
+    articoloSelect.dispatchEvent(
+      new Event("change")
+    );
+
+    setTimeout(() => {
+
+      const tagliaSelect =
+        row.querySelector(".taglia-select");
+
+      if (tagliaSelect) {
+        tagliaSelect.value = data.taglia;
+      }
+
+      const altezzaInput =
+        row.querySelector(".altezza-input");
+
+      const altezzaSelect =
+        row.querySelector(".altezza-select");
+
+      if (altezzaInput) {
+        altezzaInput.value = data.altezza;
+      }
+
+      if (altezzaSelect) {
+        altezzaSelect.value = data.altezza;
+      }
+
+      const spessoreInput =
+        row.querySelector(".spessore-input");
+
+      if (spessoreInput) {
+        spessoreInput.value = data.spessore;
+      }
+
+      row.querySelector(".pelle-select").value =
+        data.pelle;
+
+      row.querySelector(".foglie-select").value =
+        data.foglie;
+
+      row.querySelector(".cristalli-select").value =
+        data.cristalli;
+
+      const caramellaSelect =
+        row.querySelector(".caramella-select");
+
+      if (caramellaSelect) {
+        caramellaSelect.value = data.caramella;
+      }
+
+      row.querySelector(".quantity-input").value =
+        data.quantita;
+
+      row.querySelector("textarea").value =
+        data.note;
+
+    }, 0);
+
+  });
+
+}
