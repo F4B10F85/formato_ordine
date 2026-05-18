@@ -534,3 +534,10 @@ input[readonly] {
 
   color: #444;
 }
+
+.table-scroll {
+
+  overflow-x: auto;
+
+  position: relative;
+}
