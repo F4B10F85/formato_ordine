@@ -533,13 +533,14 @@ input[readonly] {
   color: #444;
 }
 
-.table-scroll {
-
-  overflow-x: auto;
-
-  overflow-y: visible;
+.page-container {
 
   position: relative;
-}
 
+  width: 100%;
+
+  padding-bottom: 20px;
+
+  overflow-x: auto;
+}
 
