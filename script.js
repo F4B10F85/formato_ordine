@@ -1177,9 +1177,9 @@ async function exportPDF() {
       logoBase64,
       "PNG",
       12,
-      8,
-      28,
-      28
+      10,
+      72,
+      24
     );
 
   } catch (error) {
@@ -1187,29 +1187,58 @@ async function exportPDF() {
     console.log("Logo non trovato");
   }
 
-  /* ---------------------- */
-  /* HEADER */
-  /* ---------------------- */
+/* ---------------------- */
+/* HEADER PREMIUM */
+/* ---------------------- */
 
-  doc.setFont("helvetica", "bold");
+doc.setFillColor(248,248,248);
+doc.rect(0, 0, 297, 42, "F");
 
-  doc.setFontSize(20);
+/* logo */
 
-  doc.text(
-    "Configuratore Ordine Cliente",
-    45,
-    18
+if (logoBase64) {
+
+  doc.addImage(
+    logoBase64,
+    "PNG",
+    12,
+    8,
+    72,
+    24
   );
+}
 
-  doc.setFont("helvetica", "normal");
+/* titolo */
 
-  doc.setFontSize(10);
+doc.setFont("helvetica", "bold");
+doc.setFontSize(20);
+doc.setTextColor(28, 63, 52);
 
-  doc.text(
-    `Data ordine: ${new Date().toLocaleDateString("it-IT")}`,
-    45,
-    26
-  );
+doc.text(
+  "CONFIGURATORE ORDINE CLIENTE",
+  168,
+  18,
+  { align: "center" }
+);
+
+/* data */
+
+doc.setFont("helvetica", "normal");
+doc.setFontSize(11);
+doc.setTextColor(70,70,70);
+
+doc.text(
+  `Data ordine: ${new Date().toLocaleDateString("it-IT")}`,
+  210,
+  28
+);
+
+/* linea gold */
+
+doc.setDrawColor(201, 157, 74);
+doc.setLineWidth(0.5);
+
+doc.line(12, 38, 285, 38);
 
   /* ---------------------- */
   /* TABELLA */
@@ -1217,7 +1246,7 @@ async function exportPDF() {
 
   const rows = document.querySelectorAll(".order-row");
 
-  let y = 45;
+  let y = 50;
 
   /* HEADER TABELLA */
 
@@ -1353,38 +1382,73 @@ const quantity =
     }
   });
 
-  /* ---------------------- */
-  /* FOOTER */
-  /* ---------------------- */
+/* ---------------------- */
+/* FOOTER PREMIUM */
+/* ---------------------- */
 
-  y += 12;
+const footerY = 188;
 
-  const totalRows = rows.length;
+/* fascia verde */
 
-  let totalQty = 0;
+doc.setFillColor(20, 52, 43);
 
-  rows.forEach((row) => {
+doc.rect(
+  0,
+  footerY,
+  297,
+  22,
+  "F"
+);
 
-    totalQty += Number(
-      row.querySelector(".quantity-input")?.value || 0
-    );
-  });
+/* thank you */
 
-  doc.setFont("helvetica", "bold");
+doc.setFont("helvetica", "bold");
+doc.setFontSize(15);
 
-  doc.setFontSize(11);
+doc.setTextColor(28, 63, 52);
 
-  doc.text(
-    `Totale righe: ${totalRows}`,
-    14,
-    y
-  );
+doc.text(
+  "Grazie per aver scelto Delicate Collars.",
+  148,
+  172,
+  { align: "center" }
+);
 
-  doc.text(
-    `Totale pezzi: ${totalQty}`,
-    80,
-    y
-  );
+doc.setFont("helvetica", "normal");
+doc.setFontSize(10);
+
+doc.setTextColor(120,120,120);
+
+doc.text(
+  "Qualità, eleganza e amore per i tuoi amici a quattro zampe.",
+  148,
+  179,
+  { align: "center" }
+);
+
+/* contatti */
+
+doc.setFontSize(10);
+
+doc.setTextColor(255,255,255);
+
+doc.text(
+  "www.kithopet.com",
+  20,
+  201
+);
+
+doc.text(
+  "commercial@kithopet.com",
+  120,
+  201
+);
+
+doc.text(
+  "@kitho.pet",
+  225,
+  201
+);
 
   /* SAVE */
 
