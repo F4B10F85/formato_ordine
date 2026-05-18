@@ -1406,7 +1406,7 @@ doc.setFontSize(15);
 doc.setTextColor(31, 101, 86);
 
 doc.text(
-  "Grazie per aver scelto KiTho.",
+  "Grazie per aver scelto KiTho",
   148,
   180,
   { align: "center" }
@@ -1418,7 +1418,7 @@ doc.setFontSize(10);
 doc.setTextColor(120,120,120);
 
 doc.text(
-  "Qualità, eleganza e amore per i tuoi amici a quattro zampe.",
+  "Qualità, comfort, eleganza e stile per i tuoi amici a quattro zampe.",
   148,
   187,
   { align: "center" }
@@ -1460,14 +1460,14 @@ if (instagramBase64) {
     instagramBase64,
     "PNG",
     225,
-    202,
+    198,
     4,
     4
   );
 }
 /* testo instagram */
 doc.text(
-  "@kitho.pet",
+  "kitho.pet",
   231,
   202
 );
