@@ -596,6 +596,8 @@ function createOrderRow() {
     row.remove();
   
     saveOrders();
+
+    updateSummary();
   
   });
   
@@ -603,6 +605,26 @@ function createOrderRow() {
   
   row.addEventListener("input", saveOrders);
 
+/* ---------------------- */
+/* UPDATE AUTOMATICI */
+/* ---------------------- */
+
+row.addEventListener("change", () => {
+
+  saveOrders();
+
+  updateSummary();
+
+});
+
+row.addEventListener("input", () => {
+
+  saveOrders();
+
+  updateSummary();
+
+});
+  
   
   return row;
 }
@@ -619,6 +641,9 @@ if (!orderRows.children.length) {
 
 }
 
+updateSummary();
+
+  
 /* ---------------------- */
 /* AGGIUNGI RIGA */
 /* ---------------------- */
@@ -628,6 +653,8 @@ addRowBtn.addEventListener("click", () => {
   orderRows.appendChild(createOrderRow());
 
   saveOrders();
+
+  updateSummary();
 
 });
 
@@ -644,6 +671,8 @@ clearAllBtn.addEventListener("click", () => {
   orderRows.innerHTML = "";
 
   orderRows.appendChild(createOrderRow());
+
+  updateSummary();
 
 });
 
@@ -880,6 +909,118 @@ function saveOrders() {
     JSON.stringify(orders)
   );
 }
+
+/* ---------------------- */
+/* RIEPILOGO ORDINE */
+/* ---------------------- */
+
+function updateSummary() {
+
+  const rows = document.querySelectorAll(".order-row");
+
+  const summaryRows =
+    document.getElementById("summaryRows");
+
+  const summaryQuantity =
+    document.getElementById("summaryQuantity");
+
+  const summaryIncomplete =
+    document.getElementById("summaryIncomplete");
+
+  const summaryProducts =
+    document.getElementById("summaryProducts");
+
+  let totalRows = rows.length;
+
+  let totalQuantity = 0;
+
+  let incompleteRows = 0;
+
+  let productsMap = {};
+
+  rows.forEach(row => {
+
+    const articolo =
+      row.querySelector(".articolo-select")?.value || "";
+
+    const quantity =
+      parseInt(
+        row.querySelector(".quantity-input")?.value
+      ) || 0;
+
+    totalQuantity += quantity;
+
+    if (articolo) {
+
+      if (!productsMap[articolo]) {
+
+        productsMap[articolo] = 0;
+      }
+
+      productsMap[articolo] += quantity || 1;
+    }
+
+    /* CONTROLLO COMPLETEZZA */
+
+    const requiredFields = [
+
+      row.querySelector(".articolo-select"),
+
+      row.querySelector(".pelle-select"),
+
+      row.querySelector(".quantity-input")
+
+    ];
+
+    const isIncomplete = requiredFields.some(field => {
+
+      if (!field) return true;
+
+      return !field.value;
+    });
+
+    if (isIncomplete) {
+
+      incompleteRows++;
+    }
+
+  });
+
+  summaryRows.textContent =
+    totalRows;
+
+  summaryQuantity.textContent =
+    totalQuantity;
+
+  summaryIncomplete.textContent =
+    incompleteRows;
+
+  /* ELENCO ARTICOLI */
+
+  const productsArray =
+    Object.entries(productsMap);
+
+  if (!productsArray.length) {
+
+    summaryProducts.textContent =
+      "Nessun articolo inserito";
+
+    return;
+  }
+
+  summaryProducts.innerHTML =
+    productsArray.map(([name, qty]) => {
+
+      return `
+        <div>
+          <strong>${name}</strong>
+          · ${qty} pezzi
+        </div>
+      `;
+    }).join("");
+}
+
+
 
 function loadOrders() {
 
