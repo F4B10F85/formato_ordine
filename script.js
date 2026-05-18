@@ -861,6 +861,22 @@ function saveOrders() {
 
   const orders = [];
 
+  /* DATI CLIENTE */
+
+  const customerData = {
+
+    nome:
+      document.getElementById("customerName")?.value || "",
+
+    telefono:
+      document.getElementById("customerPhone")?.value || "",
+
+    email:
+      document.getElementById("customerEmail")?.value || ""
+
+  };
+
+  
   rows.forEach(row => {
 
     const orderData = {
@@ -909,7 +925,15 @@ function saveOrders() {
     "configuratoreOrdini",
     JSON.stringify(orders)
   );
+
+  sessionStorage.setItem(
+  "customerData",
+  JSON.stringify(customerData)
+  );
+
+
 }
+
 
 
 /* ---------------------- */
@@ -1486,3 +1510,18 @@ exportPdfBtn.addEventListener("click", () => {
   exportPDF();
 
 });
+
+
+.customer-box {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.customer-box input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #d7d7d7;
+  border-radius: 10px;
+  font-size: 14px;
+  background: white;
+}
