@@ -77,6 +77,10 @@ body {
   background: #f5f6f8;
 
   border-bottom: 1px solid #dfe5ec;
+  
+  width: max-content;
+
+  padding-right: 40px;
 }
 
 .table-header div {
