@@ -23,17 +23,11 @@ body {
   margin-bottom: 30px;
 }
 
-.table-scroll {
 
-  width: 100%;
-
-  overflow-x: auto;
-}
 /* ---------------------- */
 /* GRID */
 /* ---------------------- */
 
-.table-header,
 .order-row {
 
   display: grid;
@@ -61,13 +55,36 @@ body {
 
 .table-header {
 
-  padding: 12px 4px;
+  display: grid;
 
-  margin-bottom: 14px;
+  grid-template-columns:
+    180px
+    120px
+    180px
+    180px
+    180px
+    180px
+    180px
+    180px
+    180px
+    120px
+    300px
+    60px;
 
-  background: #f5f6f8;
+  gap: 16px;
 
   width: max-content;
+
+  align-items: stretch;
+
+  padding: 12px 4px;
+
+  background: #f5f6f8;
+}
+
+.table-wrapper {
+
+  width: 100%;
 }
 
 .table-header-wrapper {
@@ -81,7 +98,13 @@ body {
   background: #f5f6f8;
 
   border-bottom: 1px solid #dfe5ec;
-  
+
+  overflow-x: auto;
+}
+
+.table-scroll {
+
+  overflow-x: auto;
 }
 
 .table-header div {
