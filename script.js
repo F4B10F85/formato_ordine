@@ -940,8 +940,13 @@ function updateSummary() {
 
   rows.forEach(row => {
 
+    const articoloSelect =
+      row.querySelector(".articolo-select");
+    
     const articolo =
-      row.querySelector(".articolo-select")?.value || "";
+      articoloSelect?.options[
+        articoloSelect.selectedIndex
+      ]?.text || "";
 
     const quantity =
       parseInt(
