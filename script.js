@@ -1178,6 +1178,21 @@ async function exportPDF() {
 
 
 /* ---------------------- */
+/* DATI CLIENTE */
+/* ---------------------- */
+
+const customerName =
+  document.getElementById("customerName")?.value || "-";
+
+const customerPhone =
+  document.getElementById("customerPhone")?.value || "-";
+
+const customerEmail =
+  document.getElementById("customerEmail")?.value || "-";
+
+
+  
+/* ---------------------- */
 /* LOGO */
 /* ---------------------- */
 
@@ -1262,13 +1277,66 @@ doc.setLineWidth(0.5);
 
 doc.line(12, 38, 285, 38);
 
+
+/* ---------------------- */
+/* BOX DATI CLIENTE */
+/* ---------------------- */
+
+doc.setFillColor(250,250,250);
+
+doc.roundedRect(
+  12,
+  44,
+  273,
+  22,
+  3,
+  3,
+  "F"
+);
+
+doc.setFont("helvetica", "bold");
+doc.setFontSize(10);
+
+doc.setTextColor(31, 101, 86);
+
+doc.text(
+  "CLIENTE",
+  18,
+  52
+);
+
+doc.setFont("helvetica", "normal");
+
+doc.setTextColor(60,60,60);
+
+doc.text(
+  `Nome: ${customerName}`,
+  18,
+  60
+);
+
+doc.text(
+  `Telefono: ${customerPhone}`,
+  110,
+  60
+);
+
+doc.text(
+  `Email: ${customerEmail}`,
+  205,
+  60
+);
+
+
+
+  
   /* ---------------------- */
   /* TABELLA */
   /* ---------------------- */
 
   const rows = document.querySelectorAll(".order-row");
 
-  let y = 50;
+  let y = 74;
 
   /* HEADER TABELLA */
 
