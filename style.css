@@ -23,6 +23,12 @@ body {
   margin-bottom: 30px;
 }
 
+.table-scroll {
+
+  width: 100%;
+
+  overflow-x: auto;
+}
 /* ---------------------- */
 /* GRID */
 /* ---------------------- */
@@ -541,7 +547,5 @@ input[readonly] {
   width: 100%;
 
   padding-bottom: 20px;
-
-  overflow-x: auto;
 }
 
