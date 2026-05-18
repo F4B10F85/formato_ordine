@@ -1178,8 +1178,8 @@ async function exportPDF() {
       "PNG",
       12,
       10,
-      72,
-      24
+      80,
+      39
     );
 
   } catch (error) {
@@ -1216,9 +1216,9 @@ doc.setTextColor(28, 63, 52);
 
 doc.text(
   "CONFIGURATORE ORDINE CLIENTE",
-  168,
+  285,
   18,
-  { align: "center" }
+  { align: "right" }
 );
 
 /* data */
@@ -1229,8 +1229,9 @@ doc.setTextColor(70,70,70);
 
 doc.text(
   `Data ordine: ${new Date().toLocaleDateString("it-IT")}`,
-  210,
-  28
+  285,
+  28,
+  { align: "right" }
 );
 
 /* linea gold */
@@ -1390,13 +1391,13 @@ const footerY = 188;
 
 /* fascia verde */
 
-doc.setFillColor(20, 52, 43);
+doc.setFillColor(31, 101, 86);
 
 doc.rect(
   0,
   footerY,
   297,
-  22,
+  16,
   "F"
 );
 
@@ -1405,10 +1406,10 @@ doc.rect(
 doc.setFont("helvetica", "bold");
 doc.setFontSize(15);
 
-doc.setTextColor(28, 63, 52);
+doc.setTextColor(31, 101, 86);
 
 doc.text(
-  "Grazie per aver scelto Delicate Collars.",
+  "Grazie per aver scelto KiTho.",
   148,
   172,
   { align: "center" }
