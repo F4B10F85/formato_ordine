@@ -57,15 +57,13 @@ body {
 
   position: sticky;
 
-  top: 40px;
+  top: 0;
 
   z-index: 999;
 
   background: #f5f6f8;
 
   padding: 12px 4px;
-
-  margin-bottom: 14px;
 
   border-bottom: 1px solid #dfe5ec;
 }
