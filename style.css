@@ -55,6 +55,13 @@ body {
 
 .table-header {
 
+  padding: 12px 4px;
+
+  margin-bottom: 14px;
+}
+
+.table-header-wrapper {
+
   position: sticky;
 
   top: 0;
@@ -63,12 +70,8 @@ body {
 
   background: #f5f6f8;
 
-  padding: 12px 4px;
-
   border-bottom: 1px solid #dfe5ec;
 }
-
-
 
 .table-header div {
 
