@@ -1152,40 +1152,6 @@ async function exportPDF() {
     format: "a4"
   });
 
-  /* ---------------------- */
-  /* LOGO */
-  /* ---------------------- */
-
-  let logoBase64 = "";
-
-  try {
-
-    const response = await fetch("logo.png");
-
-    const blob = await response.blob();
-
-    logoBase64 = await new Promise((resolve) => {
-
-      const reader = new FileReader();
-
-      reader.onloadend = () => resolve(reader.result);
-
-      reader.readAsDataURL(blob);
-    });
-
-    doc.addImage(
-      logoBase64,
-      "PNG",
-      12,
-      10,
-      80,
-      39
-    );
-
-  } catch (error) {
-
-    console.log("Logo non trovato");
-  }
 
 /* ---------------------- */
 /* HEADER PREMIUM */
@@ -1203,8 +1169,8 @@ if (logoBase64) {
     "PNG",
     12,
     8,
-    70,
-    34
+    60,
+    29
   );
 }
 
@@ -1411,7 +1377,7 @@ doc.setTextColor(31, 101, 86);
 doc.text(
   "Grazie per aver scelto KiTho.",
   148,
-  172,
+  180,
   { align: "center" }
 );
 
@@ -1423,7 +1389,7 @@ doc.setTextColor(120,120,120);
 doc.text(
   "Qualità, eleganza e amore per i tuoi amici a quattro zampe.",
   148,
-  179,
+  187,
   { align: "center" }
 );
 
