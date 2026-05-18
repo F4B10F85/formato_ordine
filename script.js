@@ -1552,7 +1552,7 @@ if (instagramBase64) {
     instagramBase64,
     "PNG",
     225,
-    198.5,
+    201,
     4,
     4
   );
