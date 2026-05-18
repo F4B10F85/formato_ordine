@@ -911,6 +911,115 @@ function saveOrders() {
   );
 }
 
+
+/* ---------------------- */
+/* LOAD ORDERS */
+/* ---------------------- */
+
+function loadOrders() {
+
+  const saved =
+    sessionStorage.getItem("configuratoreOrdini");
+
+  if (!saved) return;
+
+  const orders = JSON.parse(saved);
+
+  orders.forEach(data => {
+
+    const row = createOrderRow();
+
+    orderRows.appendChild(row);
+
+    /* articolo */
+
+    const articoloSelect =
+      row.querySelector(".articolo-select");
+
+    articoloSelect.value = data.articolo;
+
+    articoloSelect.dispatchEvent(
+      new Event("change")
+    );
+
+    /* attesa rendering */
+
+    setTimeout(() => {
+
+      const taglia =
+        row.querySelector(".taglia-select");
+
+      if (taglia)
+        taglia.value = data.taglia;
+
+      const altezzaInput =
+        row.querySelector(".altezza-input");
+
+      const altezzaSelect =
+        row.querySelector(".altezza-select");
+
+      if (altezzaInput)
+        altezzaInput.value = data.altezza;
+
+      if (altezzaSelect)
+        altezzaSelect.value = data.altezza;
+
+      const spessoreInput =
+        row.querySelector(".spessore-input");
+
+      const spessoreSelect =
+        row.querySelector(".spessore-select");
+
+      if (spessoreInput)
+        spessoreInput.value = data.spessore;
+
+      if (spessoreSelect)
+        spessoreSelect.value = data.spessore;
+
+      const pelle =
+        row.querySelector(".pelle-select");
+
+      if (pelle)
+        pelle.value = data.pelle;
+
+      const foglie =
+        row.querySelector(".foglie-select");
+
+      if (foglie)
+        foglie.value = data.foglie;
+
+      const cristalli =
+        row.querySelector(".cristalli-select");
+
+      if (cristalli)
+        cristalli.value = data.cristalli;
+
+      const caramellaSelect =
+        row.querySelector(".caramella-select");
+
+      if (caramellaSelect)
+        caramellaSelect.value = data.caramella;
+
+      const quantity =
+        row.querySelector(".quantity-input");
+
+      if (quantity)
+        quantity.value = data.quantita;
+
+      const notes =
+        row.querySelector("textarea");
+
+      if (notes)
+        notes.value = data.note;
+
+    }, 0);
+
+  });
+
+}
+
+
+
 /* ---------------------- */
 /* RIEPILOGO ORDINE */
 /* ---------------------- */
