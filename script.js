@@ -1433,19 +1433,19 @@ doc.setTextColor(255,255,255);
 doc.text(
   "www.kithopet.com",
   20,
-  201
+  202
 );
 
 doc.text(
   "commercial@kithopet.com",
   120,
-  201
+  202
 );
 
 doc.text(
   "@kitho.pet",
   225,
-  201
+  202
 );
 
   /* SAVE */
