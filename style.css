@@ -57,7 +57,7 @@ body {
 
   position: sticky;
 
-  top: 0;
+  top: 20px;
 
   z-index: 999;
 
@@ -68,8 +68,6 @@ body {
   margin-bottom: 14px;
 
   border-bottom: 1px solid #dfe5ec;
-
-  backdrop-filter: blur(6px);
 }
 
 
@@ -544,10 +542,4 @@ input[readonly] {
   position: relative;
 }
 
-top: 20px;
 
-.table-header {
-
-  position: sticky;
-
-  top: 20px;
