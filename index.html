@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="it">
 
@@ -23,14 +24,7 @@
       Configuratore Ordine Cliente
     </h1>
 
-  <div class="table-scroll">
-
-    
     <!-- HEADER COLONNE -->
-
-<div class="table-wrapper">
-
-  <div class="table-header-wrapper">
 
     <div class="table-header">
 
@@ -49,114 +43,109 @@
 
     </div>
 
-  </div>
-
-  <div class="table-scroll">
-
-
-
     <!-- RIGHE ORDINE -->
 
     <div id="orderRows"></div>
 
-  </div>
-
-</div>
-
     <!-- RIEPILOGO ORDINE -->
 
     <div class="summary-box">
-    
+
       <div class="summary-title">
         Riepilogo Ordine
       </div>
-    
+
       <div class="summary-grid">
-    
+
         <div class="summary-card">
+
           <span class="summary-label">
             Righe ordine
           </span>
-    
+
           <span
             class="summary-value"
             id="summaryRows"
           >
             0
           </span>
+
         </div>
-    
+
         <div class="summary-card">
+
           <span class="summary-label">
             Totale pezzi
           </span>
-    
+
           <span
             class="summary-value"
             id="summaryQuantity"
           >
             0
           </span>
+
         </div>
-    
+
         <div class="summary-card">
+
           <span class="summary-label">
             Righe incomplete
           </span>
-    
+
           <span
             class="summary-value warning"
             id="summaryIncomplete"
           >
             0
           </span>
+
         </div>
-    
+
       </div>
-    
+
       <div
         class="summary-products"
         id="summaryProducts"
       >
         Nessun articolo inserito
       </div>
-    
-    </div> 
 
-  </div> 
-        
-    <!-- PULSANTE AGGIUNGI -->
+    </div>
+
+    <!-- BOTTONI -->
 
     <div class="add-row-container">
 
       <button id="addRowBtn">
-      
+
         <span class="plus-icon">+</span>
-      
+
         <span>Aggiungi riga</span>
-      
+
       </button>
 
       <button id="clearAllBtn">
-      🗑 Cancella tutto
+        🗑 Cancella tutto
       </button>
 
       <button id="validateBtn">
-      Verifica ordine
+        Verifica ordine
       </button>
-    
+
       <button id="exportPdfBtn">
-      📄 Esporta PDF
+        📄 Esporta PDF
       </button>
-          
+
     </div>
 
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  
+
   <script src="script.js"></script>
 
 </body>
 
 </html>
+```
