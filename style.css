@@ -1,3 +1,4 @@
+```css
 * {
   margin: 0;
   padding: 0;
@@ -12,9 +13,14 @@ body {
 }
 
 .page-container {
+
   position: relative;
+
   width: 100%;
+
   padding-bottom: 20px;
+
+  overflow-x: auto;
 }
 
 .page-title {
@@ -23,11 +29,11 @@ body {
   margin-bottom: 30px;
 }
 
-
 /* ---------------------- */
 /* GRID */
 /* ---------------------- */
 
+.table-header,
 .order-row {
 
   display: grid;
@@ -55,56 +61,9 @@ body {
 
 .table-header {
 
-  display: grid;
-
-  grid-template-columns:
-    180px
-    120px
-    180px
-    180px
-    180px
-    180px
-    180px
-    180px
-    180px
-    120px
-    300px
-    60px;
-
-  gap: 16px;
-
-  width: max-content;
-
-  align-items: stretch;
-
   padding: 12px 4px;
 
-  background: #f5f6f8;
-}
-
-.table-wrapper {
-
-  width: 100%;
-}
-
-.table-header-wrapper {
-
-  position: sticky;
-
-  top: 0;
-
-  z-index: 999;
-
-  background: #f5f6f8;
-
-  border-bottom: 1px solid #dfe5ec;
-
-  overflow-x: auto;
-}
-
-.table-scroll {
-
-  overflow-x: auto;
+  margin-bottom: 14px;
 }
 
 .table-header div {
@@ -278,7 +237,7 @@ input[readonly] {
 }
 
 /* ---------------------- */
-/* ADD BUTTON */
+/* BUTTONS */
 /* ---------------------- */
 
 #addRowBtn,
@@ -324,27 +283,7 @@ input[readonly] {
   background: #4388d1 !important;
 }
 
-#addRowBtn:hover,
-#clearAllBtn:hover,
-#exportPdfBtn:hover {
-
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 8px 18px rgba(0,0,0,0.12);
-}
-
-#addRowBtn:active,
-#clearAllBtn:active,
-#exportPdfBtn:active {
-  transform: scale(0.96);
-}
-
-/* ---------------------- */
-/* CLEAR BUTTON */
-/* ---------------------- */
-
-#clearAllBtn {
+#validateBtn {
 
   height: 56px;
 
@@ -354,7 +293,7 @@ input[readonly] {
 
   border-radius: 16px;
 
-  background: #1F6556 !important;
+  background: #de8033 !important;
 
   color: white !important;
 
@@ -365,22 +304,13 @@ input[readonly] {
 
   cursor: pointer;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: 10px;
-
   transition: all 0.2s ease;
-
-  box-shadow:
-    0 4px 12px rgba(0,0,0,0.08);
-
-  appearance: none;
-  -webkit-appearance: none;
 }
 
-#clearAllBtn:hover {
+#addRowBtn:hover,
+#clearAllBtn:hover,
+#exportPdfBtn:hover,
+#validateBtn:hover {
 
   transform: translateY(-2px);
 
@@ -388,7 +318,11 @@ input[readonly] {
     0 8px 18px rgba(0,0,0,0.12);
 }
 
-#clearAllBtn:active {
+#addRowBtn:active,
+#clearAllBtn:active,
+#exportPdfBtn:active,
+#validateBtn:active {
+
   transform: scale(0.96);
 }
 
@@ -436,6 +370,10 @@ input[readonly] {
   transform: scale(1.05);
 }
 
+/* ---------------------- */
+/* ERRORI */
+/* ---------------------- */
+
 .field-error {
 
   border: 1px solid #d11a2a !important;
@@ -444,32 +382,9 @@ input[readonly] {
     0 0 0 3px rgba(209,26,42,0.08);
 }
 
-#validateBtn {
-
-  height: 56px;
-
-  padding: 0 22px;
-
-  border: none !important;
-
-  border-radius: 16px;
-
-  background: #de8033 !important;
-
-  color: white !important;
-
-  font-size: 14px;
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition: all 0.2s ease;
-}
-
-#validateBtn:hover {
-
-  transform: translateY(-2px);
-}
+/* ---------------------- */
+/* PLUS ICON */
+/* ---------------------- */
 
 .plus-icon {
 
@@ -482,7 +397,7 @@ input[readonly] {
 }
 
 /* ---------------------- */
-/* RIEPILOGO ORDINE */
+/* RIEPILOGO */
 /* ---------------------- */
 
 .summary-box {
@@ -567,13 +482,4 @@ input[readonly] {
 
   color: #444;
 }
-
-.page-container {
-
-  position: relative;
-
-  width: 100%;
-
-  padding-bottom: 20px;
-}
-
+```
