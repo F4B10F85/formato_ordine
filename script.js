@@ -1030,10 +1030,6 @@ function updateSummary() {
 /* ESPORTAZIONE PDF */
 /* ---------------------- */
 
-/* ---------------------- */
-/* ESPORTAZIONE PDF */
-/* ---------------------- */
-
 async function exportPDF() {
 
   const { jsPDF } = window.jspdf;
@@ -1170,31 +1166,41 @@ async function exportPDF() {
   rows.forEach((row, index) => {
 
     const article =
-      row.querySelector(".article-select")?.value || "-";
+  row.querySelector(".articolo-select")?.selectedOptions[0]?.text || "-";
 
-    const size =
-      row.querySelector(".size-select")?.value || "-";
+const size =
+  row.querySelector(".taglia-select")?.value ||
+  row.querySelector(".taglia-box input")?.value ||
+  "-";
 
-    const height =
-      row.querySelector(".height-select")?.value || "-";
+const height =
+  row.querySelector(".altezza-select")?.value ||
+  row.querySelector(".altezza-input")?.value ||
+  "-";
 
-    const thickness =
-      row.querySelector(".thickness-select")?.value || "-";
+const thickness =
+  row.querySelector(".spessore-select")?.value ||
+  row.querySelector(".spessore-input")?.value ||
+  "-";
 
-    const leather =
-      row.querySelector(".leather-select")?.value || "-";
+const leather =
+  row.querySelector(".pelle-select")?.value || "-";
 
-    const leaves =
-      row.querySelector(".leaves-select")?.value || "-";
+const leaves =
+  row.querySelector(".foglie-select")?.value ||
+  row.querySelector(".foglie-box input")?.value ||
+  "-";
 
-    const crystals =
-      row.querySelector(".crystals-select")?.value || "-";
+const crystals =
+  row.querySelector(".cristalli-select")?.value || "-";
 
-    const candy =
-      row.querySelector(".candy-select")?.value || "-";
+const candy =
+  row.querySelector(".caramella-select")?.value ||
+  row.querySelector(".caramella-box input")?.value ||
+  "-";
 
-    const quantity =
-      row.querySelector(".quantity-input")?.value || "1";
+const quantity =
+  row.querySelector(".quantity-input")?.value || "-";
 
     /* sfondo alternato */
 
