@@ -488,66 +488,42 @@ input[readonly] {
 /* ---------------------- */
 
 .customer-data {
-
   display: flex;
-
   gap: 28px;
-
   align-items: center;
-
   margin-bottom: 34px;
-
   flex-wrap: wrap;
 }
 
 .customer-item {
-
   display: flex;
-
   align-items: center;
-
   gap: 14px;
 }
 
 .customer-item label {
-
   font-size: 14px;
-
   font-weight: 600;
-
   color: #444;
-
   min-width: 120px;
 }
 
 .customer-item input {
-
   width: 260px;
-
   height: 48px;
-
   border: 1px solid #d7d7d7 !important;
-
   border-radius: 14px;
-
   padding: 0 16px;
-
   background: white !important;
-
   font-size: 14px;
-
   font-family: 'Inter', sans-serif;
-
   box-shadow:
     0 2px 8px rgba(0,0,0,0.04);
 }
 
 .customer-item input:focus {
-
   border-color: #1f6556 !important;
-
   box-shadow:
     0 0 0 4px rgba(31,101,86,0.08);
-
   outline: none;
 }
