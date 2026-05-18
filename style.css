@@ -12,6 +12,7 @@ body {
 }
 
 .page-container {
+  position: relative;
   width: 100%;
   overflow-x: auto;
   padding-bottom: 20px;
@@ -54,15 +55,41 @@ body {
 }
 
 .table-header {
+
+  position: sticky;
+
+  top: 0;
+
+  z-index: 100;
+
+  background: #f5f6f8;
+
+  padding: 12px 4px;
+
   margin-bottom: 14px;
-  padding: 0 4px;
+
+  border-bottom: 1px solid #dfe5ec;
+
+  backdrop-filter: blur(6px);
 }
 
+
+
 .table-header div {
-  font-size: 14px;
-  font-weight: 700;
-  color: #555;
+
+  display: flex;
+
+  align-items: center;
+
+  min-height: 64px;
+
   padding-left: 6px;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  color: #555;
 }
 
 .order-row {
