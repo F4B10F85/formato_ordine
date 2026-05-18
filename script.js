@@ -2,6 +2,7 @@ const orderRows = document.getElementById("orderRows");
 const addRowBtn = document.getElementById("addRowBtn");
 const clearAllBtn = document.getElementById("clearAllBtn");
 const validateBtn = document.getElementById("validateBtn");
+const exportPdfBtn = document.getElementById("exportPdfBtn");
 
 /* ---------------------- */
 /* DATI GLOBALI */
@@ -1025,7 +1026,214 @@ function updateSummary() {
     }).join("");
 }
 
+/* ---------------------- */
+/* ESPORTAZIONE PDF */
+/* ---------------------- */
 
+function exportPDF() {
+
+  const { jsPDF } = window.jspdf;
+
+  const doc = new jsPDF();
+
+  const rows =
+    document.querySelectorAll(".order-row");
+
+  let y = 20;
+
+  /* TITOLO */
+
+  doc.setFontSize(20);
+
+  doc.text(
+    "Configuratore Ordine Cliente",
+    20,
+    y
+  );
+
+  y += 14;
+
+  /* DATA */
+
+  const now = new Date();
+
+  const dateString =
+    now.toLocaleDateString("it-IT");
+
+  doc.setFontSize(11);
+
+  doc.text(
+    `Data ordine: ${dateString}`,
+    20,
+    y
+  );
+
+  y += 16;
+
+  /* RIGHE */
+
+  rows.forEach((row, index) => {
+
+    const articolo =
+      row.querySelector(".articolo-select")
+      ?.selectedOptions[0]?.text || "-";
+
+    const taglia =
+      row.querySelector(".taglia-select")
+      ?.value || "Non disponibile";
+
+    const altezza =
+      row.querySelector(".altezza-input")
+      ?.value ||
+
+      row.querySelector(".altezza-select")
+      ?.value ||
+
+      "Non disponibile";
+
+    const spessore =
+      row.querySelector(".spessore-input")
+      ?.value || "Non disponibile";
+
+    const pelle =
+      row.querySelector(".pelle-select")
+      ?.value || "-";
+
+    const foglie =
+      row.querySelector(".foglie-select")
+      ?.value || "-";
+
+    const cristalli =
+      row.querySelector(".cristalli-select")
+      ?.value || "-";
+
+    const caramella =
+      row.querySelector(".caramella-select")
+      ?.value ||
+
+      row.querySelector(".caramella-input")
+      ?.value ||
+
+      "Non disponibile";
+
+    const quantita =
+      row.querySelector(".quantity-input")
+      ?.value || "0";
+
+    const note =
+      row.querySelector("textarea")
+      ?.value || "-";
+
+    /* BLOCCO */
+
+    doc.setDrawColor(220);
+
+    doc.roundedRect(
+      14,
+      y - 6,
+      182,
+      46,
+      4,
+      4
+    );
+
+    doc.setFontSize(13);
+
+    doc.text(
+      `${index + 1}. ${articolo}`,
+      20,
+      y
+    );
+
+    y += 8;
+
+    doc.setFontSize(10);
+
+    doc.text(
+      `Taglia: ${taglia}`,
+      20,
+      y
+    );
+
+    doc.text(
+      `Quantità: ${quantita}`,
+      110,
+      y
+    );
+
+    y += 6;
+
+    doc.text(
+      `Altezza: ${altezza}`,
+      20,
+      y
+    );
+
+    doc.text(
+      `Spessore: ${spessore}`,
+      110,
+      y
+    );
+
+    y += 6;
+
+    doc.text(
+      `Pelle: ${pelle}`,
+      20,
+      y
+    );
+
+    doc.text(
+      `Foglie: ${foglie}`,
+      110,
+      y
+    );
+
+    y += 6;
+
+    doc.text(
+      `Cristalli: ${cristalli}`,
+      20,
+      y
+    );
+
+    doc.text(
+      `Caramella: ${caramella}`,
+      110,
+      y
+    );
+
+    y += 6;
+
+    doc.text(
+      `Note: ${note}`,
+      20,
+      y
+    );
+
+    y += 16;
+
+    /* NUOVA PAGINA */
+
+    if (y > 250) {
+
+      doc.addPage();
+
+      y = 20;
+    }
+
+  });
+
+  /* NOME FILE */
+
+  const timestamp =
+    Date.now();
+
+  doc.save(
+    `ordine-${timestamp}.pdf`
+  );
+
+}
 
 function loadOrders() {
 
@@ -1110,3 +1318,13 @@ function loadOrders() {
   });
 
 }
+
+/* ---------------------- */
+/* EXPORT PDF */
+/* ---------------------- */
+
+exportPdfBtn.addEventListener("click", () => {
+
+  exportPDF();
+
+});
