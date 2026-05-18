@@ -483,3 +483,18 @@ input[readonly] {
   color: #444;
 }
 ```
+
+.customer-box {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.customer-box input {
+  flex: 1;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #d8d8d8;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+}
