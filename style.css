@@ -222,7 +222,9 @@ input[readonly] {
 /* ADD BUTTON */
 /* ---------------------- */
 
-#addRowBtn {
+#addRowBtn,
+#clearAllBtn,
+#exportPdfBtn {
 
   height: 56px;
 
@@ -258,7 +260,9 @@ input[readonly] {
   -webkit-appearance: none;
 }
 
-#addRowBtn:hover {
+#addRowBtn:hover,
+#clearAllBtn:hover,
+#exportPdfBtn:hover {
 
   transform: translateY(-2px);
 
@@ -266,7 +270,9 @@ input[readonly] {
     0 8px 18px rgba(0,0,0,0.12);
 }
 
-#addRowBtn:active {
+#addRowBtn:active,
+#clearAllBtn:active,
+#exportPdfBtn:active {
   transform: scale(0.96);
 }
 
