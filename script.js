@@ -1442,9 +1442,33 @@ doc.text(
   202
 );
 
+/* icona instagram */
+let instagramBase64 = "";
+try {
+  const response = await fetch("instagram.png");
+  const blob = await response.blob();
+  instagramBase64 = await new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.readAsDataURL(blob);
+  });
+} catch (error) {
+  console.log("Icona Instagram non trovata");
+}
+if (instagramBase64) {
+  doc.addImage(
+    instagramBase64,
+    "PNG",
+    225,
+    202,
+    4,
+    4
+  );
+}
+/* testo instagram */
 doc.text(
   "@kitho.pet",
-  225,
+  231,
   202
 );
 
