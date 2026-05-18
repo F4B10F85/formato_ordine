@@ -1030,293 +1030,250 @@ function updateSummary() {
 /* ESPORTAZIONE PDF */
 /* ---------------------- */
 
-function exportPDF() {
+/* ---------------------- */
+/* ESPORTAZIONE PDF */
+/* ---------------------- */
+
+async function exportPDF() {
 
   const { jsPDF } = window.jspdf;
 
-  const doc = new jsPDF();
+  const doc = new jsPDF({
 
-  const rows =
-    document.querySelectorAll(".order-row");
+    orientation: "landscape",
 
-  let y = 20;
+    unit: "mm",
 
-  /* TITOLO */
+    format: "a4"
+  });
+
+  /* ---------------------- */
+  /* LOGO */
+  /* ---------------------- */
+
+  let logoBase64 = "";
+
+  try {
+
+    const response = await fetch("logo.png");
+
+    const blob = await response.blob();
+
+    logoBase64 = await new Promise((resolve) => {
+
+      const reader = new FileReader();
+
+      reader.onloadend = () => resolve(reader.result);
+
+      reader.readAsDataURL(blob);
+    });
+
+    doc.addImage(
+      logoBase64,
+      "PNG",
+      12,
+      8,
+      28,
+      28
+    );
+
+  } catch (error) {
+
+    console.log("Logo non trovato");
+  }
+
+  /* ---------------------- */
+  /* HEADER */
+  /* ---------------------- */
+
+  doc.setFont("helvetica", "bold");
 
   doc.setFontSize(20);
 
   doc.text(
     "Configuratore Ordine Cliente",
-    20,
-    y
+    45,
+    18
   );
 
-  y += 14;
+  doc.setFont("helvetica", "normal");
 
-  /* DATA */
-
-  const now = new Date();
-
-  const dateString =
-    now.toLocaleDateString("it-IT");
-
-  doc.setFontSize(11);
+  doc.setFontSize(10);
 
   doc.text(
-    `Data ordine: ${dateString}`,
-    20,
-    y
+    `Data ordine: ${new Date().toLocaleDateString("it-IT")}`,
+    45,
+    26
   );
 
-  y += 16;
+  /* ---------------------- */
+  /* TABELLA */
+  /* ---------------------- */
+
+  const rows = document.querySelectorAll(".order-row");
+
+  let y = 45;
+
+  /* HEADER TABELLA */
+
+  doc.setFillColor(31, 101, 86);
+
+  doc.rect(10, y, 277, 10, "F");
+
+  doc.setTextColor(255,255,255);
+
+  doc.setFontSize(9);
+
+  doc.setFont("helvetica", "bold");
+
+  const headers = [
+    "Articolo",
+    "Taglia",
+    "Altezza",
+    "Spessore",
+    "Pelle",
+    "Foglie",
+    "Cristalli",
+    "Caramella",
+    "Qta"
+  ];
+
+  const positions = [
+    14,
+    52,
+    82,
+    112,
+    145,
+    178,
+    210,
+    242,
+    272
+  ];
+
+  headers.forEach((header, index) => {
+
+    doc.text(
+      header,
+      positions[index],
+      y + 6.5
+    );
+  });
+
+  y += 10;
 
   /* RIGHE */
 
+  doc.setTextColor(40,40,40);
+
+  doc.setFont("helvetica", "normal");
+
   rows.forEach((row, index) => {
 
-    const articolo =
-      row.querySelector(".articolo-select")
-      ?.selectedOptions[0]?.text || "-";
+    const article =
+      row.querySelector(".article-select")?.value || "-";
 
-    const taglia =
-      row.querySelector(".taglia-select")
-      ?.value || "Non disponibile";
+    const size =
+      row.querySelector(".size-select")?.value || "-";
 
-    const altezza =
-      row.querySelector(".altezza-input")
-      ?.value ||
+    const height =
+      row.querySelector(".height-select")?.value || "-";
 
-      row.querySelector(".altezza-select")
-      ?.value ||
+    const thickness =
+      row.querySelector(".thickness-select")?.value || "-";
 
-      "Non disponibile";
+    const leather =
+      row.querySelector(".leather-select")?.value || "-";
 
-    const spessore =
-      row.querySelector(".spessore-input")
-      ?.value || "Non disponibile";
+    const leaves =
+      row.querySelector(".leaves-select")?.value || "-";
 
-    const pelle =
-      row.querySelector(".pelle-select")
-      ?.value || "-";
+    const crystals =
+      row.querySelector(".crystals-select")?.value || "-";
 
-    const foglie =
-      row.querySelector(".foglie-select")
-      ?.value || "-";
+    const candy =
+      row.querySelector(".candy-select")?.value || "-";
 
-    const cristalli =
-      row.querySelector(".cristalli-select")
-      ?.value || "-";
+    const quantity =
+      row.querySelector(".quantity-input")?.value || "1";
 
-    const caramella =
-      row.querySelector(".caramella-select")
-      ?.value ||
+    /* sfondo alternato */
 
-      row.querySelector(".caramella-input")
-      ?.value ||
+    if (index % 2 === 0) {
 
-      "Non disponibile";
+      doc.setFillColor(248,249,251);
 
-    const quantita =
-      row.querySelector(".quantity-input")
-      ?.value || "0";
+      doc.rect(10, y - 1, 277, 8, "F");
+    }
 
-    const note =
-      row.querySelector("textarea")
-      ?.value || "-";
+    const values = [
+      article,
+      size,
+      height,
+      thickness,
+      leather,
+      leaves,
+      crystals,
+      candy,
+      quantity
+    ];
 
-    /* BLOCCO */
+    values.forEach((value, i) => {
 
-    doc.setDrawColor(220);
-
-    doc.roundedRect(
-      14,
-      y - 6,
-      182,
-      46,
-      4,
-      4
-    );
-
-    doc.setFontSize(13);
-
-    doc.text(
-      `${index + 1}. ${articolo}`,
-      20,
-      y
-    );
+      doc.text(
+        String(value),
+        positions[i],
+        y + 4
+      );
+    });
 
     y += 8;
 
-    doc.setFontSize(10);
+    /* nuova pagina */
 
-    doc.text(
-      `Taglia: ${taglia}`,
-      20,
-      y
-    );
-
-    doc.text(
-      `Quantità: ${quantita}`,
-      110,
-      y
-    );
-
-    y += 6;
-
-    doc.text(
-      `Altezza: ${altezza}`,
-      20,
-      y
-    );
-
-    doc.text(
-      `Spessore: ${spessore}`,
-      110,
-      y
-    );
-
-    y += 6;
-
-    doc.text(
-      `Pelle: ${pelle}`,
-      20,
-      y
-    );
-
-    doc.text(
-      `Foglie: ${foglie}`,
-      110,
-      y
-    );
-
-    y += 6;
-
-    doc.text(
-      `Cristalli: ${cristalli}`,
-      20,
-      y
-    );
-
-    doc.text(
-      `Caramella: ${caramella}`,
-      110,
-      y
-    );
-
-    y += 6;
-
-    doc.text(
-      `Note: ${note}`,
-      20,
-      y
-    );
-
-    y += 16;
-
-    /* NUOVA PAGINA */
-
-    if (y > 250) {
+    if (y > 185) {
 
       doc.addPage();
 
       y = 20;
     }
-
   });
 
-  /* NOME FILE */
+  /* ---------------------- */
+  /* FOOTER */
+  /* ---------------------- */
 
-  const timestamp =
-    Date.now();
+  y += 12;
 
-  doc.save(
-    `ordine-${timestamp}.pdf`
+  const totalRows = rows.length;
+
+  let totalQty = 0;
+
+  rows.forEach((row) => {
+
+    totalQty += Number(
+      row.querySelector(".quantity-input")?.value || 0
+    );
+  });
+
+  doc.setFont("helvetica", "bold");
+
+  doc.setFontSize(11);
+
+  doc.text(
+    `Totale righe: ${totalRows}`,
+    14,
+    y
   );
 
-}
+  doc.text(
+    `Totale pezzi: ${totalQty}`,
+    80,
+    y
+  );
 
-function loadOrders() {
+  /* SAVE */
 
-  const savedOrders =
-    sessionStorage.getItem("configuratoreOrdini");
-
-  if (!savedOrders) return;
-
-  const orders = JSON.parse(savedOrders);
-
-  orderRows.innerHTML = "";
-
-  orders.forEach(data => {
-
-    const row = createOrderRow();
-
-    orderRows.appendChild(row);
-
-    const articoloSelect =
-      row.querySelector(".articolo-select");
-
-    articoloSelect.value = data.articolo;
-
-    articoloSelect.dispatchEvent(
-      new Event("change")
-    );
-
-    setTimeout(() => {
-
-      const tagliaSelect =
-        row.querySelector(".taglia-select");
-
-      if (tagliaSelect) {
-        tagliaSelect.value = data.taglia;
-      }
-
-      const altezzaInput =
-        row.querySelector(".altezza-input");
-
-      const altezzaSelect =
-        row.querySelector(".altezza-select");
-
-      if (altezzaInput) {
-        altezzaInput.value = data.altezza;
-      }
-
-      if (altezzaSelect) {
-        altezzaSelect.value = data.altezza;
-      }
-
-      const spessoreInput =
-        row.querySelector(".spessore-input");
-
-      if (spessoreInput) {
-        spessoreInput.value = data.spessore;
-      }
-
-      row.querySelector(".pelle-select").value =
-        data.pelle;
-
-      row.querySelector(".foglie-select").value =
-        data.foglie;
-
-      row.querySelector(".cristalli-select").value =
-        data.cristalli;
-
-      const caramellaSelect =
-        row.querySelector(".caramella-select");
-
-      if (caramellaSelect) {
-        caramellaSelect.value = data.caramella;
-      }
-
-      row.querySelector(".quantity-input").value =
-        data.quantita;
-
-      row.querySelector("textarea").value =
-        data.note;
-
-    }, 0);
-
-  });
-
+  doc.save("ordine_cliente.pdf");
 }
 
 /* ---------------------- */
