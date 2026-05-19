@@ -35,7 +35,11 @@ const db =
 const ordersList =
   document.getElementById("ordersList");
 
+const searchOrders =
+  document.getElementById("searchOrders");
 
+const statusFilter =
+  document.getElementById("statusFilter");
 
 /* ---------------------- */
 /* STATUS COLORS */
