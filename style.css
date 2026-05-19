@@ -558,14 +558,15 @@ input[readonly] {
 .order-top {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: 30px;
+  align-items: flex-start;
 }
 
 .order-number {
   font-size: 20px;
   font-weight: 700;
   color: #1f6556;
+  white-space: nowrap;
+  padding-top: 6px;
 }
 
 .order-date {
@@ -577,17 +578,17 @@ input[readonly] {
 .order-status {
   border: none;
   border-radius: 999px;
-  padding: 8px 34px 8px 14px;
+  padding: 10px 14px;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  outline: none;
-  min-width: 170px;
-  text-align: left;
-  background-position: right 12px center;
-  background-repeat: no-repeat;
-  background-size: 10px;
+  min-width: 180px;
   white-space: nowrap;
+  background-color: white;
+}
+
+.order-status option {
+  color: #222;
 }
 
 .order-number {
