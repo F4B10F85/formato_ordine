@@ -5,7 +5,9 @@ import {
   collection,
   getDocs,
   query,
-  orderBy
+  orderBy,
+  updateDoc,
+  doc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 /* FIREBASE CONFIG */
@@ -76,9 +78,36 @@ async function loadOrders() {
 
         </div>
 
-        <div class="order-status">
-          Nuovo
-        </div>
+       <select
+  class="order-status ${getStatusClass(order.status)}"
+  data-id="${docSnap.id}"
+>
+
+  <option value="Nuovo"
+    ${order.status === "Nuovo" ? "selected" : ""}
+  >
+    Nuovo
+  </option>
+
+  <option value="In lavorazione"
+    ${order.status === "In lavorazione" ? "selected" : ""}
+  >
+    In lavorazione
+  </option>
+
+  <option value="Completato"
+    ${order.status === "Completato" ? "selected" : ""}
+  >
+    Completato
+  </option>
+
+  <option value="Spedito"
+    ${order.status === "Spedito" ? "selected" : ""}
+  >
+    Spedito
+  </option>
+
+</select>
 
       </div>
 
