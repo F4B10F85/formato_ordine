@@ -35,6 +35,39 @@ const db =
 const ordersList =
   document.getElementById("ordersList");
 
+
+
+/* ---------------------- */
+/* STATUS COLORS */
+/* ---------------------- */
+
+function getStatusClass(status) {
+
+  switch (status) {
+
+    case "Nuovo":
+      return "status-new";
+
+    case "In lavorazione":
+      return "status-progress";
+
+    case "Completato":
+      return "status-completed";
+
+    case "Spedito":
+      return "status-shipped";
+
+    default:
+      return "";
+  }
+}
+
+
+
+
+
+
+
 /* LOAD ORDERS */
 
 async function loadOrders() {
@@ -205,10 +238,42 @@ async function loadOrders() {
 
     `;
 
-    ordersList.appendChild(orderCard);
+   ordersList.appendChild(orderCard);
 
-  });
+/* ---------------------- */
+/* STATUS CHANGE */
+/* ---------------------- */
+
+const statusSelect =
+  orderCard.querySelector(".order-status");
+
+statusSelect.addEventListener("change", async () => {
+
+  const newStatus =
+    statusSelect.value;
+
+  await updateDoc(
+
+    doc(db, "orders", docSnap.id),
+
+    {
+      status: newStatus
+    }
+
+  );
+
+  statusSelect.className =
+    `order-status ${getStatusClass(newStatus)}`;
+
+});
+
+});
 
 }
 
 loadOrders();
+
+
+
+
+
