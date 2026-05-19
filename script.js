@@ -1216,6 +1216,78 @@ async function exportPDF() {
   const orderNumber =
   generateOrderNumber();
 
+  const customerData = {
+
+  nome:
+    document.getElementById("customerName")?.value || "",
+
+  telefono:
+    document.getElementById("customerPhone")?.value || "",
+
+  email:
+    document.getElementById("customerEmail")?.value || ""
+
+};
+
+const orderItems = [];
+
+document
+  .querySelectorAll(".order-row")
+  .forEach(row => {
+
+    orderItems.push({
+
+      articolo:
+        row.querySelector(".articolo-select")?.value || "",
+
+      taglia:
+        row.querySelector(".taglia-select")?.value || "",
+
+      pelle:
+        row.querySelector(".pelle-select")?.value || "",
+
+      quantita:
+        row.querySelector(".quantity-input")?.value || ""
+
+    });
+
+  });
+
+/* SALVATAGGIO FIREBASE */
+
+try {
+
+  await addDoc(
+
+    collection(db, "orders"),
+
+    {
+
+      orderNumber,
+
+      createdAt:
+        new Date().toISOString(),
+
+      customerData,
+
+      orderItems
+
+    }
+
+  );
+
+  console.log(
+    "Ordine salvato su Firebase"
+  );
+
+} catch (error) {
+
+  console.error(
+    "Errore Firebase:",
+    error
+  );
+}
+
 /* ---------------------- */
 /* DATI CLIENTE */
 /* ---------------------- */
