@@ -11,18 +11,13 @@ import {
 /* FIREBASE CONFIG */
 
 const firebaseConfig = {
-
-  apiKey: "TUA_API_KEY",
-
-  authDomain: "TUO_AUTH_DOMAIN",
-
-  projectId: "TUO_PROJECT_ID",
-
-  storageBucket: "TUO_STORAGE",
-
-  messagingSenderId: "TUO_SENDER_ID",
-
-  appId: "TUO_APP_ID"
+  apiKey: "AIzaSyAU9shDRZKZ5jBeHCm-e59aMIvDIoNBO8E",
+  authDomain: "database-ordini-kitho.firebaseapp.com",
+  projectId: "database-ordini-kitho",
+  storageBucket: "database-ordini-kitho.firebasestorage.app",
+  messagingSenderId: "711821639626",
+  appId: "1:711821639626:web:f98d52f647d90282fed933",
+  measurementId: "G-DL6NJX5J7T"
 };
 
 /* INIT */
