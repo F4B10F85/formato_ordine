@@ -104,11 +104,6 @@ async function loadOrders() {
             ${order.orderNumber}
           </div>
 
-          <div class="order-date">
-            ${new Date(order.createdAt)
-              .toLocaleString("it-IT")}
-          </div>
-
         </div>
 
        <select
