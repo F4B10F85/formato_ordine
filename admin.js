@@ -1,6 +1,14 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+import {
   getFirestore,
   collection,
   getDocs,
@@ -29,6 +37,9 @@ const app =
 
 const db =
   getFirestore(app);
+
+const auth =
+  getAuth(app);
 
 /* CONTAINER */
 
@@ -393,9 +404,47 @@ statusFilter.addEventListener(
 );
 
 
-loadOrders();
+/* ---------------------- */
+/* AUTH CHECK */
+/* ---------------------- */
 
+onAuthStateChanged(auth, (user) => {
 
+  if (!user) {
 
+    const email =
+      prompt("Email admin");
 
+    const password =
+      prompt("Password");
+
+    signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    )
+
+    .then(() => {
+
+      loadOrders();
+
+    })
+
+    .catch(() => {
+
+      alert("Accesso negato");
+
+      location.reload();
+
+    });
+
+  }
+
+  else {
+
+    loadOrders();
+
+  }
+
+});
 
