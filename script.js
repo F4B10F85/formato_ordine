@@ -1242,7 +1242,7 @@ document
     
       articolo:
         row.querySelector(".articolo-select")
-          ?.selectedOptions[0]?.text || "",,
+          ?.selectedOptions[0]?.text || "",
     
       taglia:
         row.querySelector(".taglia-select")?.value ||
