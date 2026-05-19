@@ -1159,6 +1159,43 @@ function updateSummary() {
     }).join("");
 }
 
+
+/* ---------------------- */
+/* GENERAZIONE NUMERO ORDINE */
+/* ---------------------- */
+
+
+function generateOrderNumber() {
+
+  const now = new Date();
+
+  const year =
+    now.getFullYear();
+
+  const month =
+    String(now.getMonth() + 1)
+      .padStart(2, "0");
+
+  const day =
+    String(now.getDate())
+      .padStart(2, "0");
+
+  const hours =
+    String(now.getHours())
+      .padStart(2, "0");
+
+  const minutes =
+    String(now.getMinutes())
+      .padStart(2, "0");
+
+  const seconds =
+    String(now.getSeconds())
+      .padStart(2, "0");
+
+  return `KTH-${year}${month}${day}-${hours}${minutes}${seconds}`;
+}
+
+
 /* ---------------------- */
 /* ESPORTAZIONE PDF */
 /* ---------------------- */
@@ -1176,6 +1213,8 @@ async function exportPDF() {
     format: "a4"
   });
 
+  const orderNumber =
+  generateOrderNumber();
 
 /* ---------------------- */
 /* DATI CLIENTE */
@@ -1270,6 +1309,17 @@ doc.text(
   { align: "right" }
 );
 
+doc.setFontSize(11);
+
+doc.setTextColor(70,70,70);
+
+doc.text(
+  `Ordine: ${orderNumber}`,
+  285,
+  34,
+  { align: "right" }
+);
+  
 /* linea gold */
 
 doc.setDrawColor(201, 157, 74);
