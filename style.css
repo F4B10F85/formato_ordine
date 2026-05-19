@@ -527,3 +527,78 @@ input[readonly] {
     0 0 0 4px rgba(31,101,86,0.08);
   outline: none;
 }
+
+
+
+
+/* ---------------------- */
+/* STILE PER PAGINA ADMIN */
+/* ---------------------- */
+
+.admin-container {
+  padding: 40px;
+  font-family: 'Inter', sans-serif;
+}
+
+.admin-title {
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+.order-card {
+  background: white;
+  border-radius: 18px;
+  padding: 24px;
+  margin-bottom: 20px;
+  border: 1px solid #e3e7ed;
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.04);
+}
+
+.order-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.order-number {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f6556;
+}
+
+.order-date {
+  font-size: 13px;
+  color: #777;
+  margin-top: 4px;
+}
+
+.order-status {
+  background: #e9f6ef;
+  color: #1f6556;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.customer-info {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.items-list {
+  border-top: 1px solid #ececec;
+  padding-top: 18px;
+}
+
+.item-row {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+
+
+
