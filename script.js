@@ -1289,24 +1289,26 @@ document
 
 try {
 
-  await addDoc(
+await addDoc(
 
-    collection(db, "orders"),
+  collection(db, "orders"),
 
-    {
+  {
 
-      orderNumber,
+    orderNumber,
 
-      createdAt:
-        new Date().toISOString(),
+    createdAt:
+      new Date().toISOString(),
 
-      customerData,
+    status: "Nuovo",
 
-      orderItems
+    customerData,
 
-    }
+    orderItems
 
-  );
+  }
+
+);
 
   console.log(
     "Ordine salvato su Firebase"
