@@ -558,8 +558,8 @@ input[readonly] {
 .order-top {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+  align-items: flex-start;
+  gap: 20px;
 }
 
 .order-number {
@@ -577,12 +577,24 @@ input[readonly] {
 .order-status {
   border: none;
   border-radius: 999px;
-  padding: 10px 16px;
+  padding: 8px 34px 8px 14px;
   font-size: 13px;
-  font-weight: 700;
-  font-family: 'Inter', sans-serif;
+  font-weight: 600;
   cursor: pointer;
   outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  min-width: 170px;
+  text-align: left;
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 10px;
+  white-space: nowrap;
+}
+
+.order-number {
+  white-space: nowrap;
 }
 
 /* NUOVO */
