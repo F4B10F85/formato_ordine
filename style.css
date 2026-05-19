@@ -558,7 +558,11 @@ input[readonly] {
 .order-top {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
+}
+
+.order-top > div:first-child {
+  flex: 1;
 }
 
 .order-number {
@@ -576,15 +580,19 @@ input[readonly] {
 }
 
 .order-status {
+  width: auto;
+  min-width: 170px;
+  max-width: 170px;
   border: none;
   border-radius: 999px;
   padding: 10px 14px;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  min-width: 180px;
   white-space: nowrap;
-  background-color: white;
+  appearance: auto;
+  -webkit-appearance: menulist;
+  flex: 0 0 auto;
 }
 
 .order-status option {
