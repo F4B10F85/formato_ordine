@@ -179,7 +179,7 @@ async function loadOrders() {
 
     orderCard.innerHTML = `
 
-      <div class="order-top">
+      <div class="order-top clickable">
 
         <div>
 
@@ -221,6 +221,8 @@ async function loadOrders() {
 </select>
 
       </div>
+
+    <div class="order-details">
 
       <div class="customer-info">
 
@@ -314,6 +316,7 @@ async function loadOrders() {
 
 </div>
 
+</div>
     `;
 
    ordersList.appendChild(orderCard);
