@@ -93,6 +93,50 @@ async function loadOrders() {
     const order =
       docSnap.data();
 
+    const searchValue =
+      searchOrders.value.toLowerCase();
+
+    const selectedStatus =
+      statusFilter.value;
+
+    const matchesSearch =
+
+      order.orderNumber?.toLowerCase().includes(searchValue)
+
+      ||
+
+      order.customerData.nome
+        ?.toLowerCase()
+        .includes(searchValue)
+    
+      ||
+
+      order.customerData.telefono
+        ?.toLowerCase()
+        .includes(searchValue)
+    
+      ||
+
+      order.customerData.email
+        ?.toLowerCase()
+        .includes(searchValue);
+
+    const matchesStatus =
+
+      selectedStatus === "Tutti"
+    
+      ||
+
+      order.status === selectedStatus;
+
+    if (
+  !matchesSearch ||
+  !matchesStatus
+) {
+  return;
+}
+
+    
     const orderCard =
       document.createElement("div");
 
@@ -269,6 +313,17 @@ statusSelect.addEventListener("change", async () => {
 });
 
 }
+
+searchOrders.addEventListener(
+  "input",
+  loadOrders
+);
+
+statusFilter.addEventListener(
+  "change",
+  loadOrders
+);
+
 
 loadOrders();
 
