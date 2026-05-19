@@ -882,7 +882,8 @@ function saveOrders() {
     const orderData = {
 
       articolo:
-        row.querySelector(".articolo-select")?.value || "",
+        row.querySelector(".articolo-select")
+          ?.selectedOptions[0]?.text || "",
 
       taglia:
         row.querySelector(".taglia-select")?.value || "",
@@ -893,7 +894,9 @@ function saveOrders() {
         "",
 
       spessore:
-        row.querySelector(".spessore-input")?.value || "",
+        row.querySelector(".spessore-select")?.value ||
+        row.querySelector(".spessore-input")?.value ||
+        "Non disponibile",
 
       pelle:
         row.querySelector(".pelle-select")?.value || "",
