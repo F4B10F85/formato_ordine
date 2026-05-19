@@ -41,6 +41,21 @@ const searchOrders =
 const statusFilter =
   document.getElementById("statusFilter");
 
+const totalOrders =
+  document.getElementById("totalOrders");
+
+const newOrders =
+  document.getElementById("newOrders");
+
+const progressOrders =
+  document.getElementById("progressOrders");
+
+const completedOrders =
+  document.getElementById("completedOrders");
+
+
+
+
 /* ---------------------- */
 /* STATUS COLORS */
 /* ---------------------- */
@@ -87,12 +102,32 @@ async function loadOrders() {
     await getDocs(q);
 
   ordersList.innerHTML = "";
-
+  
+  let total = 0;
+  let newCount = 0;
+  let progressCount = 0;
+  let completedCount = 0;
+  
   querySnapshot.forEach(docSnap => {
 
     const order =
       docSnap.data();
+  
+    total++;
 
+    if (order.status === "Nuovo") {
+      newCount++;
+    }
+    
+    if (order.status === "In lavorazione") {
+      progressCount++;
+    }
+    
+    if (order.status === "Completato") {
+      completedCount++;
+    }
+
+    
     const searchValue =
       searchOrders.value.toLowerCase();
 
@@ -312,6 +347,19 @@ statusSelect.addEventListener("change", async () => {
 
 });
 
+totalOrders.textContent =
+  total;
+
+newOrders.textContent =
+  newCount;
+
+progressOrders.textContent =
+  progressCount;
+
+completedOrders.textContent =
+  completedCount;
+
+  
 }
 
 searchOrders.addEventListener(
