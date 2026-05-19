@@ -1241,7 +1241,8 @@ document
     orderItems.push({
     
       articolo:
-        row.querySelector(".articolo-select")?.value || "",
+        row.querySelector(".articolo-select")
+          ?.selectedOptions[0]?.text || "",,
     
       taglia:
         row.querySelector(".taglia-select")?.value ||
@@ -1256,7 +1257,7 @@ document
       spessore:
         row.querySelector(".spessore-select")?.value ||
         row.querySelector(".spessore-input")?.value ||
-        "",
+        "Non disponibile",
     
       pelle:
         row.querySelector(".pelle-select")?.value || "",
@@ -1545,7 +1546,7 @@ doc.text(
   doc.setFont("helvetica", "normal");
 
   rows.forEach((row, index) => {
-
+  
     const article =
   row.querySelector(".articolo-select")?.selectedOptions[0]?.text || "-";
 
@@ -1615,6 +1616,32 @@ const quantity =
 
     y += 8;
 
+    /* EVENTUALI NOTE DA STAMPARSI SUL PDF NELLA TABELLA SOTTO LA RIGA CORRISPONDENTE */
+
+const notes =
+  row.querySelector("textarea")?.value || "";
+
+if (notes.trim() !== "") {
+
+  doc.setFontSize(8);
+
+  doc.setTextColor(110,110,110);
+
+  doc.text(
+    `Note: ${notes}`,
+    16,
+    y + 2
+  );
+
+  y += 6;
+
+  doc.setFontSize(9);
+
+  doc.setTextColor(40,40,40);
+}
+
+
+    
     /* nuova pagina */
 
     if (y > 185) {
