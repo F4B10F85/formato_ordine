@@ -1236,19 +1236,47 @@ document
   .forEach(row => {
 
     orderItems.push({
-
+    
       articolo:
         row.querySelector(".articolo-select")?.value || "",
-
+    
       taglia:
-        row.querySelector(".taglia-select")?.value || "",
-
+        row.querySelector(".taglia-select")?.value ||
+        row.querySelector(".taglia-box input")?.value ||
+        "",
+    
+      altezza:
+        row.querySelector(".altezza-select")?.value ||
+        row.querySelector(".altezza-input")?.value ||
+        "",
+    
+      spessore:
+        row.querySelector(".spessore-select")?.value ||
+        row.querySelector(".spessore-input")?.value ||
+        "",
+    
       pelle:
         row.querySelector(".pelle-select")?.value || "",
-
+    
+      foglie:
+        row.querySelector(".foglie-select")?.value ||
+        row.querySelector(".foglie-box input")?.value ||
+        "",
+    
+      cristalli:
+        row.querySelector(".cristalli-select")?.value || "",
+    
+      caramella:
+        row.querySelector(".caramella-select")?.value ||
+        row.querySelector(".caramella-box input")?.value ||
+        "",
+    
       quantita:
-        row.querySelector(".quantity-input")?.value || ""
-
+        row.querySelector(".quantity-input")?.value || "",
+    
+      note:
+        row.querySelector("textarea")?.value || ""
+    
     });
 
   });
