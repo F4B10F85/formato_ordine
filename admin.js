@@ -101,25 +101,78 @@ async function loadOrders() {
 
       </div>
 
-      <div class="items-list">
+<div class="items-list">
 
-        ${order.orderItems.map(item => `
+  ${order.orderItems.map(item => `
 
-          <div class="item-row">
+    <div class="item-card">
 
-            <strong>${item.articolo}</strong>
+      <div class="item-title">
+        ${item.articolo}
+      </div>
 
-            · ${item.taglia}
+      <div class="item-grid">
 
-            · ${item.pelle}
+        <div>
+          <strong>Taglia:</strong>
+          ${item.taglia || "-"}
+        </div>
 
-            · Qta: ${item.quantita}
+        <div>
+          <strong>Altezza:</strong>
+          ${item.altezza || "-"}
+        </div>
 
-          </div>
+        <div>
+          <strong>Spessore:</strong>
+          ${item.spessore || "-"}
+        </div>
 
-        `).join("")}
+        <div>
+          <strong>Pelle:</strong>
+          ${item.pelle || "-"}
+        </div>
+
+        <div>
+          <strong>Foglie:</strong>
+          ${item.foglie || "-"}
+        </div>
+
+        <div>
+          <strong>Cristalli:</strong>
+          ${item.cristalli || "-"}
+        </div>
+
+        <div>
+          <strong>Caramella:</strong>
+          ${item.caramella || "-"}
+        </div>
+
+        <div>
+          <strong>Quantità:</strong>
+          ${item.quantita || "-"}
+        </div>
 
       </div>
+
+      ${item.note && item.note.trim() !== ""
+        ? `
+          <div class="item-notes">
+
+            <strong>Note:</strong>
+
+            ${item.note}
+
+          </div>
+        `
+        : ""
+      }
+
+    </div>
+
+  `).join("")}
+
+</div>
 
     `;
 
