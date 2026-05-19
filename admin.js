@@ -321,6 +321,23 @@ async function loadOrders() {
 
    ordersList.appendChild(orderCard);
 
+const orderTop =
+  orderCard.querySelector(".order-top");
+
+orderTop.addEventListener("click", (e) => {
+
+  if (
+    e.target.classList.contains("order-status")
+  ) {
+    return;
+  }
+
+  orderCard.classList.toggle("collapsed");
+
+});
+
+
+    
 /* ---------------------- */
 /* STATUS CHANGE */
 /* ---------------------- */
