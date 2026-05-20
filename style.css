@@ -792,3 +792,18 @@ input[readonly] {
   padding-bottom: 24px;
 }
 
+/* ---------------------- */
+/* ADMIN LOGO */
+/* ---------------------- */
+
+.admin-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.admin-logo img {
+  width: 220px;
+  height: auto;
+  object-fit: contain;
+}
