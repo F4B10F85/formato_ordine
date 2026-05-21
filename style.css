@@ -871,3 +871,41 @@ option {
   height: auto;
   object-fit: contain;
 }
+
+
+/* ---------------------- */
+/* POP-UP IMMAGINE */
+/* ---------------------- */
+
+.image-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+}
+
+.image-modal img {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 20px;
+  background: white;
+  padding: 12px;
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.35);
+}
+
+.zoomable-image {
+  cursor: zoom-in;
+  transition:
+    transform 0.2s ease;
+}
+
+.zoomable-image:hover {
+  transform: scale(1.05);
+}
+
+
