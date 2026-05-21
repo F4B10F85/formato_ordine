@@ -231,11 +231,8 @@ const products = {
 
 
 "cintura": {
-
   nome: "Cintura",
-
   image: "cintura.jpg",
-
   taglie: [
     "80 cm",
     "90 cm",
@@ -245,17 +242,39 @@ const products = {
     "130 cm",
     "140 cm"
   ],
-
   altezzaFixed: "Non disponibile",
-
   spessore: "Non disponibile",
-
   caramella: "Non disponibile",
-
   cristalliDisabled: true
 },
   
+"capezza": {
+  nome: "Capezza",
+  image: "capezza.jpg",
+  taglie: [
+    "Pony",
+    "Cob",
+    "Full"
+  ],
+  altezzaFixed: "Non disponibile",
+  spessore: "Non disponibile",
+  caramella: "Non disponibile",
+  cristalliDisabled: true
+},
 
+"frontalino": {
+  nome: "Frontalino",
+  image: "frontalino.jpg",
+  taglie: [
+    "Pony",
+    "Cob",
+    "Full"
+  ],
+  altezzaFixed: "Non disponibile",
+  spessore: "Non disponibile",
+  caramella: "Non disponibile"
+},
+  
 };
 
 /* ---------------------- */
