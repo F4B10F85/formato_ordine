@@ -234,13 +234,13 @@ const products = {
   nome: "Cintura",
   image: "cintura.jpg",
   taglie: [
-    "80 cm",
-    "90 cm",
-    "100 cm",
-    "110 cm",
-    "120 cm",
-    "130 cm",
-    "140 cm"
+    "80 cm - h. 3 cm",
+    "90 cm - h. 3 cm",
+    "100 cm - h. 3 cm",
+    "110 cm - h. 3 cm",
+    "120 cm - h. 3 cm",
+    "130 cm - h. 3 cm",
+    "140 cm - h. 3 cm"
   ],
   altezzaFixed: "Non disponibile",
   spessore: "Non disponibile",
