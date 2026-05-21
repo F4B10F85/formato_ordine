@@ -240,7 +240,8 @@ const products = {
     "110 cm - h. 3 cm",
     "120 cm - h. 3 cm",
     "130 cm - h. 3 cm",
-    "140 cm - h. 3 cm"
+    "140 cm - h. 3 cm",
+    "150 cm - h. 3 cm"
   ],
   altezzaFixed: "Non disponibile",
   spessore: "Non disponibile",
