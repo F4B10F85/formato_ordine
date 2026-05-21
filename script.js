@@ -424,7 +424,7 @@ function createOrderRow() {
         alt="${product.nome}"
       />
     `;
-    `;
+    
 
     /* TAGLIA */
 
