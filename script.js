@@ -1884,9 +1884,6 @@ async function sendTelegramMessage(message) {
 }
 
 
-sendTelegramMessage(
-  "🚀 Test Telegram Kitho riuscito"
-);
 
 
 
