@@ -419,10 +419,11 @@ function createOrderRow() {
 
     imageBox.innerHTML = `
       <img
-        class="product-image"
+        class="product-image zoomable-image"
         src="assets/images/${product.image}"
         alt="${product.nome}"
       />
+    `;
     `;
 
     /* TAGLIA */
