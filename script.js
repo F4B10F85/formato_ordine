@@ -1414,6 +1414,9 @@ ${customerName}
 Telefono:
 ${customerPhone}
 
+Email
+${customerEmail}
+
 Articoli:
 ${orderItems.length}
 
