@@ -465,6 +465,8 @@ input[readonly] {
 
   box-shadow:
     0 4px 14px rgba(0,0,0,0.04);
+
+  width: fit-content;
 }
 
 .summary-title {
@@ -490,7 +492,7 @@ input[readonly] {
 
 .summary-card {
 
-  min-width: 120px;
+  min-width: 180px;
 
   background: #f7f8fa;
 
