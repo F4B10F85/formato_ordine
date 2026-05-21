@@ -168,14 +168,12 @@ select {
 }
 
 select:hover {
-
   border-color: #b8c2cf !important;
+  transform: translateY(-1px);
 }
 
 select:focus {
-
   border-color: #1f6556 !important;
-
   box-shadow:
     0 0 0 4px rgba(31,101,86,0.08) !important;
 }
@@ -183,20 +181,13 @@ select:focus {
 
 textarea,
 input {
-
   width: 100%;
-
   border: none !important;
   outline: none !important;
-
   background: transparent !important;
-
   box-shadow: none !important;
-
   font-size: 14px;
-
   font-family: 'Inter', sans-serif;
-
   color: #222;
 }
 
@@ -656,6 +647,17 @@ input[readonly] {
 
 .order-status option {
   color: #222;
+}
+
+option {
+
+  background: white;
+  color: #222;
+
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+
+  padding: 12px;
 }
 
 .order-number {
