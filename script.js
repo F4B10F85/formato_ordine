@@ -1381,6 +1381,24 @@ await addDoc(
   );
 }
 
+
+
+
+
+  
+/* ---------------------- */
+/* DATI CLIENTE */
+/* ---------------------- */
+
+const customerName =
+  document.getElementById("customerName")?.value || "-";
+
+const customerPhone =
+  document.getElementById("customerPhone")?.value || "-";
+
+const customerEmail =
+  document.getElementById("customerEmail")?.value || "-";
+
 /* TELEGRAM */
 
 const telegramMessage =
@@ -1409,24 +1427,6 @@ ${orderItems.reduce((sum, item) =>
 sendTelegramMessage(
   telegramMessage
 );
-
-
-
-  
-/* ---------------------- */
-/* DATI CLIENTE */
-/* ---------------------- */
-
-const customerName =
-  document.getElementById("customerName")?.value || "-";
-
-const customerPhone =
-  document.getElementById("customerPhone")?.value || "-";
-
-const customerEmail =
-  document.getElementById("customerEmail")?.value || "-";
-
-
   
 /* ---------------------- */
 /* LOGO */
