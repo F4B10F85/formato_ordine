@@ -1359,22 +1359,14 @@ document
 try {
 
 await addDoc(
-
   collection(db, "orders"),
-
   {
-
     orderNumber,
-
     createdAt:
       new Date().toISOString(),
-
     status: "Nuovo",
-
     customerData,
-
     orderItems
-
   }
 
 );
@@ -1382,15 +1374,45 @@ await addDoc(
   console.log(
     "Ordine salvato su Firebase"
   );
-
 } catch (error) {
-
   console.error(
     "Errore Firebase:",
     error
   );
 }
 
+/* TELEGRAM */
+
+const telegramMessage =
+
+`🛒 NUOVO ORDINE
+
+Ordine:
+${orderNumber}
+
+Cliente:
+${customerName}
+
+Telefono:
+${customerPhone}
+
+Articoli:
+${orderItems.length}
+
+Totale pezzi:
+${orderItems.reduce((sum, item) =>
+  sum + Number(item.quantita || 0), 0
+)}
+
+`;
+
+sendTelegramMessage(
+  telegramMessage
+);
+
+
+
+  
 /* ---------------------- */
 /* DATI CLIENTE */
 /* ---------------------- */
@@ -1819,6 +1841,54 @@ doc.text(
 
   doc.save("ordine_cliente.pdf");
 }
+
+
+/* ---------------------- */
+/* TELEGRAM */
+/* ---------------------- */
+
+async function sendTelegramMessage(message) {
+
+  const botToken =
+    "8748631211:AAGc8L-Nkq_quwD916guXBowHd7hmZ-eKOE";
+
+  const chatId =
+    "875666150";
+
+  const url =
+    `https://api.telegram.org/bot${botToken}/sendMessage`;
+  try {
+    await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: message
+      })
+
+    });
+
+    console.log(
+      "Messaggio Telegram inviato"
+    );
+
+  } catch (error) {
+
+    console.error(
+      "Errore Telegram:",
+      error
+    );
+  }
+}
+
+
+
+
+
+
+
 
 /* ---------------------- */
 /* EXPORT PDF */
