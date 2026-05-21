@@ -1762,3 +1762,31 @@ exportPdfBtn.addEventListener("click", () => {
 
 });
 
+
+/* POP-UP IMMAGINE */
+const imageModal =
+  document.getElementById("imageModal");
+
+const modalImage =
+  document.getElementById("modalImage");
+
+/* APERTURA */
+document.addEventListener("click", (e) => {
+
+  if (
+    e.target.classList.contains("zoomable-image")
+  ) {
+    imageModal.style.display = "flex";
+    modalImage.src = e.target.src;
+  }
+});
+
+/* CHIUSURA */
+
+imageModal.addEventListener("click", () => {
+
+  imageModal.style.display = "none";
+});
+
+
+
