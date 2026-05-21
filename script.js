@@ -229,6 +229,33 @@ const products = {
     caramella: "Non disponibile"
   },
 
+
+"cintura": {
+
+  nome: "Cintura",
+
+  image: "cintura.jpg",
+
+  taglie: [
+    "80 cm",
+    "90 cm",
+    "100 cm",
+    "110 cm",
+    "120 cm",
+    "130 cm",
+    "140 cm"
+  ],
+
+  altezzaFixed: "Non disponibile",
+
+  spessore: "Non disponibile",
+
+  caramella: "Non disponibile",
+
+  cristalliDisabled: true
+},
+  
+
 };
 
 /* ---------------------- */
@@ -506,10 +533,31 @@ function createOrderRow() {
       coloriFoglie,
       "foglie-select"
     );
-
+ 
     const foglieSelect =
       row.querySelector(".foglie-select");
 
+
+/* CRISTALLI */
+
+const cristalliBox =
+  row.querySelectorAll(".field-box")[7];
+
+if (product.cristalliDisabled) {
+
+  cristalliBox.innerHTML =
+    createReadonlyInput("Non disponibile");
+
+} else {
+
+  cristalliBox.innerHTML = createSelect(
+    coloriCristalli,
+    "cristalli-select"
+  );
+}
+
+
+    
     /* TAGLIA EVENT */
 
     const tagliaSelect =
