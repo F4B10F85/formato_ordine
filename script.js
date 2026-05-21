@@ -1764,6 +1764,9 @@ exportPdfBtn.addEventListener("click", () => {
 
 
 /* POP-UP IMMAGINE */
+
+window.addEventListener("DOMContentLoaded", () => {
+
 const imageModal =
   document.getElementById("imageModal");
 
@@ -1787,6 +1790,6 @@ imageModal.addEventListener("click", () => {
 
   imageModal.style.display = "none";
 });
-
+});
 
 
