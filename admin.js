@@ -103,9 +103,7 @@ function getStatusClass(status) {
 async function loadOrders() {
 
   const q = query(
-
     collection(db, "orders"),
-
     orderBy("createdAt", "desc")
   );
 
@@ -425,17 +423,12 @@ onAuthStateChanged(auth, (user) => {
     )
 
     .then(() => {
-
       loadOrders();
-
     })
 
     .catch(() => {
-
       alert("Accesso negato");
-
       location.reload();
-
     });
 
   }
