@@ -355,7 +355,7 @@ input[readonly] {
 /* ---------------------- */
 
 .summary-box {
-  background: white;
+  background: #e8fcec;
   border-radius: 22px;
   padding: 24px;
   margin-top: 10px;
