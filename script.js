@@ -132,7 +132,6 @@ const products = {
   "collare-maniglia": {
     nome: "Collare con maniglia",
     image: "collare_maniglia.jpg",
-
     taglie: [
       "S",
       "M",
@@ -140,24 +139,19 @@ const products = {
       "XL",
       "Personalizzata"
     ],
-
     altezzeSelect: [
       "3 cm",
       "4 cm",
       "5 cm",
       "Personalizzata"
     ],
-
     spessore: "Non disponibile",
-
     caramella: "Non disponibile"
   },
 
 "pettorina": {
   nome: "Pettorina",
-
   image: "pettorina.jpg",
-
   taglie: [
     "XXS (light)",
     "XS (light)",
@@ -168,13 +162,9 @@ const products = {
     "XL",
     "Personalizzata"
   ],
-
   altezzaFixed: "Non disponibile",
-
   spessore: "Non disponibile",
-
   caramella: "Non disponibile",
-
   foglieDisabled: [
     "XXS (light)",
     "XS (light)"
@@ -186,34 +176,26 @@ const products = {
   "guinzaglio-standard": {
     nome: "Guinzaglio standard",
     image: "guinzaglio_standard.jpg",
-
     tagliaFixed: "120 cm",
-
     altezzaFixed: "Non disponibile",
-
     spessori: [
       "1,5 cm light",
       "1,5 cm small",
       "2 cm"
     ],
-
     caramella: "Non disponibile"
   },
 
   "guinzaglio-regolabile": {
     nome: "Guinzaglio regolabile",
     image: "guinzaglio_regolabile.jpg",
-
     tagliaFixed: "180 cm",
-
     altezzaFixed: "Non disponibile",
-
     spessori: [
       "1,5 cm light",
       "1,5 cm small",
       "2 cm"
     ],
-
     caramella: "Non disponibile"
   },
 
@@ -632,33 +614,7 @@ if (product.cristalliDisabled) {
     });
     }
 
-    /* SPESSORE EVENT */
 
-    const spessoreSelect =
-      row.querySelector(".spessore-select");
-
-    if (spessoreSelect) {
-
-      spessoreSelect.addEventListener("change", () => {
-
-        if (
-          spessoreSelect.value === "1,5 cm light" ||
-          spessoreSelect.value === "1,5 cm small"
-        ) {
-
-          foglieBox.innerHTML = createReadonlyInput(
-            "Non disponibile"
-          );
-
-        } else {
-
-          foglieBox.innerHTML = createSelect(
-            coloriFoglie,
-            "foglie-select"
-          );
-        }
-      });
-    }
 
   });
 
