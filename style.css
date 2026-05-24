@@ -153,9 +153,9 @@ input {
   color: #222;
 }
 
-textarea {
-  resize: none;
-}
+
+
+
 
 input[readonly] {
   cursor: default;
