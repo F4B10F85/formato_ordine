@@ -91,6 +91,10 @@
   font-size: 14px;
 }
 
+.login-error.show {
+  display: block;
+}
+
 .hidden {
   display: none;
 }
