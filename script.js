@@ -1136,6 +1136,19 @@ function updateSummary() {
   const summaryProducts =
     document.getElementById("summaryProducts");
 
+const customerName =
+  document.getElementById("customerName");
+
+const customerPhone =
+  document.getElementById("customerPhone");
+
+const customerEmail =
+  document.getElementById("customerEmail");
+
+const customerAddress =
+  document.getElementById("customerAddress");
+  
+
   let totalRows = rows.length;
 
   let totalQuantity = 0;
