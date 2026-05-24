@@ -481,6 +481,7 @@ input[readonly] {
 
 #customerAddress {
   width: 100%;
+  height: 56px;
   padding: 14px 16px;
   border-radius: 14px;
   border: 1px solid #dcdcdc;
