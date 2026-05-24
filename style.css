@@ -434,24 +434,23 @@ input[readonly] {
   min-width: 120px;
 }
 
-.customer-item input {
-  width: 260px;
-  height: 48px;
-  border: 1px solid #d7d7d7 !important;
+.customer-item input,
+.customer-item textarea {
+  width: 100%;
+  padding: 14px 16px;
   border-radius: 14px;
-  padding: 0 16px;
-  background: white !important;
-  font-size: 14px;
+  border: 1px solid #dcdcdc;
+  background: #ffffff;
   font-family: 'Inter', sans-serif;
-  box-shadow:
-    0 2px 8px rgba(0,0,0,0.04);
+  font-size: 14px;
+  transition: 0.2s ease;
 }
 
-.customer-item input:focus {
-  border-color: #1f6556 !important;
-  box-shadow:
-    0 0 0 4px rgba(31,101,86,0.08);
+.customer-item input:focus,
+.customer-item textarea:focus {
   outline: none;
+  border-color: #1f6556;
+  box-shadow: 0 0 0 4px rgba(31,101,86,0.08);
 }
 
 .customer-address {
