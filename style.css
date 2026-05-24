@@ -422,18 +422,19 @@ input[readonly] {
 
 .customer-item {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  gap: 12px;
   flex: 1;
-  min-width: 220px;
+  min-width: 320px;
 }
 
 .customer-item label {
   font-size: 14px;
   font-weight: 600;
   color: #444;
+  white-space: nowrap;
+  min-width: fit-content;
 }
-
 /* INPUT NORMALI */
 
 .customer-item input {
