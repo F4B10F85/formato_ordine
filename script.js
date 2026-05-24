@@ -1297,7 +1297,10 @@ async function exportPDF() {
     document.getElementById("customerPhone")?.value || "",
 
   email:
-    document.getElementById("customerEmail")?.value || ""
+    document.getElementById("customerEmail")?.value || "",
+
+  indirizzo:
+  document.getElementById("customerAddress")?.value || ""
 
 };
 
@@ -1398,6 +1401,9 @@ const customerPhone =
 
 const customerEmail =
   document.getElementById("customerEmail")?.value || "-";
+
+const customerAddress =
+  document.getElementById("customerAddress")?.value || "-";
 
 /* TELEGRAM */
 
@@ -1538,7 +1544,7 @@ doc.roundedRect(
   12,
   44,
   273,
-  22,
+  30,
   3,
   3,
   "F"
@@ -1577,7 +1583,11 @@ doc.text(
   60
 );
 
-
+doc.text(
+  `Indirizzo: ${customerAddress}`,
+  18,
+  66
+);
 
   
   /* ---------------------- */
@@ -1586,7 +1596,7 @@ doc.text(
 
   const rows = document.querySelectorAll(".order-row");
 
-  let y = 74;
+  let y = 82;
 
   /* HEADER TABELLA */
 
