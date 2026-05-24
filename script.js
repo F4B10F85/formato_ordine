@@ -1593,7 +1593,7 @@ doc.text(
 doc.text(
   `Indirizzo: ${customerAddress}`,
   18,
-  68
+  64
 );
 
   
