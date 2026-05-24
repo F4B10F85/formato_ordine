@@ -446,7 +446,17 @@ function createOrderRow() {
     const product = products[articoloSelect.value];
 
     if (!product) return;
+  
+  /* RESET PELLE */
 
+  const pelleSelect =
+    row.querySelector(".pelle-select");
+
+  if (pelleSelect) {
+    pelleSelect.value = "";
+  }
+    
+    
     /* IMMAGINE */
 
     imageBox.innerHTML = `
