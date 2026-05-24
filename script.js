@@ -1551,7 +1551,7 @@ doc.roundedRect(
   12,
   44,
   273,
-  30,
+  34,
   3,
   3,
   "F"
@@ -1593,7 +1593,7 @@ doc.text(
 doc.text(
   `Indirizzo: ${customerAddress}`,
   18,
-  64
+  68
 );
 
   
