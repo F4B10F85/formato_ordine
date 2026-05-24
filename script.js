@@ -1551,7 +1551,7 @@ doc.roundedRect(
   12,
   44,
   273,
-  34,
+  36,
   3,
   3,
   "F"
@@ -1575,19 +1575,19 @@ doc.setTextColor(60,60,60);
 doc.text(
   `Nome: ${customerName}`,
   18,
-  60
+  58
 );
 
 doc.text(
   `Telefono: ${customerPhone}`,
   110,
-  60
+  58
 );
 
 doc.text(
   `Email: ${customerEmail}`,
   205,
-  60
+  58
 );
 
 doc.text(
