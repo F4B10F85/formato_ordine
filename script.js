@@ -1423,6 +1423,9 @@ ${customerPhone}
 Email
 ${customerEmail}
 
+Indirizzo:
+${customerAddress}
+
 Articoli:
 ${orderItems.length}
 
