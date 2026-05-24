@@ -15,21 +15,39 @@ const loginBtn =
 const loginError =
   document.getElementById("loginError");
 
+/* ---------------------- */
+/* ACCESSO PRIVATO */
+/* ---------------------- */
+
 privateBtn.addEventListener("click", () => {
 
   overlay.style.display = "none";
 
 });
 
+/* ---------------------- */
+/* ACCESSO NEGOZIO */
+/* ---------------------- */
+
 shopBtn.addEventListener("click", () => {
+
   shopLoginBox.classList.remove("hidden");
+
 });
 
+/* ---------------------- */
+/* LOGIN NEGOZIO */
+/* ---------------------- */
+
 loginBtn.addEventListener("click", () => {
+
   const username =
     document.getElementById("shopUsername").value;
+
   const password =
     document.getElementById("shopPassword").value;
+
+  /* CREDENZIALI TEST */
 
   if (
     username === "negozio" &&
@@ -37,9 +55,10 @@ loginBtn.addEventListener("click", () => {
   ) {
 
     overlay.style.display = "none";
-    localStorage.setItem("shopUser", "true");
+
   } else {
-    loginError.style.display = "block";
+
+    loginError.classList.add("show");
 
   }
 
