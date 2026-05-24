@@ -1928,13 +1928,14 @@ async function sendTelegramMessage(message) {
 /* ---------------------- */
 
 exportPdfBtn.addEventListener("click", async () => {
-  const valid =
-    validateOrder();
+  const valid = validateOrder();
   if (!valid) {
-    alert("Compila tutti i campi prima di esportare il PDF");
+    alert(
+      "Compila tutti i campi obbligatori prima di esportare il PDF."
+    );
     return;
   }
-  // continua export PDF
+  await exportPDF();
 });
 
 
@@ -1988,15 +1989,23 @@ function validateOrder() {
   /* ---------------------- */
 
   const customerFields = [
-    customerName,
-    customerPhone,
-    customerEmail,
-    customerAddress
+
+    document.getElementById("customerName"),
+
+    document.getElementById("customerPhone"),
+
+    document.getElementById("customerEmail"),
+
+    document.getElementById("customerAddress")
+
   ];
 
   customerFields.forEach(field => {
+
     if (!field.value.trim()) {
+
       field.classList.add("field-error");
+
       isValid = false;
     }
 
@@ -2010,14 +2019,53 @@ function validateOrder() {
     document.querySelectorAll(".order-row");
 
   rows.forEach(row => {
-    const requiredFields =
-      row.querySelectorAll(
-        "select, input, textarea"
-      );
+
+    const requiredFields = [
+
+      row.querySelector(".articolo-select"),
+
+      row.querySelector(".taglia-select"),
+
+      row.querySelector(".altezza-select"),
+
+      row.querySelector(".spessore-select"),
+
+      row.querySelector(".pelle-select"),
+
+      row.querySelector(".foglie-select"),
+
+      row.querySelector(".cristalli-select"),
+
+      row.querySelector(".caramella-select"),
+
+      row.querySelector(".quantity-input")
+
+    ];
 
     requiredFields.forEach(field => {
+
+      /* se il campo non esiste -> skip */
+      if (!field) return;
+
+      /* readonly/non disponibile -> skip */
+      if (
+        field.hasAttribute("readonly") ||
+        field.value === "Non disponibile"
+      ) {
+        return;
+      }
+
       if (!field.value.trim()) {
+
+        const box =
+          field.closest(".field-box");
+
+        if (box) {
+          box.classList.add("field-error");
+        }
+
         field.classList.add("field-error");
+
         isValid = false;
       }
 
