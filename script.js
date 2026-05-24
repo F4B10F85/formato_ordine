@@ -919,9 +919,14 @@ function validateOrders() {
 }
 
 validateBtn.addEventListener("click", () => {
-
-  validateOrders();
-
+  const valid =
+    validateOrder();
+  if (valid) {
+    alert("Ordine completo ✅");
+  }
+  else {
+    alert("Compila tutti i campi obbligatori");
+  }
 });
 
 function saveOrders() {
@@ -1922,10 +1927,14 @@ async function sendTelegramMessage(message) {
 /* EXPORT PDF */
 /* ---------------------- */
 
-exportPdfBtn.addEventListener("click", () => {
-
-  exportPDF();
-
+exportPdfBtn.addEventListener("click", async () => {
+  const valid =
+    validateOrder();
+  if (!valid) {
+    alert("Compila tutti i campi prima di esportare il PDF");
+    return;
+  }
+  // continua export PDF
 });
 
 
@@ -1957,5 +1966,67 @@ imageModal.addEventListener("click", () => {
   imageModal.style.display = "none";
 });
 });
+
+
+
+function validateOrder() {
+
+  let isValid = true;
+
+  /* ---------------------- */
+  /* RESET ERRORI */
+  /* ---------------------- */
+
+  document
+    .querySelectorAll(".field-error")
+    .forEach(el => {
+      el.classList.remove("field-error");
+    });
+
+  /* ---------------------- */
+  /* DATI CLIENTE */
+  /* ---------------------- */
+
+  const customerFields = [
+    customerName,
+    customerPhone,
+    customerEmail,
+    customerAddress
+  ];
+
+  customerFields.forEach(field => {
+    if (!field.value.trim()) {
+      field.classList.add("field-error");
+      isValid = false;
+    }
+
+  });
+
+  /* ---------------------- */
+  /* RIGHE ORDINE */
+  /* ---------------------- */
+
+  const rows =
+    document.querySelectorAll(".order-row");
+
+  rows.forEach(row => {
+    const requiredFields =
+      row.querySelectorAll(
+        "select, input, textarea"
+      );
+
+    requiredFields.forEach(field => {
+      if (!field.value.trim()) {
+        field.classList.add("field-error");
+        isValid = false;
+      }
+
+    });
+
+  });
+
+  return isValid;
+}
+
 
 
