@@ -68,7 +68,12 @@
   color: #333;
 }
 
-
+.shop-login {
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 26px;
+}
 
 .shop-login input {
   height: 54px;
@@ -111,12 +116,6 @@
 /* FIX LARGHEZZA LOGIN */
 /* ---------------------- */
 
-.shop-login {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-}
 
 .shop-login input,
 .login-btn {
