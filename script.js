@@ -269,7 +269,8 @@ const products = {
   ],
   altezzaFixed: "Non disponibile",
   spessore: "Non disponibile",
-  caramella: "Non disponibile"
+  caramella: "Non disponibile",
+  cristalliDisabled: true
 },
 
 
