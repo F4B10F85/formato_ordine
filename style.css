@@ -482,7 +482,7 @@ input[readonly] {
 #customerAddress {
   width: 100%;
   height: 56px;
-  min-height: 56px;
+  min-height: 56px !important;
   padding: 14px 16px;
   border-radius: 16px;
   border: 1px solid #dcdcdc;
