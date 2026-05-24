@@ -69,32 +69,24 @@
 
 .shop-login input {
   height: 54px;
-
   border: 1px solid #d7dfe8 !important;
   border-radius: 14px;
-
   padding: 0 16px;
-
   background: white !important;
 }
 
 .login-btn {
   height: 54px;
-
   border: none;
   border-radius: 14px;
-
-  background: #de8033;
+  background: #1f6556;
   color: white;
-
   font-weight: 600;
-
   cursor: pointer;
 }
 
 .login-error {
   display: none;
-
   color: #d11a2a;
   font-size: 14px;
 }
