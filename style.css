@@ -434,20 +434,21 @@ input[readonly] {
   min-width: 120px;
 }
 
-.customer-item input,
-.customer-item textarea {
+#customerAddress {
   width: 100%;
+  min-height: 90px;
   padding: 14px 16px;
   border-radius: 14px;
   border: 1px solid #dcdcdc;
   background: #ffffff;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
+  resize: vertical;
+  box-sizing: border-box;
   transition: 0.2s ease;
 }
 
-.customer-item input:focus,
-.customer-item textarea:focus {
+#customerAddress:focus {
   outline: none;
   border-color: #1f6556;
   box-shadow: 0 0 0 4px rgba(31,101,86,0.08);
