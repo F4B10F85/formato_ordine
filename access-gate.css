@@ -68,11 +68,7 @@
   color: #333;
 }
 
-.shop-login {
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-}
+
 
 .shop-login input {
   height: 54px;
