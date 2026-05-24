@@ -482,14 +482,16 @@ input[readonly] {
 #customerAddress {
   width: 100%;
   height: 56px;
+  min-height: 56px;
   padding: 14px 16px;
-  border-radius: 14px;
+  border-radius: 16px;
   border: 1px solid #dcdcdc;
   background: #ffffff;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   box-sizing: border-box;
   transition: 0.2s ease;
+  resize: none;
 }
 
 /* FOCUS TEXTAREA */
