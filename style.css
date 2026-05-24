@@ -408,6 +408,7 @@ input[readonly] {
   color: #444;
 }
 
+
 /* ---------------------- */
 /* DATI CLIENTE */
 /* ---------------------- */
@@ -420,48 +421,81 @@ input[readonly] {
 }
 
 .customer-item {
-  flex: 1;
-  min-width: 220px;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  flex: 1;
+  min-width: 220px;
 }
 
 .customer-item label {
   font-size: 14px;
   font-weight: 600;
   color: #444;
-  min-width: 120px;
 }
 
-#customerAddress {
+/* INPUT NORMALI */
+
+.customer-item input {
   width: 100%;
-  min-height: 90px;
-  padding: 14px 16px;
-  border-radius: 14px;
-  border: 1px solid #dcdcdc;
-  background: #ffffff;
-  font-family: 'Inter', sans-serif;
+  height: 56px;
+  padding: 0 16px;
+  border: 1px solid #d7dfe8 !important;
+  border-radius: 16px !important;
+  background: white !important;
   font-size: 14px;
-  resize: vertical;
-  box-sizing: border-box;
-  transition: 0.2s ease;
+  font-family: 'Inter', sans-serif;
+  color: #222;
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.04) !important;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-#customerAddress:focus {
-  outline: none;
-  border-color: #1f6556;
-  box-shadow: 0 0 0 4px rgba(31,101,86,0.08);
+/* FOCUS INPUT */
+
+.customer-item input:focus {
+  border-color: #1f6556 !important;
+  box-shadow:
+    0 0 0 4px rgba(31,101,86,0.08) !important;
 }
+
+/* RIGA INDIRIZZO */
 
 .customer-address {
+  width: 100%;
   flex-basis: 100%;
 }
 
+/* TEXTAREA INDIRIZZO */
+
 #customerAddress {
-  min-height: 90px;
+  width: 100%;
+  min-height: 100px;
+  padding: 16px;
+  border: 1px solid #d7dfe8 !important;
+  border-radius: 16px !important;
+  background: white !important;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  color: #222;
   resize: vertical;
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.04) !important;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
+
+/* FOCUS TEXTAREA */
+
+#customerAddress:focus {
+  border-color: #1f6556 !important;
+  box-shadow:
+    0 0 0 4px rgba(31,101,86,0.08) !important;
+}
+
 
 
 
