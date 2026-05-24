@@ -250,6 +250,12 @@ async function loadOrders() {
           ${order.customerData.email}
         </div>
 
+        <div>
+          <strong>Indirizzo:</strong>
+          ${order.customerData.indirizzo || "-"}
+        </div>
+
+
       </div>
 
 <div class="items-list">
