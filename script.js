@@ -108,6 +108,7 @@ const products = {
       "S",
       "M",
       "L",
+      "XL",
       "Personalizzata"
     ],
 
@@ -219,13 +220,9 @@ const products = {
   "poop-bag": {
     nome: "Poop bag",
     image: "poop_bag.jpg",
-
     tagliaFixed: "Non disponibile",
-
     altezzaFixed: "Non disponibile",
-
     spessore: "Non disponibile",
-
     caramella: "Non disponibile"
   },
 
@@ -234,14 +231,21 @@ const products = {
   nome: "Cintura",
   image: "cintura.jpg",
   taglie: [
+    "70 cm - h. 3 cm",
+    "75 cm - h. 3 cm",
     "80 cm - h. 3 cm",
+    "85 cm - h. 3 cm",
     "90 cm - h. 3 cm",
+    "95 cm - h. 3 cm",
     "100 cm - h. 3 cm",
+    "105 cm - h. 3 cm",
     "110 cm - h. 3 cm",
+    "115 cm - h. 3 cm",
     "120 cm - h. 3 cm",
+    "125 cm - h. 3 cm",
     "130 cm - h. 3 cm",
-    "140 cm - h. 3 cm",
-    "150 cm - h. 3 cm"
+    "135 cm - h. 3 cm",
+    "140 cm - h. 3 cm"    
   ],
   altezzaFixed: "Non disponibile",
   spessore: "Non disponibile",
