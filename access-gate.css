@@ -15,12 +15,9 @@
   background: white;
   border-radius: 28px;
   padding: 42px;
-
   box-shadow:
     0 20px 60px rgba(0,0,0,0.12);
-
   border: 1px solid #e3e7ed;
-
   text-align: center;
 }
 
@@ -44,18 +41,13 @@
 .access-btn {
   flex: 1;
   height: 58px;
-
   border: none;
   border-radius: 16px;
-
   background: #1f6556;
   color: white;
-
   font-size: 15px;
   font-weight: 600;
-
   cursor: pointer;
-
   transition: 0.2s ease;
 }
 
@@ -64,8 +56,8 @@
 }
 
 .access-btn.secondary {
-  background: #e9edf2;
-  color: #333;
+  background: #1f6556;
+  color: white;
 }
 
 .shop-login {
