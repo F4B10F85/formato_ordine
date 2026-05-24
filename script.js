@@ -117,6 +117,7 @@ const products = {
       "S": "2 cm",
       "M": "2,5 cm",
       "L": "3 cm",
+      "XL": 3 cm",
       "Personalizzata": "Personalizzata"
     },
 
