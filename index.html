@@ -8,7 +8,7 @@
   <title>Configuratore Ordini</title>
 
   <link rel="stylesheet" href="style.css"/>
-  <link rel="stylesheet" href="access.css">
+  <link rel="stylesheet" href="access-gate.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,20 +24,32 @@
   
 <div id="accessOverlay" class="access-overlay">
   <div class="access-box">
+
     <h2>Benvenuto</h2>
+
     <p class="access-subtitle">
       Seleziona il tipo di accesso
     </p>
+
     <div class="access-buttons">
-      <button id="privateAccessBtn" class="access-btn">
+
+      <button
+        id="privateAccessBtn"
+        class="access-btn">
         Privato
       </button>
-      <button id="shopAccessBtn" class="access-btn secondary">
+
+      <button
+        id="shopAccessBtn"
+        class="access-btn secondary">
         Negozio
       </button>
+
     </div>
 
-    <div id="shopLoginBox" class="shop-login hidden">
+    <div
+      id="shopLoginBox"
+      class="shop-login hidden">
 
       <input
         type="text"
@@ -49,18 +61,21 @@
         id="shopPassword"
         placeholder="Password">
 
-      <button id="shopLoginBtn" class="login-btn">
+      <button
+        id="shopLoginBtn"
+        class="login-btn">
         Accedi
       </button>
 
-      <p id="loginError" class="login-error">
+      <p
+        id="loginError"
+        class="login-error">
         Credenziali non valide
       </p>
 
     </div>
 
   </div>
-
 </div>
 
 <!-- FINE PRE-PAGINA CONFIGURATORE x SCELTA CLIENTE -->
@@ -274,7 +289,7 @@
   </div>
 
   <script src="script.js"></script>
-  <script src="access.js"></script>
+  <script src="access-gate.js"></script>
   
   </body>
 
