@@ -260,6 +260,20 @@ const products = {
   spessore: "Non disponibile",
   caramella: "Non disponibile"
 },
+
+"lunghina": {
+  nome: "Lunghina per cavalli",
+  image: "lunghina.jpg",
+  taglie: [
+    "180 cm - h. 2 cm"
+  ],
+  altezzaFixed: "Non disponibile",
+  spessore: "Non disponibile",
+  caramella: "Non disponibile"
+},
+
+
+
   
 };
 
