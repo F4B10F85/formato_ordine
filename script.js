@@ -456,6 +456,23 @@ function createOrderRow() {
     pelleSelect.value = "";
   }
     
+  /* RESET QUANTITA */
+
+  const quantityInput =
+    row.querySelector(".quantity-input");
+
+  if (quantityInput) {
+    quantityInput.value = "";
+  }
+
+  /* RESET NOTE */
+
+  const notesTextarea =
+    row.querySelector("textarea");
+
+  if (notesTextarea) {
+    notesTextarea.value = "";
+  }
     
     /* IMMAGINE */
 
