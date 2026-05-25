@@ -1,3 +1,11 @@
+import { auth } from "./firebase.js";
+
+import {
+  signInWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+
 const overlay = document.getElementById("accessOverlay");
 
 const privateBtn =
@@ -39,24 +47,25 @@ shopBtn.addEventListener("click", () => {
 /* LOGIN NEGOZIO */
 /* ---------------------- */
 
-loginBtn.addEventListener("click", () => {
+loginBtn.addEventListener("click", async () => {
 
-  const username =
+  const email =
     document.getElementById("shopUsername").value;
 
   const password =
     document.getElementById("shopPassword").value;
 
-  /* CREDENZIALI TEST */
+  try {
 
-  if (
-    username === "negozio" &&
-    password === "1234"
-  ) {
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
 
     overlay.style.display = "none";
 
-  } else {
+  } catch (error) {
 
     loginError.classList.add("show");
 
