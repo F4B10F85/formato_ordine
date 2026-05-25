@@ -1,3 +1,10 @@
+import {
+  collection,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+import { db } from "./firebase.js";
+
 const orderRows = document.getElementById("orderRows");
 const addRowBtn = document.getElementById("addRowBtn");
 const clearAllBtn = document.getElementById("clearAllBtn");
@@ -2077,5 +2084,26 @@ function validateOrder() {
   return isValid;
 }
 
+
+  /* ---------------------- */
+  /* PER PREZZI CONFIGURATORE */
+  /* ---------------------- */
+
+
+
+async function testFirestore() {
+
+  const snapshot =
+    await getDocs(
+      collection(db, "pricingRules")
+    );
+
+  snapshot.forEach(doc => {
+    console.log(doc.data());
+  });
+
+}
+
+testFirestore();
 
 
