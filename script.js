@@ -458,11 +458,6 @@ function createOrderRow() {
 
   const articoloSelect = row.querySelector(".articolo-select");
 
-  articoloSelect.addEventListener(
-  "change",
-  triggerPriceUpdate
-);
-
   const imageBox = row.querySelector(".image-box");
 
   const tagliaBox = row.querySelector(".taglia-box");
@@ -477,6 +472,21 @@ function createOrderRow() {
 
   const deleteBtn = row.querySelector(".delete-row-btn");
 
+  /* ---------------------- */
+  /* UPDATE PREZZO */
+  /* ---------------------- */
+  
+  const triggerPriceUpdate = async () => {
+  
+    saveOrders();
+  
+    updateSummary();
+  
+    await updateRowPrice(row);
+  
+  };
+
+  
   /* ---------------------- */
   /* CAMBIO ARTICOLO */
   /* ---------------------- */
@@ -493,14 +503,23 @@ function createOrderRow() {
     row.querySelector(".pelle-select");
 
   if (pelleSelect) {
-    pelleSelect.value = "";
-  }
+  pelleSelect.addEventListener("change", () => {
+    saveOrders();
+    updateSummary();
+  });
+
+}
     
   /* RESET QUANTITA */
 
   const quantityInput =
     row.querySelector(".quantity-input");
 
+quantityInput?.addEventListener("input", () => {
+  saveOrders();
+  updateSummary();
+});
+    
   if (quantityInput) {
     quantityInput.value = "";
   }
@@ -510,6 +529,12 @@ function createOrderRow() {
   const notesTextarea =
     row.querySelector("textarea");
 
+notesTextarea?.addEventListener("input", () => {
+  saveOrders();
+  updateSummary();
+
+});
+    
   if (notesTextarea) {
     notesTextarea.value = "";
   }
@@ -730,17 +755,7 @@ await triggerPriceUpdate();
   
   });
   
-  row.addEventListener("change", saveOrders);
-  
-  row.addEventListener("input", saveOrders);
-
-const triggerPriceUpdate = async () => {
-  saveOrders();
-  updateSummary();
-  await updateRowPrice(row);
-};
-  
-  
+   
   return row;
 }
 
