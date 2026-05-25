@@ -43,6 +43,7 @@ body {
     180px
     180px
     120px
+    140px
     300px
     60px;
 
@@ -830,4 +831,12 @@ option {
   transform: scale(1.05);
 }
 
+.price-box {
+  justify-content: center;
+}
 
+.price-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f6556;
+}
