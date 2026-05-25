@@ -544,7 +544,17 @@ notesTextarea?.addEventListener("input", () => {
   if (notesTextarea) {
     notesTextarea.value = "";
   }
+
+  /* RESET PELLE */
+
+const pelleSelect =
+  row.querySelector(".pelle-select");
+
+if (pelleSelect) {
+  pelleSelect.value = "";
+}
     
+  
     /* IMMAGINE */
 
     imageBox.innerHTML = `
