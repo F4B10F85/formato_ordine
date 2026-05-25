@@ -428,6 +428,16 @@ function createOrderRow() {
 
     </div>
 
+<!-- PREZZO -->
+
+<div class="field-box price-box">
+  <span class="price-value">
+    —
+  </span>
+</div>
+
+
+
     <!-- NOTE -->
     <div class="field-box notes-box">
 
