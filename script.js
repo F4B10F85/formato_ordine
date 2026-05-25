@@ -487,7 +487,11 @@ const notesTextarea =
 
 pelleSelect?.addEventListener(
   "change",
-  triggerPriceUpdate
+  async () => {
+    saveOrders();
+    updateSummary();
+    await updateRowPrice(row);
+  }
 );
 
 quantityInput?.addEventListener("input", () => {
@@ -528,18 +532,6 @@ notesTextarea?.addEventListener("input", () => {
 
     if (!product) return;
   
-  /* RESET PELLE */
-
-  const pelleSelect =
-    row.querySelector(".pelle-select");
-
-  if (pelleSelect) {
-  pelleSelect.addEventListener("change", () => {
-    saveOrders();
-    updateSummary();
-  });
-
-}
     
   /* RESET QUANTITA */
 
