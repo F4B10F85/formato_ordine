@@ -1130,6 +1130,8 @@ function loadOrders() {
       if (notes)
         notes.value = data.note;
 
+      updateRowPrice(row);
+      
     }, 0);
 
   });
