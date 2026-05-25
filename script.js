@@ -699,20 +699,16 @@ if (product.cristalliDisabled) {
 /* UPDATE AUTOMATICI */
 /* ---------------------- */
 
-row.addEventListener("change", () => {
-
+row.addEventListener("change", async () => {
   saveOrders();
-
   updateSummary();
-
+  await updateRowPrice(row);
 });
 
-row.addEventListener("input", () => {
-
+row.addEventListener("input", async () => {
   saveOrders();
-
   updateSummary();
-
+  await updateRowPrice(row);
 });
   
   
@@ -2153,4 +2149,78 @@ findPrice({
 
 });
 
+
+/* ---------------------- */
+/* UPDATE PREZZO LIVE */
+/* ---------------------- */
+
+async function updateRowPrice(row) {
+
+  const articoloSelect =
+    row.querySelector(".articolo-select");
+
+  if (!articoloSelect.value) return;
+
+  const product =
+    products[articoloSelect.value];
+
+  if (!product) return;
+
+  /* NOME ARTICOLO */
+
+  const articolo =
+    product.nome.toLowerCase();
+
+  /* TAGLIA */
+
+  const taglia =
+    row.querySelector(".taglia-select")?.value ||
+    row.querySelector(".taglia-box input")?.value ||
+    "";
+
+  /* FOGLIE */
+
+  const foglieValue =
+    row.querySelector(".foglie-select")?.value;
+
+  const foglie =
+    foglieValue &&
+    foglieValue !== "SENZA FOGLIE"
+      ? 1
+      : 0;
+
+  /* CRISTALLI */
+
+  const cristalliValue =
+    row.querySelector(".cristalli-select")?.value;
+
+  const cristalli =
+    cristalliValue &&
+    cristalliValue !== "SENZA CRISTALLI"
+      ? 1
+      : 0;
+
+  /* CERCA PREZZO */
+
+  const prezzo = await findPrice({
+
+    articolo,
+    taglia,
+    foglie,
+    cristalli
+
+  });
+
+  /* BOX PREZZO */
+
+  const priceBox =
+    row.querySelector(".price-value");
+  if (prezzo !== null) {
+    priceBox.textContent =
+      `${prezzo} €`;
+  } else {
+    priceBox.textContent =
+      "—";
+  }
+}
 
