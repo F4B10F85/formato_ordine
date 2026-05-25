@@ -2143,14 +2143,7 @@ async function findPrice(config) {
 
 }
 
-findPrice({
 
-  articolo: "collare standard",
-  taglia: "S",
-  foglie: 1,
-  cristalli: 0
-
-});
 
 
 /* ---------------------- */
