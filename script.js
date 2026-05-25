@@ -458,6 +458,11 @@ function createOrderRow() {
 
   const articoloSelect = row.querySelector(".articolo-select");
 
+  articoloSelect.addEventListener(
+  "change",
+  triggerPriceUpdate
+);
+
   const imageBox = row.querySelector(".image-box");
 
   const tagliaBox = row.querySelector(".taglia-box");
@@ -594,15 +599,24 @@ function createOrderRow() {
       );
     }
 
-    /* RESET FOGLIE */
+/* RESET FOGLIE */
 
-    foglieBox.innerHTML = createSelect(
-      coloriFoglie,
-      "foglie-select"
-    );
- 
-    const foglieSelect =
-      row.querySelector(".foglie-select");
+foglieBox.innerHTML = createSelect(
+  coloriFoglie,
+  "foglie-select"
+);
+
+const foglieSelect =
+  row.querySelector(".foglie-select");
+
+if (foglieSelect) {
+
+  foglieSelect.addEventListener(
+    "change",
+    triggerPriceUpdate
+  );
+
+}
 
 
 /* CRISTALLI */
@@ -621,6 +635,17 @@ if (product.cristalliDisabled) {
     coloriCristalli,
     "cristalli-select"
   );
+  
+  const cristalliSelect =
+  row.querySelector(".cristalli-select");
+
+if (cristalliSelect) {
+
+  cristalliSelect.addEventListener(
+    "change",
+    triggerPriceUpdate
+  );
+}
 }
 
 
@@ -632,7 +657,7 @@ if (product.cristalliDisabled) {
 
     if (tagliaSelect) {
 
-    tagliaSelect.addEventListener("change", () => {
+    tagliaSelect.addEventListener("change", async () => {
     
       const selectedTaglia = tagliaSelect.value;
     
@@ -652,25 +677,38 @@ if (product.cristalliDisabled) {
     
       /* FOGLIE */
     
-      if (
-        product.foglieDisabled &&
-        product.foglieDisabled.includes(
-          selectedTaglia
-        )
-      ) {
-    
-        foglieBox.innerHTML = createReadonlyInput(
-          "Non disponibile"
-        );
-    
-      } else {
-    
-        foglieBox.innerHTML = createSelect(
-          coloriFoglie,
-          "foglie-select"
-        );
-      }
-    
+if (
+  product.foglieDisabled &&
+  product.foglieDisabled.includes(
+    selectedTaglia
+  )
+) {
+
+  foglieBox.innerHTML = createReadonlyInput(
+    "Non disponibile"
+  );
+
+} else {
+
+  foglieBox.innerHTML = createSelect(
+    coloriFoglie,
+    "foglie-select"
+  );
+
+  const foglieSelect =
+    row.querySelector(".foglie-select");
+
+  if (foglieSelect) {
+
+    foglieSelect.addEventListener(
+      "change",
+      triggerPriceUpdate
+    );
+
+  }
+}
+
+await triggerPriceUpdate();
     });
     }
 
@@ -696,21 +734,11 @@ if (product.cristalliDisabled) {
   
   row.addEventListener("input", saveOrders);
 
-/* ---------------------- */
-/* UPDATE AUTOMATICI */
-/* ---------------------- */
-
-row.addEventListener("change", async () => {
+const triggerPriceUpdate = async () => {
   saveOrders();
   updateSummary();
   await updateRowPrice(row);
-});
-
-row.addEventListener("input", async () => {
-  saveOrders();
-  updateSummary();
-  await updateRowPrice(row);
-});
+};
   
   
   return row;
