@@ -1,6 +1,8 @@
 import {
   collection,
-  getDocs
+  getDocs,
+  query,
+  where
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 import { db } from "./firebase.js";
@@ -2084,15 +2086,11 @@ function validateOrder() {
   return isValid;
 }
 
-
   /* ---------------------- */
-  /* PER PREZZI CONFIGURATORE */
+  /* TEST PER PREZZI CONFIGURATORE */
   /* ---------------------- */
-
-
 
 async function testFirestore() {
-
   const snapshot =
     await getDocs(
       collection(db, "pricingRules")
@@ -2101,9 +2099,48 @@ async function testFirestore() {
   snapshot.forEach(doc => {
     console.log(doc.data());
   });
-
 }
 
 testFirestore();
+
+
+  /* ---------------------- */
+  /* RICERCA COMBINAZIONI PER PREZZI CONFIGURATORE */
+  /* ---------------------- */
+
+
+async function findPrice(config) {
+
+  const q = query(
+    collection(db, "pricingRules"),
+    where("articolo", "==", config.articolo),
+    where("taglia", "==", config.taglia),
+    where("foglie", "==", config.foglie),
+    where("cristalli", "==", config.cristalli)
+  );
+
+  const snapshot = await getDocs(q);
+
+  if (snapshot.empty) {
+    console.log("NESSUN PREZZO TROVATO");
+    return null;
+  }
+
+  const data = snapshot.docs[0].data();
+
+  console.log("PREZZO TROVATO:", data.prezzo);
+
+  return data.prezzo;
+
+}
+
+findPrice({
+
+  articolo: "collare standard",
+  taglia: "S",
+  foglie: 1,
+  cristalli: 0
+
+});
 
 
