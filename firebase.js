@@ -32,7 +32,7 @@ const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 
-export { auth };
+export { db , auth };
 
 const db = getFirestore(app);
 
