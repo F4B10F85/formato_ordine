@@ -2,7 +2,8 @@ import {
   collection,
   getDocs,
   query,
-  where
+  where,
+  addDoc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 import { db } from "./firebase.js";
@@ -973,7 +974,7 @@ function saveOrders() {
 
       articolo:
         row.querySelector(".articolo-select")
-          ?.selectedOptions[0]?.text || "",
+          ?.value || "",
 
       taglia:
         row.querySelector(".taglia-select")?.value || "",
