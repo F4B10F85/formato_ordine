@@ -5,8 +5,14 @@ import {
   getFirestore,
   collection,
   addDoc
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+import {
+  getAuth
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+
 
 /* CONFIG FIREBASE */
 
@@ -22,11 +28,13 @@ const firebaseConfig = {
 
 /* INIT */
 
-const app =
-  initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
-const db =
-  getFirestore(app);
+const auth = getAuth(app);
+
+export { auth };
+
+const db = getFirestore(app);
 
 /* EXPORT GLOBAL */
 
