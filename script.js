@@ -473,6 +473,37 @@ function createOrderRow() {
   const deleteBtn = row.querySelector(".delete-row-btn");
 
   /* ---------------------- */
+/* LISTENER STATICI */
+/* ---------------------- */
+
+const pelleSelect =
+  row.querySelector(".pelle-select");
+
+const quantityInput =
+  row.querySelector(".quantity-input");
+
+const notesTextarea =
+  row.querySelector("textarea");
+
+pelleSelect?.addEventListener(
+  "change",
+  triggerPriceUpdate
+);
+
+quantityInput?.addEventListener("input", () => {
+  saveOrders();
+  updateSummary();
+});
+
+notesTextarea?.addEventListener("input", () => {
+  saveOrders();
+  updateSummary();
+});
+
+
+
+  
+  /* ---------------------- */
   /* UPDATE PREZZO */
   /* ---------------------- */
   
@@ -512,29 +543,12 @@ function createOrderRow() {
     
   /* RESET QUANTITA */
 
-  const quantityInput =
-    row.querySelector(".quantity-input");
-
-quantityInput?.addEventListener("input", () => {
-  saveOrders();
-  updateSummary();
-});
-    
   if (quantityInput) {
     quantityInput.value = "";
   }
 
   /* RESET NOTE */
-
-  const notesTextarea =
-    row.querySelector("textarea");
-
-notesTextarea?.addEventListener("input", () => {
-  saveOrders();
-  updateSummary();
-
-});
-    
+  
   if (notesTextarea) {
     notesTextarea.value = "";
   }
