@@ -82,23 +82,38 @@ function writeLog(text){
 
 function parseCSV(text){
 
-  const lines = text.split("\\n");
+  const cleanText =
+    text.replace(/\r/g, "");
+
+  const lines =
+    cleanText
+      .split("\n")
+      .filter(line => line.trim() !== "");
+
+  if(lines.length < 2){
+
+    console.log("CSV VUOTO");
+    return [];
+
+  }
 
   const headers =
     lines[0]
       .split(";")
       .map(h => h.trim());
 
+  console.log("HEADERS:", headers);
+
   const rows = [];
 
   for(let i = 1; i < lines.length; i++){
-
-    if(!lines[i].trim()) continue;
 
     const values =
       lines[i]
         .split(";")
         .map(v => v.trim());
+
+    console.log("VALUES:", values);
 
     const obj = {};
 
