@@ -71,6 +71,30 @@ import {
 
 import { db } from "./firebase.js";
 
+async function clearPricingRules(){
+
+  writeLog("Eliminazione vecchie regole...");
+
+  const snapshot =
+    await getDocs(
+      collection(db, "pricingRules")
+    );
+
+  for(const document of snapshot.docs){
+
+    await deleteDoc(
+      doc(db, "pricingRules", document.id)
+    );
+
+  }
+
+  writeLog("Vecchie regole eliminate");
+
+}
+
+
+
+  
 const importBtn =
   document.getElementById("importBtn");
 
@@ -149,7 +173,7 @@ importBtn.addEventListener("click", async ()=>{
 
     return;
   }
-
+await clearPricingRules();
   const text =
     await file.text();
 
