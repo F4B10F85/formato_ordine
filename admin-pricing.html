@@ -1,1 +1,212 @@
+<!DOCTYPE html>
+<html lang="it">
 
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Pricing Import</title>
+
+  <style>
+
+    body{
+      font-family: Arial;
+      padding:40px;
+      background:#f5f5f5;
+    }
+
+    h1{
+      margin-bottom:20px;
+    }
+
+    button{
+      padding:12px 20px;
+      border:none;
+      background:#1f6556;
+      color:white;
+      cursor:pointer;
+      border-radius:6px;
+      font-size:16px;
+    }
+
+    button:hover{
+      opacity:0.9;
+    }
+
+    #log{
+      margin-top:30px;
+      background:white;
+      padding:20px;
+      border-radius:8px;
+      max-height:500px;
+      overflow:auto;
+      white-space:pre-wrap;
+      font-size:14px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<h1>Import Pricing Rules</h1>
+
+<input type="file" id="csvFile" accept=".csv" />
+
+<br><br>
+
+<button id="importBtn">
+  IMPORTA CSV
+</button>
+
+<div id="log"></div>
+
+<script type="module">
+
+import {
+  collection,
+  addDoc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+import { db } from "./firebase.js";
+
+const importBtn =
+  document.getElementById("importBtn");
+
+const log =
+  document.getElementById("log");
+
+function writeLog(text){
+
+  log.innerHTML += text + "\\n";
+
+}
+
+function parseCSV(text){
+
+  const lines = text.split("\\n");
+
+  const headers =
+    lines[0]
+      .split(",")
+      .map(h => h.trim());
+
+  const rows = [];
+
+  for(let i = 1; i < lines.length; i++){
+
+    if(!lines[i].trim()) continue;
+
+    const values =
+      lines[i]
+        .split(",")
+        .map(v => v.trim());
+
+    const obj = {};
+
+    headers.forEach((header,index)=>{
+
+      obj[header] =
+        values[index] || "";
+
+    });
+
+    rows.push(obj);
+
+  }
+
+  return rows;
+
+}
+
+importBtn.addEventListener("click", async ()=>{
+
+  const fileInput =
+    document.getElementById("csvFile");
+
+  const file =
+    fileInput.files[0];
+
+  if(!file){
+
+    alert("Seleziona un CSV");
+
+    return;
+  }
+
+  const text =
+    await file.text();
+
+  const rows =
+    parseCSV(text);
+
+  writeLog(`Trovate ${rows.length} righe`);
+
+  let imported = 0;
+
+  for(const row of rows){
+
+    try{
+
+      const data = {
+
+        articolo:
+          row.articolo || "",
+
+        taglia:
+          row.taglia || "",
+
+        altezza:
+          row.altezza || "",
+
+        spessore:
+          row.spessore || "",
+
+        pelle:
+          row.pelle || "",
+
+        foglie:
+          Number(row.foglie || 0),
+
+        cristalli:
+          Number(row.cristalli || 0),
+
+        caramella:
+          row.caramella || "",
+
+        prezzo:
+          Number(row.prezzo || 0)
+
+      };
+
+      await addDoc(
+        collection(db, "pricingRules"),
+        data
+      );
+
+      imported++;
+
+      writeLog(
+        `✔ IMPORTATA: ${data.articolo} / ${data.taglia}`
+      );
+
+    } catch(error){
+
+      console.error(error);
+
+      writeLog(
+        `❌ ERRORE RIGA`
+      );
+
+    }
+
+  }
+
+  writeLog("");
+  writeLog(`IMPORT COMPLETATO`);
+  writeLog(`Totale importate: ${imported}`);
+
+});
+
+</script>
+
+</body>
+</html>
