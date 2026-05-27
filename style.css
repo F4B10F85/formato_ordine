@@ -840,3 +840,24 @@ option {
   font-weight: 700;
   color: #1f6556;
 }
+
+
+#importStatus{
+
+  margin-top: 20px;
+
+  padding: 14px;
+
+  border-radius: 10px;
+
+  background: #f4f4f4;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  color: #1f6556;
+
+  display: none;
+
+}
