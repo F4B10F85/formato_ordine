@@ -164,24 +164,27 @@ function parseCSV(text){
 
 }
 
+
 function setImportStatus(message, loading = false){
 
   const box =
     document.getElementById("importStatus");
 
   box.style.display = "flex";
+  box.style.alignItems = "center";
+  box.style.gap = "12px";
 
   if(loading){
 
     box.innerHTML = `
-      <div class="spinner"></div>
-      <div>${message}</div>
+      <span class="spinner"></span>
+      <span>${message}</span>
     `;
 
   } else {
 
     box.innerHTML = `
-      <div>${message}</div>
+      <span>${message}</span>
     `;
 
   }
@@ -206,7 +209,7 @@ importBtn.addEventListener("click", async ()=>{
   }
 await clearPricingRules();
 
-
+console.log("SPINNER ATTIVO");
 
   setImportStatus(
   "Importazione CSV in corso...",
