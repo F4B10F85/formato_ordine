@@ -2272,7 +2272,7 @@ async function updateRowPrice(row) {
     row.querySelector(".price-value");
   if (prezzo !== null) {
     priceBox.textContent =
-      `${prezzo} €`;
+      `${prezzo.toFixed(2).replace(".", ",")} €`;
   } else {
     priceBox.textContent =
       "—";
