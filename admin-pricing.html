@@ -76,9 +76,9 @@ import { db } from "./firebase.js";
 async function clearPricingRules(){
 
   setImportStatus(
-    "Eliminazione vecchie regole..."
-  );
-
+  "Eliminazione vecchie regole...",
+  true
+);
   
   writeLog("Eliminazione vecchie regole...");
 
@@ -164,14 +164,27 @@ function parseCSV(text){
 
 }
 
-function setImportStatus(message){
+function setImportStatus(message, loading = false){
 
   const box =
     document.getElementById("importStatus");
 
-  box.style.display = "block";
+  box.style.display = "flex";
 
-  box.textContent = message;
+  if(loading){
+
+    box.innerHTML = `
+      <div class="spinner"></div>
+      <div>${message}</div>
+    `;
+
+  } else {
+
+    box.innerHTML = `
+      <div>${message}</div>
+    `;
+
+  }
 
 }
 
@@ -192,6 +205,14 @@ importBtn.addEventListener("click", async ()=>{
     return;
   }
 await clearPricingRules();
+
+
+
+  setImportStatus(
+  "Importazione CSV in corso...",
+  true
+);
+  
   const text =
     await file.text();
 
