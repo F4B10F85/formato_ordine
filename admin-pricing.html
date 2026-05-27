@@ -86,7 +86,7 @@ function parseCSV(text){
 
   const headers =
     lines[0]
-      .split(",")
+      .split(";")
       .map(h => h.trim());
 
   const rows = [];
@@ -97,7 +97,7 @@ function parseCSV(text){
 
     const values =
       lines[i]
-        .split(",")
+        .split(";")
         .map(v => v.trim());
 
     const obj = {};
