@@ -844,20 +844,55 @@ option {
 
 #importStatus{
 
-  margin-top: 20px;
+  margin-top:20px;
 
-  padding: 14px;
+  padding:16px 20px;
 
-  border-radius: 10px;
+  border-radius:14px;
 
-  background: #f4f4f4;
+  background:white;
 
-  font-size: 14px;
+  display:none;
 
-  font-weight: 600;
+  align-items:center;
 
-  color: #1f6556;
+  gap:12px;
 
-  display: none;
+  font-size:14px;
+
+  font-weight:600;
+
+  color:#1f6556;
+
+  box-shadow:
+    0 4px 18px rgba(0,0,0,0.08);
+
+}
+
+.spinner{
+
+  width:18px;
+
+  height:18px;
+
+  border:3px solid #d9d9d9;
+
+  border-top:3px solid #1f6556;
+
+  border-radius:50%;
+
+  animation:spin 0.8s linear infinite;
+
+}
+
+@keyframes spin{
+
+  from{
+    transform:rotate(0deg);
+  }
+
+  to{
+    transform:rotate(360deg);
+  }
 
 }
