@@ -2196,6 +2196,16 @@ if (
 
 }
 
+/* CINTURA */
+
+if (articolo === "cintura") {
+  const tagliaRaw =
+    row.querySelector(".taglia-select")?.value || "";
+  sizeCode =
+    tagliaRaw.split(" ")[0];
+}
+
+  
 /* POOP BAG */
 
 if (articolo === "poop-bag") {
