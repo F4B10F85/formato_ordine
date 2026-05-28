@@ -1835,17 +1835,17 @@ doc.text(
     "Qta"
   ];
 
-  const positions = [
-    14,
-    48,
-    86,
-    112,
-    138,
-    165,
-    192,
-    219,
-    246,
-    272
+   const positions = [
+    14,   // Codice
+    62,   // Articolo
+    104,  // Taglia
+    128,  // Altezza
+    152,  // Spessore
+    178,  // Pelle
+    202,  // Foglie
+    226,  // Cristalli
+    250,  // Caramella
+    274   // Qta
   ];
 
   headers.forEach((header, index) => {
