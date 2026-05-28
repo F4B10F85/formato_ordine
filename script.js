@@ -2196,7 +2196,11 @@ if (
 
 }
 
+/* POOP BAG */
 
+if (articolo === "poop-bag") {
+  sizeCode = "";
+}
   
   const leatherCode =
     leatherCodes[pelle] || "UNK";
@@ -2244,7 +2248,13 @@ if (
     tasselloCode = "01";
   }
 
-  return `KT.${articleCode}.${sizeCode}.${leatherCode}.${foglieCode}.${cristalliCode}.${tasselloCode}`;
+  if (sizeCode === "") {
+
+  return `KT.${articleCode}.${leatherCode}.${foglieCode}.${cristalliCode}.${tasselloCode}`;
+
+}
+
+return `KT.${articleCode}.${sizeCode}.${leatherCode}.${foglieCode}.${cristalliCode}.${tasselloCode}`;
 
 }
 
