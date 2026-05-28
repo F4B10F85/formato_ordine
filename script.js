@@ -1755,8 +1755,8 @@ doc.setFillColor(250,250,250);
 doc.roundedRect(
   12,
   44,
-  273,
-  36,
+  277,
+  30,
   3,
   3,
   "F"
