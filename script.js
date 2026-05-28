@@ -2172,6 +2172,29 @@ if (articolo === "collare-maniglia") {
     `${sizeCode}.${altezzaCode}`;
 }
 
+/* GUINZAGLIO STANDARD */
+
+if (articolo === "guinzaglio-standard") {
+
+  const spessore =
+    row.querySelector(".spessore-select")?.value || "";
+
+  if (spessore === "1,5 cm light") {
+    sizeCode = "15L";
+  }
+
+  if (spessore === "1,5 cm small") {
+    sizeCode = "15S";
+  }
+
+  if (spessore === "2 cm") {
+    sizeCode = "2";
+  }
+
+}
+
+
+  
   const leatherCode =
     leatherCodes[pelle] || "UNK";
 
