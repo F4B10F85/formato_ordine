@@ -603,7 +603,17 @@ const triggerPriceUpdate = async () => {
     const product = products[articoloSelect.value];
 
     if (!product) return;
+
+  /* RESET CODICE */
+
+  const codeInput =
+    row.querySelector(".product-code-input");
   
+  if (codeInput) {
+    codeInput.value =
+      "KT.XX.CUS.UNK.00.00.00";
+  }
+    
     
   /* RESET QUANTITA */
 
@@ -839,8 +849,6 @@ if (
 await triggerPriceUpdate();
     });
     }
-
-updateProductCode(row);
 
 await updateRowPrice(row);
 
