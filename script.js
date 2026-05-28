@@ -585,8 +585,6 @@ notesTextarea?.addEventListener("input", () => {
   
 const triggerPriceUpdate = async () => {
 
-  updateProductCode(row);
-
   saveOrders();
 
   updateSummary();
@@ -713,6 +711,21 @@ if (pelleSelect) {
         product.caramella
       );
     }
+
+
+const caramellaSelect =
+  row.querySelector(".caramella-select");
+
+if (caramellaSelect) {
+
+  caramellaSelect.addEventListener(
+    "change",
+    triggerPriceUpdate
+  );
+
+}
+
+    
 
 /* RESET FOGLIE */
 
