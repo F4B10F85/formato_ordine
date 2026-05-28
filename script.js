@@ -1832,20 +1832,20 @@ doc.text(
     "Foglie",
     "Cristalli",
     "Caramella",
-    "Qta"
+    "Qtà"
   ];
 
    const positions = [
     14,   // Codice
     62,   // Articolo
-    104,  // Taglia
-    128,  // Altezza
+    100,  // Taglia
+    132,  // Altezza
     152,  // Spessore
     178,  // Pelle
     202,  // Foglie
     226,  // Cristalli
     250,  // Caramella
-    274   // Qta
+    279   // Qta
   ];
 
   headers.forEach((header, index) => {
