@@ -1808,7 +1808,7 @@ doc.text(
 
   const rows = document.querySelectorAll(".order-row");
 
-  let y = 82;
+  let y = 76;
 
   /* HEADER TABELLA */
 
