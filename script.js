@@ -490,6 +490,19 @@ function createOrderRow() {
 
     </div>
 
+<!-- CODICE ARTICOLO -->
+<div class="field-box code-box">
+
+  <input
+    type="text"
+    class="product-code-input"
+    placeholder="Codice"
+    readonly
+  />
+
+</div>
+
+
 <!-- PREZZO -->
 
 <div class="field-box price-box">
@@ -572,22 +585,24 @@ notesTextarea?.addEventListener("input", () => {
   /* UPDATE PREZZO */
   /* ---------------------- */
   
-  const triggerPriceUpdate = async () => {
-  
-    saveOrders();
-  
-    updateSummary();
-  
-    await updateRowPrice(row);
-  
-  };
+const triggerPriceUpdate = async () => {
+
+  updateProductCode(row);
+
+  saveOrders();
+
+  updateSummary();
+
+  await updateRowPrice(row);
+
+};
 
   
   /* ---------------------- */
   /* CAMBIO ARTICOLO */
   /* ---------------------- */
 
-  articoloSelect.addEventListener("change", () => {
+  articoloSelect.addEventListener("change", async () => {
 
     const product = products[articoloSelect.value];
 
@@ -814,7 +829,9 @@ await triggerPriceUpdate();
     });
     }
 
+updateProductCode(row);
 
+await updateRowPrice(row);
 
   });
 
@@ -1099,6 +1116,7 @@ function saveOrders() {
       taglia:
         row.querySelector(".taglia-select")?.value || "",
 
+      
       altezza:
         row.querySelector(".altezza-input")?.value ||
         row.querySelector(".altezza-select")?.value ||
@@ -1127,8 +1145,13 @@ function saveOrders() {
         row.querySelector(".quantity-input")?.value || "",
 
       note:
-        row.querySelector("textarea")?.value || ""
+        row.querySelector("textarea")?.value || "",
 
+      codice:
+        row.querySelector(".product-code-input")?.value || ""
+
+
+      
     };
 
     orders.push(orderData);
@@ -1250,6 +1273,13 @@ function loadOrders() {
       if (notes)
         notes.value = data.note;
 
+      const codice =
+        row.querySelector(".product-code-input");
+      
+      if (codice)
+        codice.value = data.codice || "";
+
+      
       updateRowPrice(row);
       
     }, 0);
@@ -1508,7 +1538,10 @@ document
         row.querySelector(".quantity-input")?.value || "",
     
       note:
-        row.querySelector("textarea")?.value || ""
+        row.querySelector("textarea")?.value || "",
+
+      codice:
+        row.querySelector(".product-code-input")?.value || ""
     
     });
 
@@ -1771,6 +1804,7 @@ doc.text(
   doc.setFont("helvetica", "bold");
 
   const headers = [
+    "Codice",
     "Articolo",
     "Taglia",
     "Altezza",
@@ -1784,13 +1818,14 @@ doc.text(
 
   const positions = [
     14,
-    52,
-    82,
+    48,
+    86,
     112,
-    145,
-    178,
-    210,
-    242,
+    138,
+    165,
+    192,
+    219,
+    246,
     272
   ];
 
@@ -1850,6 +1885,10 @@ const candy =
 const quantity =
   row.querySelector(".quantity-input")?.value || "-";
 
+const codice =
+  row.querySelector(".product-code-input")?.value || "-";    
+    
+    
     /* sfondo alternato */
 
     if (index % 2 === 0) {
@@ -1860,6 +1899,7 @@ const quantity =
     }
 
     const values = [
+      codice,
       article,
       size,
       height,
@@ -2363,6 +2403,20 @@ async function updateRowPrice(row) {
     products[articoloSelect.value];
 
   if (!product) return;
+
+  /* ---------------------- */
+/* GENERAZIONE CODICE */
+/* ---------------------- */
+
+const codeInput =
+  row.querySelector(".product-code-input");
+
+if (codeInput) {
+
+  codeInput.value =
+    generateProductCode(row);
+
+}
 
   /* NOME ARTICOLO */
 
