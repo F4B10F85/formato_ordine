@@ -850,3 +850,10 @@ option {
   color: #1f6556;
 }
 
+.code-box {
+  min-width: 180px;
+}
+.product-code-input {
+  width: 100%;
+}
+
