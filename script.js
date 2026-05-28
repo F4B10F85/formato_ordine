@@ -490,19 +490,6 @@ function createOrderRow() {
 
     </div>
 
-<!-- CODICE ARTICOLO -->
-<div class="field-box code-box">
-
-  <input
-    type="text"
-    class="product-code-input"
-    placeholder="Codice"
-    readonly
-  />
-
-</div>
-
-
 <!-- PREZZO -->
 
 <div class="field-box price-box">
@@ -512,6 +499,17 @@ function createOrderRow() {
 </div>
 
 
+    <!-- CODICE ARTICOLO -->
+<div class="field-box code-box">
+
+  <input
+    type="text"
+    class="product-code-input"
+    placeholder="Codice"
+    readonly
+  />
+
+    </div>
 
     <!-- NOTE -->
     <div class="field-box notes-box">
