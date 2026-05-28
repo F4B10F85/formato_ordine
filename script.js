@@ -2172,9 +2172,12 @@ if (articolo === "collare-maniglia") {
     `${sizeCode}.${altezzaCode}`;
 }
 
-/* GUINZAGLIO STANDARD */
+/* GUINZAGLI */
 
-if (articolo === "guinzaglio-standard") {
+if (
+  articolo === "guinzaglio-standard" ||
+  articolo === "guinzaglio-regolabile"
+) {
 
   const spessore =
     row.querySelector(".spessore-select")?.value || "";
