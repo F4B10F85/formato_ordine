@@ -265,7 +265,7 @@ async function loadOrders() {
     <div class="item-card">
 
       <div class="item-title">
-        ${item.articolo}
+        ${item.articolo} - ${item.codice || ""}
       </div>
 
       <div class="item-grid">
