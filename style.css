@@ -43,6 +43,7 @@ body {
     180px
     180px
     120px
+    220px
     140px
     300px
     60px;
@@ -320,6 +321,8 @@ input[readonly] {
   font-weight: 600;
   color: #7d8794;
   transition: all 0.2s ease;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .delete-row-btn:hover {
@@ -841,5 +844,9 @@ option {
   color: #1f6556;
 }
 
-
+.code-box input {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1f6556;
+}
 
