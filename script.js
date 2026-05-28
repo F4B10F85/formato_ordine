@@ -68,6 +68,67 @@ const coloriCristalli = [
 ];
 
 /* ---------------------- */
+/* MAPPE CODICI */
+/* ---------------------- */
+
+const articleCodes = {
+
+  "collare-standard": "CS",
+  "collare-caramella": "CC",
+  "collare-maniglia": "CM",
+  "pettorina": "PE",
+  "guinzaglio-standard": "GS",
+  "guinzaglio-regolabile": "GR",
+  "poop-bag": "PB",
+  "cintura": "CI",
+  "capezza": "CA",
+  "frontalino": "FR",
+  "lunghina": "LU"
+
+};
+
+const sizeCodes = {
+
+  "XXS (light)": "XXS",
+  "XS (light)": "XS",
+  "S (light)": "SL",
+  "S": "S",
+  "M": "M",
+  "L": "L",
+  "XL": "XL",
+  "Personalizzata": "CUS",
+
+  "Pony": "PON",
+  "Cob": "COB",
+  "Full": "FUL"
+
+};
+
+const leatherCodes = {
+
+  "giallo": "YEL",
+  "arancione": "ORA",
+  "salvia": "SVG",
+  "verde": "GRN",
+  "bianco": "WHT",
+  "rosso": "RED",
+  "ciliegia": "CER",
+  "bordeaux": "BRD",
+  "rosa": "PIN",
+  "azzurro": "AZZ",
+  "petrolio": "PET",
+  "blu": "BLU",
+  "nero": "BLK",
+  "marrone": "BRO",
+  "beige": "BGE",
+  "viola": "PRP"
+
+};
+
+
+
+
+/* ---------------------- */
 /* CONFIGURAZIONE ARTICOLI */
 /* ---------------------- */
 
@@ -1995,7 +2056,87 @@ async function sendTelegramMessage(message) {
   }
 }
 
+/* ---------------------- */
+/* GENERAZIONE CODICE ARTICOLO */
+/* ---------------------- */
 
+function generateProductCode(row) {
+
+  const articolo =
+    row.querySelector(".articolo-select")?.value || "";
+
+  const taglia =
+    row.querySelector(".taglia-select")?.value || "";
+
+  const pelle =
+    row.querySelector(".pelle-select")?.value || "";
+
+  const foglieValue =
+    row.querySelector(".foglie-select")?.value || "";
+
+  const cristalliValue =
+    row.querySelector(".cristalli-select")?.value || "";
+
+  const caramellaValue =
+    row.querySelector(".caramella-select")?.value || "";
+
+  /* CODICI */
+
+  const articleCode =
+    articleCodes[articolo] || "XX";
+
+  const sizeCode =
+    sizeCodes[taglia] || "CUS";
+
+  const leatherCode =
+    leatherCodes[pelle] || "UNK";
+
+  /* FOGLIE */
+
+  let foglieCode = "00";
+
+  if (
+    foglieValue &&
+    foglieValue !== "SENZA FOGLIE"
+  ) {
+
+    const index =
+      coloriFoglie.indexOf(foglieValue);
+
+    foglieCode =
+      String(index).padStart(2, "0");
+  }
+
+  /* CRISTALLI */
+
+  let cristalliCode = "00";
+
+  if (
+    cristalliValue &&
+    cristalliValue !== "SENZA CRISTALLI"
+  ) {
+
+    const index =
+      coloriCristalli.indexOf(cristalliValue);
+
+    cristalliCode =
+      String(index).padStart(2, "0");
+  }
+
+  /* TASSELLO */
+
+  let tasselloCode = "00";
+
+  if (
+    caramellaValue === "Con tassello"
+  ) {
+
+    tasselloCode = "01";
+  }
+
+  return `KT.${articleCode}.${sizeCode}.${leatherCode}.${foglieCode}.${cristalliCode}.${tasselloCode}`;
+
+}
 
 
 
