@@ -2196,13 +2196,19 @@ if (
 
 }
 
-/* CINTURA */
+/* CINTURA + LUNGHINA */
 
-if (articolo === "cintura") {
+if (
+  articolo === "cintura" ||
+  articolo === "lunghina"
+) {
+
   const tagliaRaw =
     row.querySelector(".taglia-select")?.value || "";
+
   sizeCode =
     tagliaRaw.split(" ")[0];
+
 }
 
   
