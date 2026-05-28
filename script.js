@@ -2144,8 +2144,33 @@ function generateProductCode(row) {
   const articleCode =
     articleCodes[articolo] || "XX";
 
-  const sizeCode =
-    sizeCodes[taglia] || "CUS";
+  let sizeCode =
+  sizeCodes[taglia] || "CUS";
+
+/* COLLARE MANIGLIA */
+
+if (articolo === "collare-maniglia") {
+
+  const altezza =
+    row.querySelector(".altezza-select")?.value || "";
+
+  let altezzaCode = "0";
+
+  if (altezza.includes("3")) {
+    altezzaCode = "3";
+  }
+
+  if (altezza.includes("4")) {
+    altezzaCode = "4";
+  }
+
+  if (altezza.includes("5")) {
+    altezzaCode = "5";
+  }
+
+  sizeCode =
+    `${sizeCode}.${altezzaCode}`;
+}
 
   const leatherCode =
     leatherCodes[pelle] || "UNK";
