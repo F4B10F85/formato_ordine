@@ -1998,7 +1998,7 @@ doc.rect(
 /* thank you */
 
 doc.setFont("helvetica", "bold");
-doc.setFontSize(15);
+doc.setFontSize(13);
 
 doc.setTextColor(31, 101, 86);
 
@@ -2010,7 +2010,7 @@ doc.text(
 );
 
 doc.setFont("helvetica", "normal");
-doc.setFontSize(10);
+doc.setFontSize(9);
 
 doc.setTextColor(120,120,120);
 
@@ -2023,7 +2023,7 @@ doc.text(
 
 /* contatti */
 
-doc.setFontSize(10);
+doc.setFontSize(9);
 
 doc.setTextColor(255,255,255);
 
