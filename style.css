@@ -905,3 +905,22 @@ option {
   transition:
     all 0.2s ease;
 }
+
+.order-number {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.copy-order-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0;
+  transition: transform 0.15s ease;
+}
+
+.copy-order-btn:hover {
+  transform: scale(1.15);
+}
