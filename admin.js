@@ -231,32 +231,56 @@ async function loadOrders() {
 
       </div>
 
-    <div class="order-details">
+
+<div class="order-details">
+
+  <div class="customer-info">
+
+    <div>
+      <strong>Cliente:</strong>
+      ${order.customerData.nome}
+    </div>
+
+    <div>
+      <strong>Telefono:</strong>
+      ${order.customerData.telefono}
+    </div>
+
+    <div>
+      <strong>Email:</strong>
+      ${order.customerData.email}
+    </div>
+
+    <div>
+      <strong>Indirizzo:</strong>
+      ${order.customerData.indirizzo || "-"}
+    </div>
+
+  </div>
+
+  <div class="tracking-section">
+
+    <strong>Tracking GLS:</strong>
+
+    <input
+      type="text"
+      class="tracking-input"
+      value="${order.trackingCode || ""}"
+      placeholder="Inserisci tracking"
+    >
+
+    <button
+      class="save-tracking-btn"
+      data-id="${docSnap.id}"
+    >
+      Salva Tracking
+    </button>
+
+  </div>
 
 </div>
 
-<div class="tracking-section">
-
-  <strong>Tracking GLS:</strong>
-
-  <input
-    type="text"
-    class="tracking-input"
-    value="${order.trackingCode || ""}"
-    placeholder="Inserisci tracking"
-  >
-
-  <button
-    class="save-tracking-btn"
-    data-id="${docSnap.id}"
-  >
-    Salva Tracking
-  </button>
-
-</div>
-
-<div class="items-list">
-
+ 
 <div class="items-list">
 
   ${order.orderItems.map(item => `
@@ -351,7 +375,6 @@ orderTop.addEventListener("click", (e) => {
 });
 
 
-    
 /* ---------------------- */
 /* STATUS CHANGE */
 /* ---------------------- */
@@ -371,6 +394,17 @@ statusSelect.addEventListener("change", async () => {
     {
       status: newStatus
     }
+
+  );
+
+  statusSelect.className =
+    `order-status ${getStatusClass(newStatus)}`;
+
+});
+
+/* ---------------------- */
+/* TRACKING GLS */
+/* ---------------------- */
 
 const trackingBtn =
   orderCard.querySelector(".save-tracking-btn");
@@ -401,15 +435,8 @@ if (trackingBtn) {
 
 }
 
-    
-  );
-
-  statusSelect.className =
-    `order-status ${getStatusClass(newStatus)}`;
-
 });
-
-});
+  
 
 totalOrders.textContent =
   total;
