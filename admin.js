@@ -243,8 +243,18 @@ async function loadOrders() {
 
         <div>
 
-          <div class="order-number">
+         <div class="order-number">
+
+            <button
+              class="copy-order-btn"
+              data-order="${order.orderNumber}"
+              title="Copia numero ordine"
+            >
+              📋
+            </button>
+          
             ${order.orderNumber}
+          
           </div>
 
         </div>
