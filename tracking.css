@@ -1,0 +1,59 @@
+body {
+  margin: 0;
+  background: #f8f8f8;
+  font-family: Arial, sans-serif;
+}
+
+.tracking-container {
+  max-width: 900px;
+  margin: 60px auto;
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+.logo {
+  width: 180px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+h1 {
+  color: #1F6556;
+}
+
+.search-box {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+input {
+  flex: 1;
+  height: 50px;
+  padding: 0 15px;
+}
+
+button {
+  height: 50px;
+  padding: 0 20px;
+  background: #1F6556;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.result-card {
+  margin-top: 30px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  padding: 25px;
+}
+
+.status {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 15px;
+}
