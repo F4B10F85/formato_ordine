@@ -849,3 +849,22 @@ option {
   font-weight: 600;
   color: #1f6556;
 }
+
+
+.tracking-section {
+  margin: 15px 0;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.tracking-input {
+  flex: 1;
+  padding: 8px;
+}
+
+.save-tracking-btn {
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
