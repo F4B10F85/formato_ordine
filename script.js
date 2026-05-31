@@ -1926,13 +1926,13 @@ doc.text(
 
    const positions = [
     14,   // Codice
-    62,   // Articolo
-    100,  // Taglia
-    132,  // Altezza
-    152,  // Spessore
-    178,  // Pelle
-    202,  // Foglie
-    226,  // Cristalli
+    57,   // Articolo
+    80,  // Taglia
+    110,  // Altezza
+    130,  // Spessore
+    150,  // Pelle
+    180,  // Foglie
+    205,  // Cristalli
     250,  // Caramella
     279   // Qta
   ];
