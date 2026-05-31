@@ -446,6 +446,8 @@ statusSelect.addEventListener("change", async () => {
   statusSelect.className =
     `order-status ${getStatusClass(newStatus)}`;
 
+  await loadOrders();
+
 });
 
 /* ---------------------- */
