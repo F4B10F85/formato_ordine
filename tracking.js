@@ -41,7 +41,7 @@ async function searchOrder() {
 
     resultBox.innerHTML = `
       <div class="result-card">
-        Ordine non trovato
+        🚧 Ordine non trovato 🚧
       </div>
     `;
 
