@@ -19,51 +19,76 @@ const exportPdfBtn = document.getElementById("exportPdfBtn");
 /* ---------------------- */
 
 const coloriPelle = [
-  "🟡 giallo",
-  "🔴 rosso",
-  "🔵azzurro",
-  "🟠 arancione",
-  "🟢 verde",
-  "⚪ bianco",
-  "🔴 rosa",
-  "🔵 petrolio",
-  "⚫ nero",
-  "🔴 ciliegia",
-  "🟤 marrone",
-  "🟢 salvia",
-  "🟡 beige",
-  "🔵blu",
-  "🔴 bordeaux",
-  "🟣 viola"
+  "giallo",
+  "rosso",
+  "azzurro",
+  "arancione",
+  "verde",
+  "bianco",
+  "rosa",
+  "petrolio",
+  "nero",
+  "ciliegia",
+  "marrone",
+  "salvia",
+  "beige",
+  "blu",
+  "bordeaux",
+  "viola"
 ];
 
 const coloriFoglie = [
-  "❌ SENZA FOGLIE",
-  "⚪ bianco",
-  "🟡 beige",
-  "🔴 bordeaux",
-  "🟤 taupe",
-  "🟠 arancione",
-  "🟢 salvia",
-  "🔵 royal blue",
-  "🔴 rosso",
-  "🟡 giallo",
-  "🟢 verde",
-  "🔵 azzurro",
-  "🔴 rosa",
-  "⚫ nero"
+  "SENZA FOGLIE",
+  "bianco",
+  "beige",
+  "bordeaux",
+  "taupe",
+  "arancione",
+  "salvia",
+  "royal blue",
+  "rosso",
+  "giallo",
+  "verde",
+  "azzurro",
+  "rosa",
+  "nero"
 ];
 
 const coloriCristalli = [
-  "❌ SENZA CRISTALLI",
-  "⚪ bianco",
-  "🔴 rosso",
-  "🟡 topaz",
-  "🟢 verde",
-  "🔵 azzurro",
-  "🔴 rosa",
-  "⚫nero"
+  "SENZA CRISTALLI",
+  "bianco",
+  "rosso",
+  "topaz",
+  "verde",
+  "azzurro",
+  "rosa",
+  "nero"
 ];
+
+
+const pelleLabels = {
+
+  giallo: "🟡 giallo",
+  rosso: "🔴 rosso",
+  azzurro: "🔵 azzurro",
+  arancione: "🟠 arancione",
+  verde: "🟢 verde",
+  bianco: "⚪ bianco",
+  rosa: "🔴 rosa",
+  petrolio: "🔵 petrolio",
+  nero: "⚫ nero",
+  ciliegia: "🔴 ciliegia",
+  marrone: "🟤 marrone",
+  salvia: "🟢 salvia",
+  beige: "🟡 beige",
+  blu: "🔵 blu",
+  bordeaux: "🔴 bordeaux",
+  viola: "🟣 viola"
+
+};
+
+
+
 
 /* ---------------------- */
 /* MAPPE CODICI */
@@ -370,10 +395,13 @@ function createSelect(options, className) {
         Seleziona
       </option>
 
-      ${options.map(option => `
-        <option value="${option}">
-          ${option}
-        </option>
+      <option value="${option}">
+        ${
+          className === "pelle-select"
+            ? (pelleLabels[option] || option)
+            : option
+        }
+      </option>
       `).join("")}
     </select>
   `;
