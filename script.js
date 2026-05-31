@@ -87,8 +87,36 @@ const pelleLabels = {
 
 };
 
+const foglieLabels = {
 
+  "SENZA FOGLIE": "🚫 SENZA FOGLIE",
+  bianco: "⚪ bianco",
+  beige: "🟡 beige",
+  bordeaux: "🔴 bordeaux",
+  taupe: "🟤 taupe",
+  arancione: "🟠 arancione",
+  salvia: "🟢 salvia",
+  "royal blue": "🔵 royal blue",
+  rosso: "🔴 rosso",
+  giallo: "🟡 giallo",
+  verde: "🟢 verde",
+  azzurro: "🔵 azzurro",
+  rosa: "🔴 rosa",
+  nero: "⚫ nero"
 
+};
+
+const cristalliLabels = {
+  "SENZA CRISTALLI": "🚫 SENZA CRISTALLI",
+  bianco: "⚪ bianco",
+  rosso: "🔴 rosso",
+  topaz: "🟡 topaz",
+  verde: "🟢 verde",
+  azzurro: "🔵 azzurro",
+  rosa: "🔴 rosa",
+  nero: "⚫ nero"
+
+};
 
 /* ---------------------- */
 /* MAPPE CODICI */
@@ -400,7 +428,14 @@ function createSelect(options, className) {
           ${
             className === "pelle-select"
               ? (pelleLabels[option] || option)
-              : option
+
+            : className === "foglie-select"
+              ? (foglieLabels[option] || option)
+
+            : className === "cristalli-select"
+              ? (cristalliLabels[option] || option)
+
+            : option
           }
         </option>
       `).join("")}
