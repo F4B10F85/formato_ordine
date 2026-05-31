@@ -418,6 +418,22 @@ async function loadOrders() {
 
    ordersList.appendChild(orderCard);
 
+const copyBtn =
+  orderCard.querySelector(".copy-order-btn");
+
+copyBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  navigator.clipboard.writeText(
+    copyBtn.dataset.order
+  );
+
+  copyBtn.textContent = "✅";
+  setTimeout(() => {
+    copyBtn.textContent = "📋";
+  }, 1000);
+});
+    
+
 const orderTop =
   orderCard.querySelector(".order-top");
 
