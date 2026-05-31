@@ -276,8 +276,6 @@ async function loadOrders() {
       Salva Tracking
     </button>
 
-  </div>
-
 </div>
 
  
