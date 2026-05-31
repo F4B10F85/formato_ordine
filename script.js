@@ -55,7 +55,7 @@ const coloriFoglie = [
 ];
 
 const coloriCristalli = [
-  "🚫 SENZA CRISTALLI",
+  "❌ SENZA CRISTALLI",
   "⚪ bianco",
   "🔴 rosso",
   "🟡 topaz",
