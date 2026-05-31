@@ -2019,11 +2019,81 @@ const codice =
       quantity
     ];
 
-    values.forEach((value, i) => {
+values.forEach((value, i) => {
 
   const colorColumns = [5, 6, 7];
 
+  /* NO FOGLIE */
+
   if (
+    colorColumns.includes(i) &&
+    value === "NO FOGLIE"
+  ) {
+
+    doc.setDrawColor(220, 0, 0);
+    doc.setLineWidth(0.6);
+
+    doc.line(
+      positions[i],
+      y + 1,
+      positions[i] + 3,
+      y + 4
+    );
+
+    doc.line(
+      positions[i] + 3,
+      y + 1,
+      positions[i],
+      y + 4
+    );
+
+    doc.setTextColor(40,40,40);
+
+    doc.text(
+      "NO FOGLIE",
+      positions[i] + 6,
+      y + 4
+    );
+
+  }
+
+  /* NO CRISTALLI */
+
+  else if (
+    colorColumns.includes(i) &&
+    value === "NO CRISTALLI"
+  ) {
+
+    doc.setDrawColor(220, 0, 0);
+    doc.setLineWidth(0.6);
+
+    doc.line(
+      positions[i],
+      y + 1,
+      positions[i] + 3,
+      y + 4
+    );
+
+    doc.line(
+      positions[i] + 3,
+      y + 1,
+      positions[i],
+      y + 4
+    );
+
+    doc.setTextColor(40,40,40);
+
+    doc.text(
+      "NO CRISTALLI",
+      positions[i] + 6,
+      y + 4
+    );
+
+  }
+
+  /* COLORI NORMALI */
+
+  else if (
     colorColumns.includes(i) &&
     pdfColors[value]
   ) {
@@ -2051,7 +2121,11 @@ const codice =
       y + 4
     );
 
-  } else {
+  }
+
+  /* TUTTO IL RESTO */
+
+  else {
 
     doc.text(
       String(value),
