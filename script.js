@@ -38,8 +38,7 @@ const coloriPelle = [
 ];
 
 const coloriFoglie = [
-  "SENZA FOGLIE",
-  
+  "❌ SENZA FOGLIE",
   "⚪ bianco",
   "🟡 beige",
   "🔴 bordeaux",
@@ -56,8 +55,7 @@ const coloriFoglie = [
 ];
 
 const coloriCristalli = [
-  "SENZA CRISTALLI",
-  
+  "🚫 SENZA CRISTALLI",
   "⚪ bianco",
   "🔴 rosso",
   "🟡 topaz",
