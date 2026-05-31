@@ -71,7 +71,10 @@ const shippedOrders =
   document.getElementById("shippedOrders");
 
 
-let allCollapsed = false;
+let allCollapsed = true;
+
+collapseAllBtn.textContent =
+  "📂 Espandi tutti";
 
 collapseAllBtn.addEventListener("click", () => {
 
