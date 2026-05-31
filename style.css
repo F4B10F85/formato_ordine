@@ -866,10 +866,8 @@ option {
   font-size: 14px;
 }
 
-.tracking-section {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 12px;
+.save-tracking-btn {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 6px;
 }
-
