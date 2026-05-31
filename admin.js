@@ -229,6 +229,11 @@ async function loadOrders() {
 
     orderCard.classList.add("order-card");
 
+    if (allCollapsed) {
+      orderCard.classList.add("collapsed");
+    }
+
+    
     orderCard.innerHTML = `
 
       <div class="order-top clickable">
