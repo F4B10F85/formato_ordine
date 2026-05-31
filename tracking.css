@@ -33,6 +33,22 @@ input {
   flex: 1;
   height: 50px;
   padding: 0 15px;
+  border: 1px solid #d7dfe8;
+  border-radius: 15px;
+  background: white;
+  font-size: 14px;
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.04);
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+input:focus {
+  border-color: #1F6556;
+  box-shadow:
+    0 0 0 4px rgba(31,101,86,0.08);
 }
 
 button {
