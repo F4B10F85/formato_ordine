@@ -53,3 +53,110 @@ async function searchOrder() {
 
   renderOrder(order);
 }
+
+
+
+
+function renderOrder(order) {
+
+  const products =
+    order.orderItems
+      .map(item => {
+
+        return `
+          <li>
+            ${item.articolo}
+            (${item.quantita})
+          </li>
+        `;
+      })
+      .join("");
+
+  let trackingButton = "";
+
+  if (
+    order.trackingCode &&
+    order.trackingCode.trim() !== ""
+  ) {
+
+    trackingButton = `
+
+      <p>
+
+        Tracking GLS:
+
+        <strong>
+          ${order.trackingCode}
+        </strong>
+
+      </p>
+
+      <a
+        href="https://www.gls-italy.com/it/ricerca-spedizione"
+        target="_blank">
+
+        <button>
+
+          🚚 Traccia spedizione
+
+        </button>
+
+      </a>
+    `;
+  }
+
+  resultBox.innerHTML = `
+
+    <div class="result-card">
+
+      <h2>
+
+        ${order.orderNumber}
+
+      </h2>
+
+      <div class="status">
+
+        ${order.status}
+
+      </div>
+
+      <p>
+
+        Cliente:
+        ${order.customerData.nome}
+
+      </p>
+
+      <p>
+
+        Data:
+        ${new Date(
+          order.createdAt
+        ).toLocaleDateString("it-IT")}
+
+      </p>
+
+      <h3>
+
+        Articoli
+
+      </h3>
+
+      <ul>
+
+        ${products}
+
+      </ul>
+
+      ${trackingButton}
+
+    </div>
+
+  `;
+}
+
+
+
+
+
