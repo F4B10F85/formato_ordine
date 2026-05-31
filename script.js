@@ -19,22 +19,22 @@ const exportPdfBtn = document.getElementById("exportPdfBtn");
 /* ---------------------- */
 
 const coloriPelle = [
-  "giallo",
-  "arancione",
-  "salvia",
-  "verde",
-  "bianco",
-  "rosso",
-  "ciliegia",
-  "bordeaux",
+  "🟡 giallo",
+  "🔵azzurro",
+  "🟠 arancione",
+  "🟢 verde",
+  "⚪ bianco",
+  "🔴 rosso",
   "rosa",
-  "azzurro",
-  "petrolio",
-  "blu",
-  "nero",
-  "marrone",
-  "beige",
-  "viola"
+  "🔵 petrolio",
+  "🔴 ciliegia",
+  "⚫ nero",
+  "🟤 marrone",
+  "🟢 salvia",
+  "🟡 beige",
+  "🔵blu",
+  "🔴 bordeaux",
+  "🟣 viola"
 ];
 
 const coloriFoglie = [
