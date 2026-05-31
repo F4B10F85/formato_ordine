@@ -38,7 +38,7 @@ const coloriPelle = [
 ];
 
 const coloriFoglie = [
-  "SENZA FOGLIE",
+  "NO FOGLIE",
   "bianco",
   "beige",
   "bordeaux",
@@ -55,7 +55,7 @@ const coloriFoglie = [
 ];
 
 const coloriCristalli = [
-  "SENZA CRISTALLI",
+  "NO CRISTALLI",
   "bianco",
   "rosso",
   "topaz",
@@ -89,7 +89,7 @@ const pelleLabels = {
 
 const foglieLabels = {
 
-  "SENZA FOGLIE": "🚫 SENZA FOGLIE",
+  "NO FOGLIE": "🚫 NO FOGLIE",
   bianco: "⚪ bianco",
   beige: "🟡 beige",
   bordeaux: "🔴 bordeaux",
@@ -107,7 +107,7 @@ const foglieLabels = {
 };
 
 const cristalliLabels = {
-  "SENZA CRISTALLI": "🚫 SENZA CRISTALLI",
+  "NO CRISTALLI": "🚫 NO CRISTALLI",
   bianco: "⚪ bianco",
   rosso: "🔴 rosso",
   topaz: "🟡 topaz",
@@ -2351,7 +2351,7 @@ if (articolo === "poop-bag") {
 
   if (
     foglieValue &&
-    foglieValue !== "SENZA FOGLIE"
+    foglieValue !== "NO FOGLIE"
   ) {
 
     const index =
@@ -2367,7 +2367,7 @@ if (articolo === "poop-bag") {
 
   if (
     cristalliValue &&
-    cristalliValue !== "SENZA CRISTALLI"
+    cristalliValue !== "NO CRISTALLI"
   ) {
 
     const index =
@@ -2657,7 +2657,7 @@ if (codeInput) {
 
   const foglie =
     foglieValue &&
-    foglieValue !== "SENZA FOGLIE"
+    foglieValue !== "NO FOGLIE"
       ? 1
       : 0;
 
@@ -2668,7 +2668,7 @@ if (codeInput) {
 
   const cristalli =
     cristalliValue &&
-    cristalliValue !== "SENZA CRISTALLI"
+    cristalliValue !== "NO CRISTALLI"
       ? 1
       : 0;
 
