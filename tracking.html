@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Traccia Ordine | KiTho</title>
+
+<link rel="stylesheet" href="tracking.css">
+
+</head>
+
+<body>
+
+<div class="tracking-container">
+
+    <img
+      src="logo.png"
+      class="logo"
+      alt="KiTho">
+
+    <h1>Traccia il tuo ordine</h1>
+
+    <p>
+      Inserisci il numero ordine ricevuto via email.
+    </p>
+
+    <div class="search-box">
+
+        <input
+          type="text"
+          id="orderNumberInput"
+          placeholder="KTH-20250725-145522">
+
+        <button id="searchBtn">
+
+          Cerca ordine
+
+        </button>
+
+    </div>
+
+    <div id="resultBox"></div>
+
+</div>
+
+<script type="module" src="tracking.js"></script>
+
+</body>
+</html>
