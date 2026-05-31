@@ -91,17 +91,12 @@ function renderOrder(order) {
 
       </p>
 
-      <a
-        href="https://www.gls-italy.com/it/ricerca-spedizione"
-        target="_blank">
-
-        <button>
-
-          🚚 Traccia spedizione
-
-        </button>
-
-      </a>
+     <button
+  class="track-shipment-btn"
+  data-tracking="${order.trackingCode}"
+>
+  Traccia spedizione
+</button>
     `;
   }
 
