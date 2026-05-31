@@ -54,9 +54,6 @@ async function searchOrder() {
   renderOrder(order);
 }
 
-
-
-
 function renderOrder(order) {
 
   const products =
@@ -69,6 +66,7 @@ function renderOrder(order) {
             (${item.quantita})
           </li>
         `;
+
       })
       .join("");
 
@@ -82,22 +80,19 @@ function renderOrder(order) {
     trackingButton = `
 
       <p>
-
         Tracking GLS:
-
-        <strong>
-          ${order.trackingCode}
-        </strong>
-
+        <strong>${order.trackingCode}</strong>
       </p>
 
-     <button
-  class="track-shipment-btn"
-  data-tracking="${order.trackingCode}"
->
-  Traccia spedizione
-</button>
+      <button
+        class="track-shipment-btn"
+        data-tracking="${order.trackingCode}"
+      >
+        🚚 Traccia spedizione
+      </button>
+
     `;
+
   }
 
   resultBox.innerHTML = `
@@ -105,43 +100,31 @@ function renderOrder(order) {
     <div class="result-card">
 
       <h2>
-
         ${order.orderNumber}
-
       </h2>
 
       <div class="status">
-
         ${order.status}
-
       </div>
 
       <p>
-
         Cliente:
         ${order.customerData.nome}
-
       </p>
 
       <p>
-
         Data:
         ${new Date(
           order.createdAt
         ).toLocaleDateString("it-IT")}
-
       </p>
 
       <h3>
-
         Articoli
-
       </h3>
 
       <ul>
-
         ${products}
-
       </ul>
 
       ${trackingButton}
@@ -149,9 +132,26 @@ function renderOrder(order) {
     </div>
 
   `;
+
+  const trackBtn =
+    document.querySelector(".track-shipment-btn");
+
+  if (trackBtn) {
+
+    trackBtn.addEventListener("click", () => {
+
+      const tracking =
+        trackBtn.dataset.tracking;
+
+      navigator.clipboard.writeText(tracking);
+
+      window.open(
+        "https://www.gls-italy.com/it/ricerca-spedizione",
+        "_blank"
+      );
+
+    });
+
+  }
+
 }
-
-
-
-
-
