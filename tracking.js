@@ -88,7 +88,7 @@ function renderOrder(order) {
         class="track-shipment-btn"
         data-tracking="${order.trackingCode}"
       >
-        🚚 Traccia spedizione
+        🌐 Traccia spedizione
       </button>
 
     `;
