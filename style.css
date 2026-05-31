@@ -855,15 +855,19 @@ option {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: 12px;
+  margin-top: 15px;
 }
 
 .tracking-input {
   width: 180px;
-  padding: 8px 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid #cfcfcf;
+  border-radius: 8px;
+  background: #ffffff;
   font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
 }
 
 .save-tracking-btn {
