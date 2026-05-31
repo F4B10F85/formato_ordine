@@ -45,6 +45,11 @@ input {
     box-shadow 0.2s ease;
 }
 
+#orderNumberInput::placeholder {
+  color: #dbd9d9;
+}
+
+
 input:focus {
   border-color: #1F6556;
   box-shadow:
