@@ -116,6 +116,7 @@ async function loadOrders() {
   let newCount = 0;
   let progressCount = 0;
   let completedCount = 0;
+  let shippedCount = 0;
   
   querySnapshot.forEach(docSnap => {
 
@@ -136,6 +137,9 @@ async function loadOrders() {
       completedCount++;
     }
 
+    if (order.status === "Spedito") {
+      shippedCount++;
+    }
     
     const searchValue =
       searchOrders.value.toLowerCase();
