@@ -1950,7 +1950,9 @@ const thickness =
   "-";
 
 const leather =
-  row.querySelector(".pelle-select")?.value || "-";
+  pelleLabels[
+    row.querySelector(".pelle-select")?.value
+  ] || "-";
 
 const leaves =
   row.querySelector(".foglie-select")?.value ||
