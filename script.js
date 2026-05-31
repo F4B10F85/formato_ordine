@@ -20,15 +20,15 @@ const exportPdfBtn = document.getElementById("exportPdfBtn");
 
 const coloriPelle = [
   "🟡 giallo",
+  "🔴 rosso",
   "🔵azzurro",
   "🟠 arancione",
   "🟢 verde",
   "⚪ bianco",
-  "🔴 rosso",
-  "rosa",
+  "🔴 rosa",
   "🔵 petrolio",
-  "🔴 ciliegia",
   "⚫ nero",
+  "🔴 ciliegia",
   "🟤 marrone",
   "🟢 salvia",
   "🟡 beige",
@@ -40,31 +40,31 @@ const coloriPelle = [
 const coloriFoglie = [
   "SENZA FOGLIE",
   
-  "bianco",
-  "beige",
-  "taupe",
-  "giallo",
-  "arancione",
-  "salvia",
-  "verde",
-  "rosso",
-  "bordeaux",
-  "rosa",
-  "azzurro",
-  "royal blue",
-  "nero"
+  "⚪ bianco",
+  "🟡 beige",
+  "🔴 bordeaux",
+  "🟤 taupe",
+  "🟠 arancione",
+  "🟢 salvia",
+  "🔵 royal blue",
+  "🔴 rosso",
+  "🟡 giallo",
+  "🟢 verde",
+  "🔵 azzurro",
+  "🔴 rosa",
+  "⚫ nero"
 ];
 
 const coloriCristalli = [
   "SENZA CRISTALLI",
   
-  "bianco",
-  "topaz",
-  "verde",
-  "rosso",
-  "rosa",
-  "azzurro",
-  "nero"
+  "⚪ bianco",
+  "🔴 rosso",
+  "🟡 topaz",
+  "🟢 verde",
+  "🔵 azzurro",
+  "🔴 rosa",
+  "⚫nero"
 ];
 
 /* ---------------------- */
