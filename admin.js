@@ -233,30 +233,29 @@ async function loadOrders() {
 
     <div class="order-details">
 
-      <div class="customer-info">
+</div>
 
-        <div>
-          <strong>Cliente:</strong>
-          ${order.customerData.nome}
-        </div>
+<div class="tracking-section">
 
-        <div>
-          <strong>Telefono:</strong>
-          ${order.customerData.telefono}
-        </div>
+  <strong>Tracking GLS:</strong>
 
-        <div>
-          <strong>Email:</strong>
-          ${order.customerData.email}
-        </div>
+  <input
+    type="text"
+    class="tracking-input"
+    value="${order.trackingCode || ""}"
+    placeholder="Inserisci tracking"
+  >
 
-        <div>
-          <strong>Indirizzo:</strong>
-          ${order.customerData.indirizzo || "-"}
-        </div>
+  <button
+    class="save-tracking-btn"
+    data-id="${docSnap.id}"
+  >
+    Salva Tracking
+  </button>
 
+</div>
 
-      </div>
+<div class="items-list">
 
 <div class="items-list">
 
@@ -373,6 +372,36 @@ statusSelect.addEventListener("change", async () => {
       status: newStatus
     }
 
+const trackingBtn =
+  orderCard.querySelector(".save-tracking-btn");
+
+if (trackingBtn) {
+
+  trackingBtn.addEventListener("click", async () => {
+
+    const trackingValue =
+      orderCard.querySelector(".tracking-input").value;
+
+    await updateDoc(
+
+      doc(db, "orders", docSnap.id),
+
+      {
+        trackingCode: trackingValue,
+        status: "Spedito"
+      }
+
+    );
+
+    alert("Tracking salvato");
+
+    loadOrders();
+
+  });
+
+}
+
+    
   );
 
   statusSelect.className =
