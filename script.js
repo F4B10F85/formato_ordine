@@ -118,6 +118,31 @@ const cristalliLabels = {
 
 };
 
+const pdfColors = {
+  giallo: [255, 220, 0],
+  rosso: [220, 0, 0],
+  azzurro: [0, 140, 255],
+  arancione: [255, 140, 0],
+  verde: [0, 180, 0],
+  bianco: [255, 255, 255],
+  rosa: [255, 105, 180],
+  petrolio: [0, 95, 115],
+  nero: [30, 30, 30],
+  ciliegia: [180, 0, 40],
+  marrone: [120, 70, 15],
+  salvia: [140, 170, 130],
+  beige: [230, 210, 170],
+  blu: [0, 0, 180],
+  bordeaux: [128, 0, 32],
+  viola: [128, 0, 255],
+  taupe: [145, 129, 109],
+  topaz: [255, 200, 60],
+  "royal blue": [65, 105, 225]
+};
+
+
+
+
 /* ---------------------- */
 /* MAPPE CODICI */
 /* ---------------------- */
@@ -1950,9 +1975,7 @@ const thickness =
   "-";
 
 const leather =
-  pelleLabels[
-    row.querySelector(".pelle-select")?.value
-  ] || "-";
+  row.querySelector(".pelle-select")?.value || "-";
 
 const leaves =
   row.querySelector(".foglie-select")?.value ||
@@ -1998,12 +2021,47 @@ const codice =
 
     values.forEach((value, i) => {
 
-      doc.text(
-        String(value),
-        positions[i],
-        y + 4
-      );
-    });
+  const colorColumns = [5, 6, 7];
+
+  if (
+    colorColumns.includes(i) &&
+    pdfColors[value]
+  ) {
+
+    const color = pdfColors[value];
+
+    doc.setFillColor(
+      color[0],
+      color[1],
+      color[2]
+    );
+
+    doc.circle(
+      positions[i] + 2,
+      y + 2.5,
+      1.5,
+      "F"
+    );
+
+    doc.setTextColor(40,40,40);
+
+    doc.text(
+      String(value),
+      positions[i] + 6,
+      y + 4
+    );
+
+  } else {
+
+    doc.text(
+      String(value),
+      positions[i],
+      y + 4
+    );
+
+  }
+
+});
 
     y += 8;
 
