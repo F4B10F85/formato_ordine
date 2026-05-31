@@ -395,14 +395,16 @@ function createSelect(options, className) {
         Seleziona
       </option>
 
-      <option value="${option}">
-        ${
-          className === "pelle-select"
-            ? (pelleLabels[option] || option)
-            : option
-        }
-      </option>
+      ${options.map(option => `
+        <option value="${option}">
+          ${
+            className === "pelle-select"
+              ? (pelleLabels[option] || option)
+              : option
+          }
+        </option>
       `).join("")}
+
     </select>
   `;
 }
