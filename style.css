@@ -624,6 +624,7 @@ option {
 
 .items-list {
   border-top: 1px solid #ececec;
+  margin-top: 20px;
   padding-top: 18px;
 }
 
