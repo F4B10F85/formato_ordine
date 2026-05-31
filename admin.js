@@ -64,7 +64,8 @@ const progressOrders =
 const completedOrders =
   document.getElementById("completedOrders");
 
-
+const shippedOrders =
+  document.getElementById("shippedOrders");
 
 
 /* ---------------------- */
@@ -452,6 +453,8 @@ progressOrders.textContent =
 completedOrders.textContent =
   completedCount;
 
+shippedOrders.textContent =
+  shippedCount;  
   
 }
 
