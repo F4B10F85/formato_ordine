@@ -1577,6 +1577,7 @@ await addDoc(
     createdAt:
       new Date().toISOString(),
     status: "Nuovo",
+    trackingCode: "",
     customerData,
     orderItems
   }
