@@ -55,6 +55,9 @@ const statusFilter =
 const totalOrders =
   document.getElementById("totalOrders");
 
+const collapseAllBtn =
+  document.getElementById("collapseAllBtn");
+
 const newOrders =
   document.getElementById("newOrders");
 
@@ -66,6 +69,41 @@ const completedOrders =
 
 const shippedOrders =
   document.getElementById("shippedOrders");
+
+
+let allCollapsed = false;
+
+collapseAllBtn.addEventListener("click", () => {
+
+  const cards =
+    document.querySelectorAll(".order-card");
+
+  if (!allCollapsed) {
+
+    cards.forEach(card => {
+      card.classList.add("collapsed");
+    });
+
+    collapseAllBtn.textContent =
+      "📂 Espandi tutti";
+
+    allCollapsed = true;
+
+  } else {
+
+    cards.forEach(card => {
+      card.classList.remove("collapsed");
+    });
+
+    collapseAllBtn.textContent =
+      "📦 Comprimi tutti";
+
+    allCollapsed = false;
+
+  }
+
+});
+
 
 
 /* ---------------------- */
