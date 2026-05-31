@@ -1842,7 +1842,7 @@ doc.line(12, 38, 285, 38);
 doc.setFillColor(250,250,250);
 
 doc.roundedRect(
-  12,
+  10,
   44,
   277,
   30,
