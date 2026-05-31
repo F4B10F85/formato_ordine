@@ -1927,12 +1927,12 @@ doc.text(
    const positions = [
     14,   // Codice
     57,   // Articolo
-    80,  // Taglia
-    110,  // Altezza
-    130,  // Spessore
-    150,  // Pelle
-    180,  // Foglie
-    205,  // Cristalli
+    85,  // Taglia
+    120,  // Altezza
+    140,  // Spessore
+    160,  // Pelle
+    185,  // Foglie
+    215,  // Cristalli
     250,  // Caramella
     279   // Qta
   ];
