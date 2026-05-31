@@ -1927,7 +1927,7 @@ doc.text(
    const positions = [
     14,   // Codice
     57,   // Articolo
-    85,  // Taglia
+    90,  // Taglia
     120,  // Altezza
     140,  // Spessore
     160,  // Pelle
