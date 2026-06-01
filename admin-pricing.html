@@ -319,13 +319,6 @@ importBtn.addEventListener("click", async ()=>{
   }
 await clearPricingRules();
 
-console.log("SPINNER ATTIVO");
-
-  setImportStatus(
-  "Importazione CSV in corso...",
-  true
-);
-  
   const text =
     await file.text();
 
