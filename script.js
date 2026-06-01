@@ -2685,8 +2685,6 @@ testFirestore();
 
 async function findPrice(config) {
 
-console.log("CONFIG RICERCA:", config);
-  
   const q = query(
     collection(db, "pricingRules"),
     where("articolo", "==", config.articolo),
