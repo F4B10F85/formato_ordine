@@ -924,3 +924,43 @@ option {
 .copy-order-btn:hover {
   transform: scale(1.15);
 }
+
+#csvFile {
+  padding: 12px;
+  background: white;
+  border: 2px dashed #1f6556;
+  border-radius: 12px;
+  font-size: 14px;
+  color: #1f6556;
+  cursor: pointer;
+  width: 420px;
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.05);
+}
+
+#csvFile:hover {
+  background: #f8fbfa;
+}
+
+#importBtn {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 12px;
+  background: #1f6556;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow:
+    0 4px 14px rgba(31,101,86,0.25);
+}
+
+#importBtn:hover {
+  transform: translateY(-1px);
+  background: #277a68;
+}
+
+#importBtn:active {
+  transform: translateY(1px);
+}
