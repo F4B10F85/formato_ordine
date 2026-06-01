@@ -1438,6 +1438,8 @@ const customerAddress =
 
   let productsMap = {};
 
+  let totalValue = 0;
+
   rows.forEach(row => {
 
     const articoloSelect =
@@ -1452,7 +1454,7 @@ const customerAddress =
       parseInt(
         row.querySelector(".quantity-input")?.value
       ) || 0;
-
+   
     totalQuantity += quantity;
 
     if (articolo) {
@@ -1465,6 +1467,22 @@ const customerAddress =
       productsMap[articolo] += quantity || 1;
     }
 
+const priceText =
+  row.querySelector(".price-value")
+    ?.textContent || "";
+
+const unitPrice =
+  parseFloat(
+    priceText
+      .replace("€", "")
+      .replace(",", ".")
+      .trim()
+  ) || 0;
+
+totalValue += unitPrice * quantity;
+
+
+    
     /* CONTROLLO COMPLETEZZA */
 
     const requiredFields = [
@@ -1499,6 +1517,19 @@ const customerAddress =
 
   summaryIncomplete.textContent =
     incompleteRows;
+
+  const summaryTotal =
+    document.getElementById("summaryTotal");
+  
+  if (summaryTotal) {
+  
+    summaryTotal.textContent =
+      `${totalValue
+        .toFixed(2)
+        .replace(".", ",")} €`;
+  
+  }
+  
 
   /* ELENCO ARTICOLI */
 
@@ -2765,8 +2796,8 @@ if (codeInput) {
     priceBox.textContent =
       `${prezzo.toFixed(2).replace(".", ",")} €`;
   } else {
-    priceBox.textContent =
-      "—";
+    priceBox.textContent = "—";
   }
+  updateSummary();
 }
 
