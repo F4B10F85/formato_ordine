@@ -17,19 +17,46 @@
       margin-bottom:20px;
     }
 
-    button{
-      padding:12px 20px;
-      border:none;
-      background:#1f6556;
-      color:white;
-      cursor:pointer;
-      border-radius:6px;
-      font-size:16px;
-    }
+#importBtn{
+  height:56px;
+  padding:0 24px;
+  border:none;
+  border-radius:16px;
+  background:#1f6556;
+  color:white;
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all .2s ease;
+  box-shadow:
+    0 4px 14px rgba(31,101,86,.25);
+}
 
-    button:hover{
-      opacity:0.9;
-    }
+#importBtn:hover{
+  transform:translateY(-2px);
+  background:#277a68;
+}
+
+#importBtn:active{
+  transform:scale(.97);
+}
+
+#csvFile{
+  width:420px;
+  padding:14px;
+  background:white;
+  border:2px dashed #1f6556;
+  border-radius:16px;
+  font-size:14px;
+  color:#1f6556;
+  cursor:pointer;
+  box-shadow:
+    0 4px 12px rgba(0,0,0,.05);
+}
+
+#csvFile:hover{
+  background:#f8fbfa;
+}
 
     #log{
       margin-top:30px;
@@ -44,50 +71,31 @@
 
 
 #importStatus{
-
   margin-top:20px;
-
   padding:16px 20px;
-
   border-radius:14px;
-
   background:white;
-
   display:none;
-
   align-items:center;
-
   gap:12px;
-
   font-size:14px;
-
   font-weight:600;
-
   color:#1f6556;
-
   box-shadow:
     0 4px 18px rgba(0,0,0,0.08);
 
 }
 
 .spinner{
-
   width:18px;
-
   height:18px;
-
   border:3px solid #d9d9d9;
-
   border-top:3px solid #1f6556;
-
   border-radius:50%;
-
   animation:spin 0.8s linear infinite;
-
 }
 
 @keyframes spin{
-
   from{
     transform:rotate(0deg);
   }
