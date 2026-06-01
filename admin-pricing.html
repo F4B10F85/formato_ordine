@@ -278,7 +278,30 @@ function setImportStatus(message, loading = false){
 
 }
 
+function setProgress(current,total){
 
+  const percent =
+    Math.round((current / total) * 100);
+
+  const box =
+    document.getElementById("importStatus");
+
+  box.style.display = "flex";
+
+  box.innerHTML = `
+    <div class="progress-text">
+      Importazione ${current} / ${total}
+      (${percent}%)
+    </div>
+
+    <div class="progress-container">
+      <div
+        class="progress-bar"
+        style="width:${percent}%"
+      ></div>
+    </div>
+  `;
+}
   
 importBtn.addEventListener("click", async ()=>{
 
@@ -308,6 +331,8 @@ console.log("SPINNER ATTIVO");
 
   const rows =
     parseCSV(text);
+
+  setProgress(0, rows.length);
 
   writeLog(`Trovate ${rows.length} righe`);
 
@@ -358,6 +383,8 @@ console.log("SPINNER ATTIVO");
 
       imported++;
 
+    setProgress(imported, rows.length);
+      
       writeLog(
         `✔ IMPORTATA: ${data.articolo} / ${data.taglia}`
       );
@@ -378,9 +405,14 @@ console.log("SPINNER ATTIVO");
   writeLog(`IMPORT COMPLETATO`);
   writeLog(`Totale importate: ${imported}`);
 
-  setImportStatus(
-  `IMPORT COMPLETATO · ${rows.length} regole importate`
-);
+  document.getElementById(
+  "importStatus"
+).innerHTML = `
+  <div class="progress-text">
+    ✅ Import completato
+    (${rows.length} regole)
+  </div>
+`;
 
   
 });
