@@ -14,6 +14,17 @@ const userType =
 const isShop =
   userType === "shop";
 
+document.addEventListener("DOMContentLoaded", () => {
+  if (!isShop) {
+    const priceHeader =
+      document.querySelector(".price-header");
+    if (priceHeader) {
+      priceHeader.style.display = "none";
+    }
+  }
+});
+
+
 const orderRows = document.getElementById("orderRows");
 const addRowBtn = document.getElementById("addRowBtn");
 const clearAllBtn = document.getElementById("clearAllBtn");
