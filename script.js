@@ -1971,19 +1971,32 @@ doc.text(
 
   doc.setFont("helvetica", "bold");
 
-  const headers = [
-    "Codice",
-    "Articolo",
-    "Taglia",
-    "Altezza",
-    "Spessore",
-    "Pelle",
-    "Foglie",
-    "Cristalli",
-    "Caramella",
-    "Qtà",
-    "Tot. €"
-  ];
+  const headers = isShop
+  ? [
+      "Codice",
+      "Articolo",
+      "Taglia",
+      "Altezza",
+      "Spessore",
+      "Pelle",
+      "Foglie",
+      "Cristalli",
+      "Caramella",
+      "Qtà",
+      "Tot. €"
+    ]
+  : [
+      "Codice",
+      "Articolo",
+      "Taglia",
+      "Altezza",
+      "Spessore",
+      "Pelle",
+      "Foglie",
+      "Cristalli",
+      "Caramella",
+      "Qtà"
+    ];
 
    const positions = [
     9,   // Codice
@@ -2101,7 +2114,8 @@ if (notes.trim() !== "") {
 
 }
 
-    const values = [
+    const values = isShop
+  ? [
       codice,
       article,
       size,
@@ -2113,6 +2127,18 @@ if (notes.trim() !== "") {
       candy,
       quantity,
       totalRow.toFixed(2).replace(".", ",") + " €"
+    ]
+  : [
+      codice,
+      article,
+      size,
+      height,
+      thickness,
+      leather,
+      leaves,
+      crystals,
+      candy,
+      quantity
     ];
 
 values.forEach((value, i) => {
