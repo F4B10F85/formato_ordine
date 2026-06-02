@@ -1873,9 +1873,9 @@ doc.line(12, 38, 285, 38);
 doc.setFillColor(250,250,250);
 
 doc.roundedRect(
-  10,
+  5,
   44,
-  277,
+  287,
   30,
   3,
   3,
@@ -1934,7 +1934,7 @@ doc.text(
 
   doc.setFillColor(31, 101, 86);
 
-  doc.rect(10, y, 277, 10, "F");
+  doc.rect(5, y, 287, 8, "F");
 
   doc.setTextColor(255,255,255);
 
@@ -1957,17 +1957,17 @@ doc.text(
   ];
 
    const positions = [
-    14,   // Codice
-    57,   // Articolo
-    90,  // Taglia
-    120,  // Altezza
-    140,  // Spessore
-    160,  // Pelle
-    185,  // Foglie
-    215,  // Cristalli
-    250,  // Caramella
-    272,   // Qta
-    286,   // Totale €
+    9,   // Codice
+    52,   // Articolo
+    85,  // Taglia
+    115,  // Altezza
+    135,  // Spessore
+    155,  // Pelle
+    180,  // Foglie
+    207,  // Cristalli
+    238,  // Caramella
+    260,   // Qta
+    275,   // Totale €
   ];
 
   headers.forEach((header, index) => {
