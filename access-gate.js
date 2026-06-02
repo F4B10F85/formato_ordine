@@ -29,6 +29,11 @@ const loginError =
 
 privateBtn.addEventListener("click", () => {
 
+  sessionStorage.setItem(
+    "userType",
+    "private"
+  );
+
   overlay.style.display = "none";
 
 });
@@ -62,7 +67,12 @@ loginBtn.addEventListener("click", async () => {
       email,
       password
     );
-
+    
+    sessionStorage.setItem(
+      "userType",
+      "shop"
+    );
+    
     overlay.style.display = "none";
 
   } catch (error) {
