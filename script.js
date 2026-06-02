@@ -1867,11 +1867,13 @@ doc.line(12, 38, 285, 38);
 
 
 /* ---------------------- */
-/* BOX DATI CLIENTE */
+/* BOX DATI CLIENTE PER ESPORTAZIONE ORDINE IN PDF */
 /* ---------------------- */
 
-doc.setFillColor(250,250,250);
 
+doc.setFillColor(250,250,250);
+doc.setDrawColor(170,215,205);
+doc.setLineWidth(0.1);
 doc.roundedRect(
   5,
   44,
@@ -1879,7 +1881,7 @@ doc.roundedRect(
   30,
   3,
   3,
-  "F"
+  "FD"
 );
 
 doc.setFont("helvetica", "bold");
