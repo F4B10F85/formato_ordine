@@ -2052,7 +2052,7 @@ const codice =
 
       doc.setFillColor(248,249,251);
 
-      doc.rect(10, y - 1, 277, 8, "F");
+      doc.rect(5, y - 1, 287, 8, "F");
     }
 
     const values = [
@@ -2156,11 +2156,13 @@ values.forEach((value, i) => {
       color[2]
     );
 
+    doc.setDrawColor(120,120,120);
+
     doc.circle(
       positions[i] + 2,
       y + 2.5,
       1.5,
-      "F"
+      "FD"
     );
 
     doc.setTextColor(40,40,40);
