@@ -925,4 +925,6 @@ option {
   transform: scale(1.15);
 }
 
-
+.private-user .price-box {
+  display: none !important;
+}
