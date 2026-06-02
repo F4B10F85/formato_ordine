@@ -1952,7 +1952,8 @@ doc.text(
     "Foglie",
     "Cristalli",
     "Caramella",
-    "Qtà"
+    "Qtà",
+    "Tot. €"
   ];
 
    const positions = [
@@ -1965,7 +1966,8 @@ doc.text(
     185,  // Foglie
     215,  // Cristalli
     250,  // Caramella
-    279   // Qta
+    272,   // Qta
+    286,   // Totale €
   ];
 
   headers.forEach((header, index) => {
@@ -2024,6 +2026,22 @@ const candy =
 const quantity =
   row.querySelector(".quantity-input")?.value || "-";
 
+const priceText =
+  row.querySelector(".price-value")
+    ?.textContent || "0";
+
+const unitPrice =
+  parseFloat(
+    priceText
+      .replace("€","")
+      .replace(",",".")
+      .trim()
+  ) || 0;
+
+const totalRow =
+  unitPrice *
+  (parseInt(quantity) || 0);
+
 const codice =
   row.querySelector(".product-code-input")?.value || "-";    
     
@@ -2047,7 +2065,8 @@ const codice =
       leaves,
       crystals,
       candy,
-      quantity
+      quantity,
+      totalRow.toFixed(2).replace(".", ",") + " €"
     ];
 
 values.forEach((value, i) => {
