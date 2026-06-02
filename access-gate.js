@@ -43,9 +43,7 @@ privateBtn.addEventListener("click", () => {
 /* ---------------------- */
 
 shopBtn.addEventListener("click", () => {
-
   shopLoginBox.classList.remove("hidden");
-
 });
 
 /* ---------------------- */
