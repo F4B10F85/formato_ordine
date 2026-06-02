@@ -1873,12 +1873,12 @@ doc.line(12, 38, 285, 38);
 
 doc.setFillColor(250,250,250);
 doc.setDrawColor(170,215,205);
-doc.setLineWidth(0.1);
+doc.setLineWidth(0.2);
 doc.roundedRect(
   5,
   44,
   287,
-  30,
+  25,
   3,
   3,
   "FD"
