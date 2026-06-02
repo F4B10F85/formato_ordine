@@ -12,6 +12,7 @@ const orderRows = document.getElementById("orderRows");
 const addRowBtn = document.getElementById("addRowBtn");
 const clearAllBtn = document.getElementById("clearAllBtn");
 const validateBtn = document.getElementById("validateBtn");
+const previewPdfBtn = document.getElementById("previewPdfBtn");
 const exportPdfBtn = document.getElementById("exportPdfBtn");
 
 /* ---------------------- */
@@ -1594,10 +1595,10 @@ function generateOrderNumber() {
 
 
 /* ---------------------- */
-/* ESPORTAZIONE PDF */
+/* PREPARAZIONE ESPORTAZIONE PDF */
 /* ---------------------- */
 
-async function exportPDF() {
+async function buildPDF() {
 
   const { jsPDF } = window.jspdf;
 
@@ -1685,33 +1686,6 @@ document
 
   });
 
-/* SALVATAGGIO FIREBASE */
-
-try {
-
-await addDoc(
-  collection(db, "orders"),
-  {
-    orderNumber,
-    createdAt:
-      new Date().toISOString(),
-    status: "Nuovo",
-    trackingCode: "",
-    customerData,
-    orderItems
-  }
-
-);
-
-  console.log(
-    "Ordine salvato su Firebase"
-  );
-} catch (error) {
-  console.error(
-    "Errore Firebase:",
-    error
-  );
-}
 
 
 
@@ -1734,40 +1708,6 @@ const customerEmail =
 const customerAddress =
   document.getElementById("customerAddress")?.value || "-";
 
-/* TELEGRAM */
-
-const telegramMessage =
-
-`🛒 NUOVO ORDINE
-
-Ordine:
-${orderNumber}
-
-Cliente:
-${customerName}
-
-Telefono:
-${customerPhone}
-
-Email
-${customerEmail}
-
-Indirizzo:
-${customerAddress}
-
-Articoli:
-${orderItems.length}
-
-Totale pezzi:
-${orderItems.reduce((sum, item) =>
-  sum + Number(item.quantita || 0), 0
-)}
-
-`;
-
-sendTelegramMessage(
-  telegramMessage
-);
   
 /* ---------------------- */
 /* LOGO */
@@ -1867,19 +1807,21 @@ doc.line(12, 38, 285, 38);
 
 
 /* ---------------------- */
-/* BOX DATI CLIENTE */
+/* BOX DATI CLIENTE PER ESPORTAZIONE ORDINE IN PDF */
 /* ---------------------- */
 
-doc.setFillColor(250,250,250);
 
+doc.setFillColor(250,250,250);
+doc.setDrawColor(170,215,205);
+doc.setLineWidth(0.2);
 doc.roundedRect(
-  10,
+  5,
   44,
-  277,
-  30,
+  287,
+  25,
   3,
   3,
-  "F"
+  "FD"
 );
 
 doc.setFont("helvetica", "bold");
@@ -1928,13 +1870,13 @@ doc.text(
 
   const rows = document.querySelectorAll(".order-row");
 
-  let y = 76;
+  let y = 71;
 
   /* HEADER TABELLA */
 
   doc.setFillColor(31, 101, 86);
 
-  doc.rect(10, y, 277, 10, "F");
+  doc.rect(5, y, 287, 8, "F");
 
   doc.setTextColor(255,255,255);
 
@@ -1957,17 +1899,17 @@ doc.text(
   ];
 
    const positions = [
-    14,   // Codice
-    57,   // Articolo
-    90,  // Taglia
-    120,  // Altezza
-    140,  // Spessore
-    160,  // Pelle
-    185,  // Foglie
-    215,  // Cristalli
-    250,  // Caramella
-    272,   // Qta
-    286,   // Totale €
+    9,   // Codice
+    52,   // Articolo
+    85,  // Taglia
+    115,  // Altezza
+    135,  // Spessore
+    155,  // Pelle
+    180,  // Foglie
+    207,  // Cristalli
+    238,  // Caramella
+    265,   // Qta
+    275,   // Totale €
   ];
 
   headers.forEach((header, index) => {
@@ -1988,7 +1930,18 @@ doc.text(
   doc.setFont("helvetica", "normal");
 
   rows.forEach((row, index) => {
-  
+
+const notes =
+  row.querySelector("textarea")?.value || "";
+
+let rowHeight = 8;
+
+if (notes.trim() !== "") {
+  rowHeight += 6;
+}
+
+const baseY = y;
+    
     const article =
   row.querySelector(".articolo-select")?.selectedOptions[0]?.text || "-";
 
@@ -2052,7 +2005,7 @@ const codice =
 
       doc.setFillColor(248,249,251);
 
-      doc.rect(10, y - 1, 277, 8, "F");
+      doc.rect(5, y - 1, 287, rowHeight, "F");
     }
 
     const values = [
@@ -2156,12 +2109,27 @@ values.forEach((value, i) => {
       color[2]
     );
 
-    doc.circle(
-      positions[i] + 2,
-      y + 2.5,
-      1.5,
-      "F"
-    );
+if (value === "bianco") {
+
+  doc.setDrawColor(120,120,120);
+  doc.setLineWidth(0.05);
+  doc.circle(
+    positions[i] + 2,
+    y + 2.5,
+    1.5,
+    "FD"
+  );
+
+} else {
+
+  doc.circle(
+    positions[i] + 2,
+    y + 2.5,
+    1.5,
+    "F"
+  );
+
+}
 
     doc.setTextColor(40,40,40);
 
@@ -2187,12 +2155,8 @@ values.forEach((value, i) => {
 
 });
 
-    y += 8;
-
+    
     /* EVENTUALI NOTE DA STAMPARSI SUL PDF NELLA TABELLA SOTTO LA RIGA CORRISPONDENTE */
-
-const notes =
-  row.querySelector("textarea")?.value || "";
 
 if (notes.trim() !== "") {
 
@@ -2203,16 +2167,27 @@ if (notes.trim() !== "") {
   doc.text(
     `Note: ${notes}`,
     16,
-    y + 2
+    baseY + 10
   );
-
-  y += 6;
 
   doc.setFontSize(9);
 
   doc.setTextColor(40,40,40);
 }
 
+/* RIGA ORIZZONTALE NELLA TABELLA PDF CHE VISUALIZZA LE DIFFERENTI RIGHE */
+    
+doc.setDrawColor(170,215,205);
+doc.setLineWidth(0.1);
+
+doc.line(
+  5,
+  y + rowHeight -1,
+  292,
+  y + rowHeight -1
+);
+
+y += rowHeight;
 
     
     /* nuova pagina */
@@ -2319,49 +2294,116 @@ doc.text(
 
   /* SAVE */
 
-  doc.save("ordine_cliente.pdf");
+  return doc;
 }
 
 
 /* ---------------------- */
-/* TELEGRAM */
+/* ANTEPRIMA PDF */
 /* ---------------------- */
 
-async function sendTelegramMessage(message) {
 
-  const botToken =
-    "8748631211:AAGc8L-Nkq_quwD916guXBowHd7hmZ-eKOE";
+async function previewPDF() {
 
-  const chatId =
-    "875666150";
+  const doc =
+    await buildPDF();
 
-  const url =
-    `https://api.telegram.org/bot${botToken}/sendMessage`;
-  try {
-    await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text: message
-      })
+  const pdfBlob =
+    doc.output("blob");
 
-    });
+  const pdfUrl =
+    URL.createObjectURL(pdfBlob);
 
-    console.log(
-      "Messaggio Telegram inviato"
-    );
+  window.open(
+    pdfUrl,
+    "_blank"
+  );
 
-  } catch (error) {
+}
 
-    console.error(
-      "Errore Telegram:",
-      error
-    );
+
+/* ---------------------- */
+/* ESPORTAZIONE PDF */
+/* ---------------------- */
+
+async function exportPDF() {
+
+  /* SALVATAGGIO FIREBASE */
+
+try {
+
+await addDoc(
+  collection(db, "orders"),
+  {
+    orderNumber,
+    createdAt:
+      new Date().toISOString(),
+    status: "Nuovo",
+    trackingCode: "",
+    customerData,
+    orderItems
   }
+
+);
+
+  console.log(
+    "Ordine salvato su Firebase"
+  );
+} catch (error) {
+  console.error(
+    "Errore Firebase:",
+    error
+  );
 }
+
+/* TELEGRAM */
+
+const telegramMessage =
+
+`🛒 NUOVO ORDINE
+
+Ordine:
+${orderNumber}
+
+Cliente:
+${customerName}
+
+Telefono:
+${customerPhone}
+
+Email
+${customerEmail}
+
+Indirizzo:
+${customerAddress}
+
+Articoli:
+${orderItems.length}
+
+Totale pezzi:
+${orderItems.reduce((sum, item) =>
+  sum + Number(item.quantita || 0), 0
+)}
+
+`;
+
+sendTelegramMessage(
+  telegramMessage
+);
+
+  const doc =
+    await buildPDF();
+  
+  doc.save(
+    "ordine_cliente.pdf"
+  );
+
+}
+
+
+
+
+
 
 /* ---------------------- */
 /* GENERAZIONE CODICE ARTICOLO */
@@ -2522,6 +2564,51 @@ return `KT.${articleCode}.${sizeCode}.${leatherCode}.${foglieCode}.${cristalliCo
 
 }
 
+/* ---------------------- */
+/* EXPORT ANTEPRIMA PDF */
+/* ---------------------- */
+
+previewPdfBtn.addEventListener(
+  "click",
+  async () => {
+
+    const valid =
+      validateOrder();
+
+    if (!valid) {
+
+      alert(
+        "Compila tutti i campi obbligatori."
+      );
+
+      return;
+    }
+
+    await previewPDF();
+
+  }
+);
+
+exportPdfBtn.addEventListener(
+  "click",
+  async () => {
+
+    const valid =
+      validateOrder();
+
+    if (!valid) {
+
+      alert(
+        "Compila tutti i campi obbligatori prima di esportare il PDF."
+      );
+
+      return;
+    }
+
+    await exportPDF();
+
+  }
+);
 
 
 
@@ -2738,6 +2825,16 @@ async function findPrice(config) {
 
 async function updateRowPrice(row) {
 
+  const userType =
+  sessionStorage.getItem("userType");
+  
+  if (userType !== "shop") {
+    return;
+  }
+
+
+
+  
   const articoloSelect =
     row.querySelector(".articolo-select");
 
