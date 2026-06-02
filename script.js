@@ -2051,11 +2051,16 @@ const codice =
     /* sfondo alternato */
 
     if (index % 2 === 0) {
-
       doc.setFillColor(248,249,251);
+      doc.rect(
+        5,
+        baseY - 1,
+        287,
+        rowHeight,
+        "F"
+      );
 
-      doc.rect(5, y - 1, 287, 8, "F");
-    }
+}
 
     const values = [
       codice,
@@ -2204,13 +2209,21 @@ if (value === "bianco") {
 
 });
 
+
+/* PREPARAZIONE EVENTUALI NOTE DA STAMPARSI SUL PDF NELLA TABELLA SOTTO LA RIGA CORRISPONDENTE */
     
-/* EVENTUALI NOTE DA STAMPARSI SUL PDF NELLA TABELLA SOTTO LA RIGA CORRISPONDENTE */
+    const notes =
+  row.querySelector("textarea")?.value || "";
+
+const baseY = y;
 
 let rowHeight = 8;
-    
-const notes =
-  row.querySelector("textarea")?.value || "";
+
+if (notes.trim() !== "") {
+  rowHeight += 6;
+}
+
+/* EVENTUALI NOTE DA STAMPARSI SUL PDF NELLA TABELLA SOTTO LA RIGA CORRISPONDENTE */
 
 if (notes.trim() !== "") {
 
@@ -2221,29 +2234,31 @@ if (notes.trim() !== "") {
   doc.text(
     `Note: ${notes}`,
     16,
-    y + 2
+    baseY + 10
   );
-
-  y += 6;
 
   doc.setFontSize(9);
 
   doc.setTextColor(40,40,40);
 }
 
-y += rowHeight;
-    
 /* RIGA ORIZZONTALE NELLA TABELLA PDF CHE VISUALIZZA LE DIFFERENTI RIGHE */
-    
+
 doc.setDrawColor(170,215,205);
+
 doc.setLineWidth(0.1);
 
 doc.line(
   5,
-  y + rowHeight - 1,
+  baseY + rowHeight,
   292,
-  y + rowHeight - 1
+  baseY + rowHeight
 );
+
+y += rowHeight;
+
+  
+    
     
     /* nuova pagina */
 
