@@ -29,11 +29,6 @@ const loginError =
 
 privateBtn.addEventListener("click", () => {
 
-  sessionStorage.setItem(
-    "userType",
-    "private"
-  );
-
   overlay.style.display = "none";
 
 });
