@@ -496,6 +496,10 @@ function createOrderRow() {
 
   row.classList.add("order-row");
 
+  if (!isShop) {
+  row.classList.add("private-user");
+  }
+
   row.innerHTML = `
 
     <!-- ARTICOLO -->
