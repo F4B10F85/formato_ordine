@@ -2354,44 +2354,742 @@ doc.text(
 
 
 /* ---------------------- */
-/* TELEGRAM */
+/* VISUALIZZAZIONE ESPORTAZIONE PDF */
 /* ---------------------- */
 
-async function sendTelegramMessage(message) {
+async function previewPDF() {
 
-  const botToken =
-    "8748631211:AAGc8L-Nkq_quwD916guXBowHd7hmZ-eKOE";
+  const { jsPDF } = window.jspdf;
 
-  const chatId =
-    "875666150";
+  const doc = new jsPDF({
 
-  const url =
-    `https://api.telegram.org/bot${botToken}/sendMessage`;
-  try {
-    await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text: message
-      })
+    orientation: "landscape",
 
+    unit: "mm",
+
+    format: "a4"
+  });
+
+  const orderNumber =
+  generateOrderNumber();
+
+  const customerData = {
+
+  nome:
+    document.getElementById("customerName")?.value || "",
+
+  telefono:
+    document.getElementById("customerPhone")?.value || "",
+
+  email:
+    document.getElementById("customerEmail")?.value || "",
+
+  indirizzo:
+  document.getElementById("customerAddress")?.value || ""
+
+};
+
+const orderItems = [];
+
+document
+  .querySelectorAll(".order-row")
+  .forEach(row => {
+
+    orderItems.push({
+    
+      articolo:
+        row.querySelector(".articolo-select")
+          ?.selectedOptions[0]?.text || "",
+    
+      taglia:
+        row.querySelector(".taglia-select")?.value ||
+        row.querySelector(".taglia-box input")?.value ||
+        "",
+    
+      altezza:
+        row.querySelector(".altezza-select")?.value ||
+        row.querySelector(".altezza-input")?.value ||
+        "",
+    
+      spessore:
+        row.querySelector(".spessore-select")?.value ||
+        row.querySelector(".spessore-input")?.value ||
+        "Non disponibile",
+    
+      pelle:
+        row.querySelector(".pelle-select")?.value || "",
+    
+      foglie:
+        row.querySelector(".foglie-select")?.value ||
+        row.querySelector(".foglie-box input")?.value ||
+        "",
+    
+      cristalli:
+        row.querySelector(".cristalli-select")?.value || "",
+    
+      caramella:
+        row.querySelector(".caramella-select")?.value ||
+        row.querySelector(".caramella-box input")?.value ||
+        "",
+    
+      quantita:
+        row.querySelector(".quantity-input")?.value || "",
+    
+      note:
+        row.querySelector("textarea")?.value || "",
+
+      codice:
+        row.querySelector(".product-code-input")?.value || ""
+    
     });
 
-    console.log(
-      "Messaggio Telegram inviato"
-    );
+  });
 
-  } catch (error) {
+  
+/* ---------------------- */
+/* DATI CLIENTE */
+/* ---------------------- */
 
-    console.error(
-      "Errore Telegram:",
-      error
-    );
-  }
+const customerName =
+  document.getElementById("customerName")?.value || "-";
+
+const customerPhone =
+  document.getElementById("customerPhone")?.value || "-";
+
+const customerEmail =
+  document.getElementById("customerEmail")?.value || "-";
+
+const customerAddress =
+  document.getElementById("customerAddress")?.value || "-";
+
+/* TELEGRAM */
+
+const telegramMessage =
+
+`🛒 NUOVO ORDINE
+
+Ordine:
+${orderNumber}
+
+Cliente:
+${customerName}
+
+Telefono:
+${customerPhone}
+
+Email
+${customerEmail}
+
+Indirizzo:
+${customerAddress}
+
+Articoli:
+${orderItems.length}
+
+Totale pezzi:
+${orderItems.reduce((sum, item) =>
+  sum + Number(item.quantita || 0), 0
+)}
+
+`;
+
+sendTelegramMessage(
+  telegramMessage
+);
+  
+/* ---------------------- */
+/* LOGO */
+/* ---------------------- */
+
+let logoBase64 = "";
+
+try {
+
+  const response = await fetch("logo.png");
+
+  const blob = await response.blob();
+
+  logoBase64 = await new Promise((resolve) => {
+
+    const reader = new FileReader();
+
+    reader.onloadend = () => resolve(reader.result);
+
+    reader.readAsDataURL(blob);
+
+  });
+
+} catch (error) {
+
+  console.log("Logo non trovato");
+
 }
+
+
+  
+
+/* ---------------------- */
+/* HEADER PREMIUM */
+/* ---------------------- */
+
+doc.setFillColor(248,248,248);
+doc.rect(0, 0, 297, 42, "F");
+
+/* logo */
+
+if (logoBase64) {
+
+  doc.addImage(
+    logoBase64,
+    "PNG",
+    12,
+    8,
+    60,
+    29
+  );
+}
+
+/* titolo */
+
+doc.setFont("helvetica", "bold");
+doc.setFontSize(20);
+doc.setTextColor(28, 63, 52);
+
+doc.text(
+  "CONFIGURATORE ORDINE CLIENTE",
+  285,
+  18,
+  { align: "right" }
+);
+
+/* data */
+
+doc.setFont("helvetica", "normal");
+doc.setFontSize(11);
+doc.setTextColor(70,70,70);
+
+doc.text(
+  `Data ordine: ${new Date().toLocaleDateString("it-IT")}`,
+  285,
+  28,
+  { align: "right" }
+);
+
+doc.setFontSize(11);
+
+doc.setTextColor(70,70,70);
+
+doc.text(
+  `Ordine: ${orderNumber}`,
+  285,
+  34,
+  { align: "right" }
+);
+  
+/* linea gold */
+
+doc.setDrawColor(201, 157, 74);
+doc.setLineWidth(0.5);
+
+doc.line(12, 38, 285, 38);
+
+
+/* ---------------------- */
+/* BOX DATI CLIENTE PER ESPORTAZIONE ORDINE IN PDF */
+/* ---------------------- */
+
+
+doc.setFillColor(250,250,250);
+doc.setDrawColor(170,215,205);
+doc.setLineWidth(0.2);
+doc.roundedRect(
+  5,
+  44,
+  287,
+  25,
+  3,
+  3,
+  "FD"
+);
+
+doc.setFont("helvetica", "bold");
+doc.setFontSize(10);
+
+doc.setTextColor(31, 101, 86);
+
+doc.text(
+  "CLIENTE",
+  18,
+  52
+);
+
+doc.setFont("helvetica", "normal");
+
+doc.setTextColor(60,60,60);
+
+doc.text(
+  `Nome: ${customerName}`,
+  18,
+  58
+);
+
+doc.text(
+  `Telefono: ${customerPhone}`,
+  110,
+  58
+);
+
+doc.text(
+  `Email: ${customerEmail}`,
+  205,
+  58
+);
+
+doc.text(
+  `Indirizzo: ${customerAddress}`,
+  18,
+  64
+);
+
+  
+  /* ---------------------- */
+  /* TABELLA */
+  /* ---------------------- */
+
+  const rows = document.querySelectorAll(".order-row");
+
+  let y = 76;
+
+  /* HEADER TABELLA */
+
+  doc.setFillColor(31, 101, 86);
+
+  doc.rect(5, y, 287, 8, "F");
+
+  doc.setTextColor(255,255,255);
+
+  doc.setFontSize(9);
+
+  doc.setFont("helvetica", "bold");
+
+  const headers = [
+    "Codice",
+    "Articolo",
+    "Taglia",
+    "Altezza",
+    "Spessore",
+    "Pelle",
+    "Foglie",
+    "Cristalli",
+    "Caramella",
+    "Qtà",
+    "Tot. €"
+  ];
+
+   const positions = [
+    9,   // Codice
+    52,   // Articolo
+    85,  // Taglia
+    115,  // Altezza
+    135,  // Spessore
+    155,  // Pelle
+    180,  // Foglie
+    207,  // Cristalli
+    238,  // Caramella
+    260,   // Qta
+    275,   // Totale €
+  ];
+
+  headers.forEach((header, index) => {
+
+    doc.text(
+      header,
+      positions[index],
+      y + 6.5
+    );
+  });
+
+  y += 10;
+
+  /* RIGHE */
+
+  doc.setTextColor(40,40,40);
+
+  doc.setFont("helvetica", "normal");
+
+  rows.forEach((row, index) => {
+  
+    const article =
+  row.querySelector(".articolo-select")?.selectedOptions[0]?.text || "-";
+
+const size =
+  row.querySelector(".taglia-select")?.value ||
+  row.querySelector(".taglia-box input")?.value ||
+  "-";
+
+const height =
+  row.querySelector(".altezza-select")?.value ||
+  row.querySelector(".altezza-input")?.value ||
+  "-";
+
+const thickness =
+  row.querySelector(".spessore-select")?.value ||
+  row.querySelector(".spessore-input")?.value ||
+  "-";
+
+const leather =
+  row.querySelector(".pelle-select")?.value || "-";
+
+const leaves =
+  row.querySelector(".foglie-select")?.value ||
+  row.querySelector(".foglie-box input")?.value ||
+  "-";
+
+const crystals =
+  row.querySelector(".cristalli-select")?.value || "-";
+
+const candy =
+  row.querySelector(".caramella-select")?.value ||
+  row.querySelector(".caramella-box input")?.value ||
+  "-";
+
+const quantity =
+  row.querySelector(".quantity-input")?.value || "-";
+
+const priceText =
+  row.querySelector(".price-value")
+    ?.textContent || "0";
+
+const unitPrice =
+  parseFloat(
+    priceText
+      .replace("€","")
+      .replace(",",".")
+      .trim()
+  ) || 0;
+
+const totalRow =
+  unitPrice *
+  (parseInt(quantity) || 0);
+
+const codice =
+  row.querySelector(".product-code-input")?.value || "-";    
+    
+    
+    /* sfondo alternato */
+
+    if (index % 2 === 0) {
+
+      doc.setFillColor(248,249,251);
+
+      doc.rect(5, y - 1, 287, 8, "F");
+    }
+
+    const values = [
+      codice,
+      article,
+      size,
+      height,
+      thickness,
+      leather,
+      leaves,
+      crystals,
+      candy,
+      quantity,
+      totalRow.toFixed(2).replace(".", ",") + " €"
+    ];
+
+values.forEach((value, i) => {
+
+  const colorColumns = [5, 6, 7];
+
+  /* NO FOGLIE */
+
+  if (
+    colorColumns.includes(i) &&
+    value === "NO FOGLIE"
+  ) {
+
+    doc.setDrawColor(220, 0, 0);
+    doc.setLineWidth(0.6);
+
+    doc.line(
+      positions[i],
+      y + 1,
+      positions[i] + 3,
+      y + 4
+    );
+
+    doc.line(
+      positions[i] + 3,
+      y + 1,
+      positions[i],
+      y + 4
+    );
+
+    doc.setTextColor(40,40,40);
+
+    doc.text(
+      "NO FOGLIE",
+      positions[i] + 6,
+      y + 4
+    );
+
+  }
+
+  /* NO CRISTALLI */
+
+  else if (
+    colorColumns.includes(i) &&
+    value === "NO CRISTALLI"
+  ) {
+
+    doc.setDrawColor(220, 0, 0);
+    doc.setLineWidth(0.6);
+
+    doc.line(
+      positions[i],
+      y + 1,
+      positions[i] + 3,
+      y + 4
+    );
+
+    doc.line(
+      positions[i] + 3,
+      y + 1,
+      positions[i],
+      y + 4
+    );
+
+    doc.setTextColor(40,40,40);
+
+    doc.text(
+      "NO CRISTALLI",
+      positions[i] + 6,
+      y + 4
+    );
+
+  }
+
+  /* COLORI NORMALI */
+
+  else if (
+    colorColumns.includes(i) &&
+    pdfColors[value]
+  ) {
+
+    const color = pdfColors[value];
+
+    doc.setFillColor(
+      color[0],
+      color[1],
+      color[2]
+    );
+
+if (value === "bianco") {
+
+  doc.setDrawColor(120,120,120);
+  doc.setLineWidth(0.05);
+  doc.circle(
+    positions[i] + 2,
+    y + 2.5,
+    1.5,
+    "FD"
+  );
+
+} else {
+
+  doc.circle(
+    positions[i] + 2,
+    y + 2.5,
+    1.5,
+    "F"
+  );
+
+}
+
+    doc.setTextColor(40,40,40);
+
+    doc.text(
+      String(value),
+      positions[i] + 6,
+      y + 4
+    );
+
+  }
+
+  /* TUTTO IL RESTO */
+
+  else {
+
+    doc.text(
+      String(value),
+      positions[i],
+      y + 4
+    );
+
+  }
+
+});
+
+/* RIGA ORIZZONTALE NELLA TABELLA PDF CHE VISUALIZZA LE DIFFERENTI RIGHE */
+    
+doc.setDrawColor(170,215,205);
+doc.setLineWidth(0.1);
+
+doc.line(
+  5,
+  y + 7,
+  292,
+  y + 7
+);
+
+    
+    y += 8;
+
+    /* EVENTUALI NOTE DA STAMPARSI SUL PDF NELLA TABELLA SOTTO LA RIGA CORRISPONDENTE */
+
+const notes =
+  row.querySelector("textarea")?.value || "";
+
+if (notes.trim() !== "") {
+
+  doc.setFontSize(8);
+
+  doc.setTextColor(110,110,110);
+
+  doc.text(
+    `Note: ${notes}`,
+    16,
+    y + 2
+  );
+
+  y += 6;
+
+  doc.setFontSize(9);
+
+  doc.setTextColor(40,40,40);
+}
+
+
+    
+    /* nuova pagina */
+
+    if (y > 185) {
+
+      doc.addPage();
+
+      y = 20;
+    }
+  });
+
+/* ---------------------- */
+/* FOOTER PREMIUM */
+/* ---------------------- */
+
+const footerY = 194;
+
+/* fascia verde */
+
+doc.setFillColor(31, 101, 86);
+
+doc.rect(
+  0,
+  footerY,
+  297,
+  16,
+  "F"
+);
+
+/* thank you */
+
+doc.setFont("helvetica", "bold");
+doc.setFontSize(13);
+
+doc.setTextColor(31, 101, 86);
+
+doc.text(
+  "Grazie per aver scelto KiTho",
+  148,
+  180,
+  { align: "center" }
+);
+
+doc.setFont("helvetica", "normal");
+doc.setFontSize(9);
+
+doc.setTextColor(120,120,120);
+
+doc.text(
+  "Qualità, comfort, eleganza e stile per i tuoi amici a quattro zampe.",
+  148,
+  187,
+  { align: "center" }
+);
+
+/* contatti */
+
+doc.setFontSize(9);
+
+doc.setTextColor(255,255,255);
+
+doc.text(
+  "www.kithopet.com",
+  20,
+  204
+);
+
+doc.text(
+  "commercial@kithopet.com",
+  120,
+  204
+);
+
+/* icona instagram */
+let instagramBase64 = "";
+try {
+  const response = await fetch("instagram.png");
+  const blob = await response.blob();
+  instagramBase64 = await new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.readAsDataURL(blob);
+  });
+} catch (error) {
+  console.log("Icona Instagram non trovata");
+}
+if (instagramBase64) {
+  doc.addImage(
+    instagramBase64,
+    "PNG",
+    225,
+    201.5,
+    4,
+    4
+  );
+}
+/* testo instagram */
+doc.text(
+  "kitho.pet",
+  231,
+  204
+);
+
+  /* PREPARAZIONE ANTEPRIMA */
+
+  const pdfBlob =
+  doc.output("blob");
+
+const pdfUrl =
+  URL.createObjectURL(pdfBlob);
+
+window.open(
+  pdfUrl,
+  "_blank"
+);
+
+
+
 
 /* ---------------------- */
 /* GENERAZIONE CODICE ARTICOLO */
