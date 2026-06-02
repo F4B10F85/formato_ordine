@@ -2328,6 +2328,13 @@ async function previewPDF() {
 
 async function exportPDF() {
 
+  const doc = await buildPDF();
+
+  doc.save("ordine_cliente.pdf");
+
+}
+
+  
   /* SALVATAGGIO FIREBASE */
 
 try {
