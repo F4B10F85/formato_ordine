@@ -2047,11 +2047,23 @@ const totalRow =
 const codice =
   row.querySelector(".product-code-input")?.value || "-";    
     
+const notes =
+  row.querySelector("textarea")?.value || "";
+
+const baseY = y;
+
+let rowHeight = 8;
+
+if (notes.trim() !== "") {
+  rowHeight += 6;
+}
+
     
     /* sfondo alternato */
 
     if (index % 2 === 0) {
       doc.setFillColor(248,249,251);
+      
       doc.rect(
         5,
         baseY - 1,
@@ -2210,19 +2222,6 @@ if (value === "bianco") {
 });
 
 
-/* PREPARAZIONE EVENTUALI NOTE DA STAMPARSI SUL PDF NELLA TABELLA SOTTO LA RIGA CORRISPONDENTE */
-    
-    const notes =
-  row.querySelector("textarea")?.value || "";
-
-const baseY = y;
-
-let rowHeight = 8;
-
-if (notes.trim() !== "") {
-  rowHeight += 6;
-}
-
 /* EVENTUALI NOTE DA STAMPARSI SUL PDF NELLA TABELLA SOTTO LA RIGA CORRISPONDENTE */
 
 if (notes.trim() !== "") {
@@ -2257,7 +2256,6 @@ doc.line(
 
 y += rowHeight;
 
-  
     
     
     /* nuova pagina */
