@@ -2209,9 +2209,9 @@ doc.setLineWidth(0.1);
 
 doc.line(
   5,
-  y + 6,
+  y + 7,
   292,
-  y + 6
+  y + 7
 );
 
     
