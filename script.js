@@ -21,9 +21,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (priceHeader) {
       priceHeader.style.display = "none";
     }
+    const summaryTotalCard =
+      document
+        .getElementById("summaryTotal")
+        ?.closest(".summary-card");
+    if (summaryTotalCard) {
+      summaryTotalCard.style.display = "none";
+    }
   }
 });
-
 
 const orderRows = document.getElementById("orderRows");
 const addRowBtn = document.getElementById("addRowBtn");
