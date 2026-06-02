@@ -1870,7 +1870,7 @@ doc.text(
 
   const rows = document.querySelectorAll(".order-row");
 
-  let y = 76;
+  let y = 71;
 
   /* HEADER TABELLA */
 
@@ -1908,7 +1908,7 @@ doc.text(
     180,  // Foglie
     207,  // Cristalli
     238,  // Caramella
-    260,   // Qta
+    265,   // Qta
     275,   // Totale €
   ];
 
