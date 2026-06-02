@@ -2155,7 +2155,6 @@ if (value === "bianco") {
 
 });
 
-   const baseY = y;
     
     /* EVENTUALI NOTE DA STAMPARSI SUL PDF NELLA TABELLA SOTTO LA RIGA CORRISPONDENTE */
 
