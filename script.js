@@ -1930,7 +1930,7 @@ doc.text(
 
   const rows = document.querySelectorAll(".order-row");
 
-  let y = 76;
+  let y = 71;
 
   /* HEADER TABELLA */
 
@@ -2204,23 +2204,11 @@ if (value === "bianco") {
 
 });
 
-/* RIGA ORIZZONTALE NELLA TABELLA PDF CHE VISUALIZZA LE DIFFERENTI RIGHE */
     
-doc.setDrawColor(170,215,205);
-doc.setLineWidth(0.1);
+/* EVENTUALI NOTE DA STAMPARSI SUL PDF NELLA TABELLA SOTTO LA RIGA CORRISPONDENTE */
 
-doc.line(
-  5,
-  y + 7,
-  292,
-  y + 7
-);
-
+let rowHeight = 8;
     
-    y += 8;
-
-    /* EVENTUALI NOTE DA STAMPARSI SUL PDF NELLA TABELLA SOTTO LA RIGA CORRISPONDENTE */
-
 const notes =
   row.querySelector("textarea")?.value || "";
 
@@ -2243,7 +2231,19 @@ if (notes.trim() !== "") {
   doc.setTextColor(40,40,40);
 }
 
+y += rowHeight;
+    
+/* RIGA ORIZZONTALE NELLA TABELLA PDF CHE VISUALIZZA LE DIFFERENTI RIGHE */
+    
+doc.setDrawColor(170,215,205);
+doc.setLineWidth(0.1);
 
+doc.line(
+  5,
+  y + rowHeight - 1,
+  292,
+  y + rowHeight - 1
+);
     
     /* nuova pagina */
 
@@ -2849,3 +2849,24 @@ if (codeInput) {
   }
   updateSummary();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
