@@ -2881,7 +2881,16 @@ if (codeInput) {
 }
 
 
-
+if (!isShop) {
+  /* header prezzo */
+  const headerPrezzo =
+    document.querySelector(
+      ".table-header"
+    )?.children[10];
+  if (headerPrezzo) {
+    headerPrezzo.style.display = "none";
+  }
+}
 
 
 
