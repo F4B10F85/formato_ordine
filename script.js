@@ -2791,6 +2791,13 @@ testFirestore();
 
 async function findPrice(config) {
 
+console.log({
+  articolo,
+  taglia,
+  foglie,
+  cristalli
+});
+  
   const q = query(
     collection(db, "pricingRules"),
     where("articolo", "==", config.articolo),
@@ -2896,12 +2903,10 @@ if (codeInput) {
   /* CERCA PREZZO */
 
   const prezzo = await findPrice({
-
     articolo,
     taglia,
     foglie,
     cristalli
-
   });
 
   /* BOX PREZZO */
