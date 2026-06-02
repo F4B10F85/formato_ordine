@@ -2832,7 +2832,7 @@ async function updateRowPrice(row) {
     return;
   }
 
-
+console.log("ENTRATO IN UPDATE PRICE");
 
   
   const articoloSelect =
