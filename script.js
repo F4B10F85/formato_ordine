@@ -2831,6 +2831,9 @@ async function updateRowPrice(row) {
   if (userType !== "shop") {
     return;
   }
+
+
+
   
   const articoloSelect =
     row.querySelector(".articolo-select");
