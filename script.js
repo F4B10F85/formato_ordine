@@ -12,6 +12,7 @@ const orderRows = document.getElementById("orderRows");
 const addRowBtn = document.getElementById("addRowBtn");
 const clearAllBtn = document.getElementById("clearAllBtn");
 const validateBtn = document.getElementById("validateBtn");
+const previewPdfBtn = document.getElementById("previewPdfBtn");
 const exportPdfBtn = document.getElementById("exportPdfBtn");
 
 /* ---------------------- */
@@ -1594,10 +1595,10 @@ function generateOrderNumber() {
 
 
 /* ---------------------- */
-/* ESPORTAZIONE PDF */
+/* PREPARAZIONE ESPORTAZIONE PDF */
 /* ---------------------- */
 
-async function exportPDF() {
+async function buildPDF() {
 
   const { jsPDF } = window.jspdf;
 
@@ -1685,33 +1686,6 @@ document
 
   });
 
-/* SALVATAGGIO FIREBASE */
-
-try {
-
-await addDoc(
-  collection(db, "orders"),
-  {
-    orderNumber,
-    createdAt:
-      new Date().toISOString(),
-    status: "Nuovo",
-    trackingCode: "",
-    customerData,
-    orderItems
-  }
-
-);
-
-  console.log(
-    "Ordine salvato su Firebase"
-  );
-} catch (error) {
-  console.error(
-    "Errore Firebase:",
-    error
-  );
-}
 
 
 
@@ -1734,40 +1708,6 @@ const customerEmail =
 const customerAddress =
   document.getElementById("customerAddress")?.value || "-";
 
-/* TELEGRAM */
-
-const telegramMessage =
-
-`🛒 NUOVO ORDINE
-
-Ordine:
-${orderNumber}
-
-Cliente:
-${customerName}
-
-Telefono:
-${customerPhone}
-
-Email
-${customerEmail}
-
-Indirizzo:
-${customerAddress}
-
-Articoli:
-${orderItems.length}
-
-Totale pezzi:
-${orderItems.reduce((sum, item) =>
-  sum + Number(item.quantita || 0), 0
-)}
-
-`;
-
-sendTelegramMessage(
-  telegramMessage
-);
   
 /* ---------------------- */
 /* LOGO */
@@ -2349,8 +2289,112 @@ doc.text(
 
   /* SAVE */
 
-  doc.save("ordine_cliente.pdf");
+  return doc;
 }
+
+
+/* ---------------------- */
+/* ANTEPRIMA PDF */
+/* ---------------------- */
+
+
+async function previewPDF() {
+
+  const doc =
+    await buildPDF();
+
+  const pdfBlob =
+    doc.output("blob");
+
+  const pdfUrl =
+    URL.createObjectURL(pdfBlob);
+
+  window.open(
+    pdfUrl,
+    "_blank"
+  );
+
+}
+
+
+/* ---------------------- */
+/* ESPORTAZIONE PDF */
+/* ---------------------- */
+
+async function exportPDF() {
+
+  /* SALVATAGGIO FIREBASE */
+
+try {
+
+await addDoc(
+  collection(db, "orders"),
+  {
+    orderNumber,
+    createdAt:
+      new Date().toISOString(),
+    status: "Nuovo",
+    trackingCode: "",
+    customerData,
+    orderItems
+  }
+
+);
+
+  console.log(
+    "Ordine salvato su Firebase"
+  );
+} catch (error) {
+  console.error(
+    "Errore Firebase:",
+    error
+  );
+}
+
+/* TELEGRAM */
+
+const telegramMessage =
+
+`🛒 NUOVO ORDINE
+
+Ordine:
+${orderNumber}
+
+Cliente:
+${customerName}
+
+Telefono:
+${customerPhone}
+
+Email
+${customerEmail}
+
+Indirizzo:
+${customerAddress}
+
+Articoli:
+${orderItems.length}
+
+Totale pezzi:
+${orderItems.reduce((sum, item) =>
+  sum + Number(item.quantita || 0), 0
+)}
+
+`;
+
+sendTelegramMessage(
+  telegramMessage
+);
+
+  const doc =
+    await buildPDF();
+  
+  doc.save(
+    "ordine_cliente.pdf"
+  );
+
+}
+
 
 
 
@@ -2515,6 +2559,51 @@ return `KT.${articleCode}.${sizeCode}.${leatherCode}.${foglieCode}.${cristalliCo
 
 }
 
+/* ---------------------- */
+/* EXPORT ANTEPRIMA PDF */
+/* ---------------------- */
+
+previewPdfBtn.addEventListener(
+  "click",
+  async () => {
+
+    const valid =
+      validateOrder();
+
+    if (!valid) {
+
+      alert(
+        "Compila tutti i campi obbligatori."
+      );
+
+      return;
+    }
+
+    await previewPDF();
+
+  }
+);
+
+exportPdfBtn.addEventListener(
+  "click",
+  async () => {
+
+    const valid =
+      validateOrder();
+
+    if (!valid) {
+
+      alert(
+        "Compila tutti i campi obbligatori prima di esportare il PDF."
+      );
+
+      return;
+    }
+
+    await exportPDF();
+
+  }
+);
 
 
 
