@@ -2202,6 +2202,19 @@ if (value === "bianco") {
 
 });
 
+/* RIGA ORIZZONTALE NELLA TABELLA PDF CHE VISUALIZZA LE DIFFERENTI RIGHE */
+    
+doc.setDrawColor(170,215,205);
+doc.setLineWidth(0.1);
+
+doc.line(
+  5,
+  y + 6,
+  292,
+  y + 6
+);
+
+    
     y += 8;
 
     /* EVENTUALI NOTE DA STAMPARSI SUL PDF NELLA TABELLA SOTTO LA RIGA CORRISPONDENTE */
