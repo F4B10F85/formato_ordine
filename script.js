@@ -8,6 +8,12 @@ import {
 
 import { db } from "./firebase.js";
 
+const userType =
+  sessionStorage.getItem("userType") || "private";
+
+const isShop =
+  userType === "shop";
+
 const orderRows = document.getElementById("orderRows");
 const addRowBtn = document.getElementById("addRowBtn");
 const clearAllBtn = document.getElementById("clearAllBtn");
