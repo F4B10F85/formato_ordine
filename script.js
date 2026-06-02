@@ -2825,6 +2825,13 @@ async function findPrice(config) {
 
 async function updateRowPrice(row) {
 
+  const userType =
+  sessionStorage.getItem("userType");
+  
+  if (userType !== "shop") {
+    return;
+  }
+  
   const articoloSelect =
     row.querySelector(".articolo-select");
 
