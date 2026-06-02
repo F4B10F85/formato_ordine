@@ -2182,9 +2182,9 @@ doc.setLineWidth(0.1);
 
 doc.line(
   5,
-  y + rowHeight -1,
+  y + rowHeight,
   292,
-  y + rowHeight -1
+  y + rowHeight
 );
 
 y += rowHeight;
