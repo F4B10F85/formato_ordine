@@ -2156,14 +2156,27 @@ values.forEach((value, i) => {
       color[2]
     );
 
-    doc.setDrawColor(120,120,120);
+if (value === "bianco") {
 
-    doc.circle(
-      positions[i] + 2,
-      y + 2.5,
-      1.5,
-      "FD"
-    );
+  doc.setDrawColor(120,120,120);
+  doc.setLineWidth(0.05);
+  doc.circle(
+    positions[i] + 2,
+    y + 2.5,
+    1.5,
+    "FD"
+  );
+
+} else {
+
+  doc.circle(
+    positions[i] + 2,
+    y + 2.5,
+    1.5,
+    "F"
+  );
+
+}
 
     doc.setTextColor(40,40,40);
 
