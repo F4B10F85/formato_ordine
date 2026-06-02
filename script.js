@@ -2332,7 +2332,7 @@ async function exportPDF() {
 
   doc.save("ordine_cliente.pdf");
 
-}
+
 
   
   /* SALVATAGGIO FIREBASE */
