@@ -2791,13 +2791,7 @@ testFirestore();
 
 async function findPrice(config) {
 
-console.log({
-  articolo,
-  taglia,
-  foglie,
-  cristalli
-});
-  
+
   const q = query(
     collection(db, "pricingRules"),
     where("articolo", "==", config.articolo),
@@ -2832,16 +2826,7 @@ console.log({
 
 async function updateRowPrice(row) {
 
-  const userType =
-  sessionStorage.getItem("userType");
-  
-  if (userType !== "shop") {
-    return;
-  }
-
-console.log("ENTRATO IN UPDATE PRICE");
-
-  
+ 
   const articoloSelect =
     row.querySelector(".articolo-select");
 
