@@ -2949,4 +2949,3 @@ if (!isShop) {
     headerPrezzo.style.display = "none";
   }
 }
-
