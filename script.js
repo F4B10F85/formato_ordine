@@ -1506,12 +1506,6 @@ const unitPrice =
       .trim()
   ) || 0;
 
-const quantity =
-  parseInt(
-    row.querySelector(".quantity-input")
-      ?.value || 0
-  );
-
 totalValue += unitPrice * quantity;
 
 
