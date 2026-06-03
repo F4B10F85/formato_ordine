@@ -132,3 +132,37 @@
 
 }
 
+section {
+
+  margin-bottom: 40px;
+
+}
+
+.statistics-block {
+
+  margin-bottom: 40px;
+
+}
+
+body {
+
+  background: #f8fafc;
+
+}
+
+.kpi-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(
+        250px,
+        1fr
+      )
+    );
+
+  gap: 20px;
+
+}
