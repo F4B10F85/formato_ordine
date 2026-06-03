@@ -1506,6 +1506,13 @@ const unitPrice =
       .trim()
   ) || 0;
 
+const quantity =
+  parseInt(
+    row.querySelector(".quantity-input")
+      ?.value || 0
+  );
+    
+
 totalValue += unitPrice * quantity;
 
 
@@ -1658,10 +1665,28 @@ async function exportPDF() {
 
 const orderItems = [];
 
+let totalValue = 0;
+  
 document
   .querySelectorAll(".order-row")
   .forEach(row => {
 
+
+const priceText =
+  row.querySelector(".price-value")
+    ?.textContent || "0";
+
+const unitPrice =
+  parseFloat(
+    priceText
+      .replace("€", "")
+      .replace(",", ".")
+      .trim()
+  ) || 0;
+
+totalValue += unitPrice * quantity;
+
+    
     orderItems.push({
     
       articolo:
@@ -1706,8 +1731,9 @@ document
         row.querySelector("textarea")?.value || "",
 
       codice:
-        row.querySelector(".product-code-input")?.value || ""
-    
+        row.querySelector(".product-code-input")?.value || "",
+
+       unitPrice: unitPrice
     });
 
   });
@@ -1725,7 +1751,8 @@ await addDoc(
     status: "Nuovo",
     trackingCode: "",
     customerData,
-    orderItems
+    orderItems,
+    totalValue
   }
 
 );
@@ -1739,9 +1766,6 @@ await addDoc(
     error
   );
 }
-
-
-
 
 
   
