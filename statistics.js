@@ -305,11 +305,29 @@ function renderOrdersByStatus(
       "ordersByStatus"
     );
 
-  const sorted =
-    Object.entries(statusMap)
-      .sort(
-        (a,b) => b[1] - a[1]
-      );
+const order = [
+
+  "Nuovo",
+
+  "In lavorazione",
+
+  "Completato",
+
+  "Spedito"
+
+];
+
+const sorted =
+  order
+    .filter(
+      status => statusMap[status]
+    )
+    .map(
+      status => [
+        status,
+        statusMap[status]
+      ]
+    );
 
   container.innerHTML =
     sorted.map(
