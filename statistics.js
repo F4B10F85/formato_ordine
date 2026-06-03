@@ -15,6 +15,8 @@ import { db } from "./firebase.js";
 /* ------------------ */
 
 let monthlyChartInstance = null;
+let allOrders = [];
+
 async function loadStatistics() {
 
   const snapshot =
@@ -22,17 +24,28 @@ async function loadStatistics() {
       collection(db, "orders")
     );
 
-  const orders =
+  allOrders =
     snapshot.docs.map(
       doc => doc.data()
     );
-
+  
   calculateStatistics(
-    orders
+    allOrders
   );
 }
 
 loadStatistics();
+
+document
+  .getElementById(
+    "periodFilter"
+  )
+  .addEventListener(
+    "change",
+    applyFilter
+  );
+
+
 
 /* ----------------------- */
 /* CALCOLO STATISTICHE-KPI */
@@ -123,10 +136,13 @@ function calculateStatistics(orders) {
   document.getElementById(
     "averageOrder"
   ).textContent =
-    (
+    
+    orders.length
+  ? (
       totalRevenue /
       orders.length
-    ).toFixed(2) + " €";
+    ).toFixed(2) + " €"
+  : "0.00";
 
   renderTopProducts(
     productsMap
@@ -372,5 +388,118 @@ const sorted =
         `;
 
       }).join("");
+
+}
+
+function applyFilter() {
+
+  const filter =
+    document.getElementById(
+      "periodFilter"
+    ).value;
+
+  const now =
+    new Date();
+
+  let filteredOrders =
+    [...allOrders];
+
+  if (filter === "today") {
+
+    const today =
+      now.toISOString()
+        .split("T")[0];
+
+    filteredOrders =
+      allOrders.filter(
+        order =>
+          order.day === today
+      );
+
+  }
+
+  else if (
+    filter === "30"
+  ) {
+
+    filteredOrders =
+      allOrders.filter(
+        order => {
+
+          const orderDate =
+            new Date(
+              order.createdAt
+            );
+
+          const diff =
+            (
+              now -
+              orderDate
+            ) /
+            (
+              1000 *
+              60 *
+              60 *
+              24
+            );
+
+          return diff <= 30;
+
+        }
+      );
+
+  }
+
+  else if (
+    filter === "90"
+  ) {
+
+    filteredOrders =
+      allOrders.filter(
+        order => {
+
+          const orderDate =
+            new Date(
+              order.createdAt
+            );
+
+          const diff =
+            (
+              now -
+              orderDate
+            ) /
+            (
+              1000 *
+              60 *
+              60 *
+              24
+            );
+
+          return diff <= 90;
+
+        }
+      );
+
+  }
+
+  else if (
+    filter === "year"
+  ) {
+
+    const currentYear =
+      now.getFullYear();
+
+    filteredOrders =
+      allOrders.filter(
+        order =>
+          Number(order.year) ===
+          currentYear
+      );
+
+  }
+
+  calculateStatistics(
+    filteredOrders
+  );
 
 }
