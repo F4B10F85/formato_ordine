@@ -14,6 +14,7 @@ import { db } from "./firebase.js";
 /* CARICAMENTO ORDINI */
 /* ------------------ */
 
+let monthlyChartInstance = null;
 async function loadStatistics() {
 
   const snapshot =
@@ -160,32 +161,6 @@ function buildMonthlyRevenue(orders) {
   return monthlyMap;
 }
 
-/* ------------------------------ */
-/* VERIFICA VELOCE SENZA LIBRERIE */
-/* ------------------------------ */
-
-function renderMonthlyChart(
-  monthlyRevenue
-) {
-
-  const container =
-    document.getElementById(
-      "monthlyChart"
-    );
-
-  const entries =
-    Object.entries(monthlyRevenue)
-      .sort();
-
-  const maxValue =
-    Math.max(
-      ...entries.map(
-        entry => entry[1]
-      )
-    );
-
-  let monthlyChartInstance = null;
-
 function renderMonthlyChart(
   monthlyRevenue
 ) {
@@ -229,6 +204,7 @@ function renderMonthlyChart(
             borderRadius: 8
           }
         ]
+
       },
 
       options: {
@@ -246,9 +222,7 @@ function renderMonthlyChart(
         scales: {
 
           y: {
-
             beginAtZero: true
-
           }
 
         }
