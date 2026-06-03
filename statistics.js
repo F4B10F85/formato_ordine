@@ -324,24 +324,23 @@ function renderOrdersByStatus(
             className +=
               " status-new";
             break;
-
-          case "In produzione":
+        
+          case "In lavorazione":
             className +=
               " status-production";
             break;
-
+        
+          case "Completato":
+            className +=
+              " status-delivered";
+            break;
+        
           case "Spedito":
             className +=
               " status-shipped";
             break;
-
-          case "Consegnato":
-            className +=
-              " status-delivered";
-            break;
-
+        
         }
-
         return `
           <div class="${className}">
             <div>
