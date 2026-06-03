@@ -313,12 +313,47 @@ function renderOrdersByStatus(
 
   container.innerHTML =
     sorted.map(
-      ([status, qty]) => `
-        <div>
-          ${status}
-          - ${qty} ordini
-        </div>
-      `
-    ).join("");
+      ([status, qty]) => {
+
+        let className =
+          "status-card";
+
+        switch(status) {
+
+          case "Nuovo":
+            className +=
+              " status-new";
+            break;
+
+          case "In produzione":
+            className +=
+              " status-production";
+            break;
+
+          case "Spedito":
+            className +=
+              " status-shipped";
+            break;
+
+          case "Consegnato":
+            className +=
+              " status-delivered";
+            break;
+
+        }
+
+        return `
+          <div class="${className}">
+            <div>
+              ${status}
+            </div>
+
+            <div>
+              ${qty}
+            </div>
+          </div>
+        `;
+
+      }).join("");
 
 }
