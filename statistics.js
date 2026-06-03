@@ -1,5 +1,6 @@
-
-// COLLEGAMENTO FIREBASE //
+/* --------------------- */
+/* COLLEGAMENTO FIREBASE */
+/* --------------------- */
 
 import {
   collection,
@@ -9,7 +10,9 @@ from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 import { db } from "./firebase.js";
 
-// CARICAMENTO ORDINI //
+/* ------------------ */
+/* CARICAMENTO ORDINI */
+/* ------------------ */
 
 async function loadStatistics() {
 
@@ -30,12 +33,19 @@ async function loadStatistics() {
 
 loadStatistics();
 
-// CALCOLO KPI //
+/* ----------- */
+/* CALCOLO KPI */
+/* ----------- */
 
-function calculateStatistics(
-  orders
-) {
+function calculateStatistics(orders) {
 
+  const monthlyRevenue =
+  buildMonthlyRevenue(orders);
+
+  renderMonthlyChart(
+    monthlyRevenue
+  );
+  
   let totalRevenue = 0;
 
   let totalPieces = 0;
@@ -95,7 +105,9 @@ function calculateStatistics(
   );
 }
 
-//TOP ARTICOLI //
+/* -------------*/
+/* TOP ARTICOLI */
+/* -------------*/
 
 function renderTopProducts(
   productsMap
@@ -122,3 +134,29 @@ function renderTopProducts(
       `
     ).join("");
 }
+
+/* ------------------------- */
+/* GRAFICO FATTURATO MENSILE */
+/* ------------------------- */
+
+function buildMonthlyRevenue(orders) {
+
+  const monthlyMap = {};
+
+  orders.forEach(order => {
+
+    const month =
+      order.month || "Sconosciuto";
+
+    if (!monthlyMap[month]) {
+      monthlyMap[month] = 0;
+    }
+
+    monthlyMap[month] +=
+      Number(order.totalValue || 0);
+
+  });
+
+  return monthlyMap;
+}
+
