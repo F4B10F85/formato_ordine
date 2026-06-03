@@ -160,3 +160,62 @@ function buildMonthlyRevenue(orders) {
   return monthlyMap;
 }
 
+/* ------------------------------ */
+/* VERIFICA VELOCE SENZA LIBRERIE */
+/* ------------------------------ */
+
+function renderMonthlyChart(
+  monthlyRevenue
+) {
+
+  const container =
+    document.getElementById(
+      "monthlyChart"
+    );
+
+  const entries =
+    Object.entries(monthlyRevenue)
+      .sort();
+
+  const maxValue =
+    Math.max(
+      ...entries.map(
+        entry => entry[1]
+      )
+    );
+
+  container.innerHTML =
+    entries.map(
+      ([month, value]) => {
+
+        const width =
+          (value / maxValue) * 100;
+
+        return `
+          <div class="chart-row">
+
+            <span>
+              ${month}
+            </span>
+
+            <div class="bar-container">
+
+              <div
+                class="bar"
+                style="
+                  width:${width}%;
+                "
+              ></div>
+
+            </div>
+
+            <span>
+              € ${value.toFixed(2)}
+            </span>
+
+          </div>
+        `;
+      }
+    ).join("");
+
+}
