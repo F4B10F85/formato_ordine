@@ -40,6 +40,8 @@ loadStatistics();
 
 function calculateStatistics(orders) {
 
+  const productsRevenueMap = {};
+  
   const monthlyRevenue =
   buildMonthlyRevenue(orders);
 
@@ -74,6 +76,18 @@ function calculateStatistics(orders) {
 
       productsMap[item.articolo] += qty;
 
+      const revenue =
+        qty *
+        Number(item.unitPrice || 0);
+      
+      if (
+        !productsRevenueMap[item.articolo]
+      ) {
+        productsRevenueMap[item.articolo] = 0;
+      }
+      
+      productsRevenueMap[item.articolo] +=
+        revenue;
     });
 
   });
@@ -103,6 +117,10 @@ function calculateStatistics(orders) {
 
   renderTopProducts(
     productsMap
+  );
+
+  renderRevenueProducts(
+  productsRevenueMap
   );
 }
 
@@ -230,5 +248,33 @@ function renderMonthlyChart(
       }
 
     });
+
+}
+
+function renderRevenueProducts(
+  productsRevenueMap
+) {
+
+  const container =
+    document.getElementById(
+      "productsRevenue"
+    );
+
+  const sorted =
+    Object.entries(
+      productsRevenueMap
+    ).sort(
+      (a,b) => b[1] - a[1]
+    );
+
+  container.innerHTML =
+    sorted.map(
+      ([name, revenue]) => `
+        <div>
+          ${name}
+          - ${revenue.toFixed(2)} €
+        </div>
+      `
+    ).join("");
 
 }
