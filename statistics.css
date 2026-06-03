@@ -2,6 +2,10 @@
 /* STILE GRAFICO */
 /* ------------- */
 
+h1 {
+  margin-bottom: 30px;
+}
+
 #monthlyChart {
   margin-top: 20px;
 }
@@ -12,40 +16,28 @@
     100px
     1fr
     100px;
-
   align-items: center;
-
   gap: 10px;
-
   margin-bottom: 12px;
 }
 
 .bar-container {
   height: 18px;
-
   background: #ececec;
-
   border-radius: 10px;
-
   overflow: hidden;
 }
 
 .bar {
   height: 100%;
-
   background: #1f6556;
-
   border-radius: 10px;
 }
 
 .chart-container {
-
   background: white;
-
   padding: 20px;
-
   border-radius: 16px;
-
   box-shadow:
     0 2px 10px rgba(
       0,
@@ -53,107 +45,72 @@
       0,
       0.08
     );
-
   margin-top: 20px;
-
 }
 
 
 #ordersByStatus {
-
   display: grid;
-
   grid-template-columns:
     repeat(
       auto-fit,
       minmax(180px, 1fr)
     );
-
   gap: 15px;
-
   margin-top: 15px;
-
 }
 
 .status-card {
-
   padding: 20px;
-
   border-radius: 12px;
-
   font-weight: 600;
-
   display: flex;
-
   justify-content:
     space-between;
-
   align-items: center;
-
   font-size: 16px;
-
 }
 
 .status-new {
-
   background:
     #fff4cc;
-
 }
 
 .status-production {
-
   background:
     #dbeafe;
-
 }
 
 .status-shipped {
-
   background:
     #ede9fe;
-
 }
 
 .status-delivered {
-
   background:
     #dcfce7;
-
 }
 
 .dashboard-container {
-
   max-width: 1400px;
-
   margin: 0 auto;
-
   padding: 40px;
-
 }
 
 section {
-
   margin-bottom: 40px;
-
 }
 
 .statistics-block {
-
   margin-bottom: 40px;
-
 }
 
 body {
-
   background: #f8fafc;
-
 }
 
 .kpi-grid {
-
   display: grid;
-
   grid-template-columns:
     repeat(
       auto-fit,
@@ -162,7 +119,36 @@ body {
         1fr
       )
     );
-
   gap: 20px;
+}
 
+
+.dashboard-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.double-grid {
+  display: grid;
+  grid-template-columns:
+    1fr 1fr;
+  gap: 24px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.panel {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.chart-container {
+  height: 400px;
 }
