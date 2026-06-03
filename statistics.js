@@ -34,12 +34,14 @@ async function loadStatistics() {
 
 loadStatistics();
 
-/* ----------- */
-/* CALCOLO KPI */
-/* ----------- */
+/* ----------------------- */
+/* CALCOLO STATISTICHE-KPI */
+/* ----------------------- */
 
 function calculateStatistics(orders) {
 
+  const statusMap = {};
+  
   const productsRevenueMap = {};
   
   const monthlyRevenue =
@@ -59,6 +61,17 @@ function calculateStatistics(orders) {
 
     totalRevenue +=
       Number(order.totalValue || 0);
+
+    const status =
+      order.status || "Sconosciuto";
+    
+    if (!statusMap[status]) {
+    
+      statusMap[status] = 0;
+    
+    }
+    
+    statusMap[status]++;
 
     order.orderItems.forEach(item => {
 
@@ -120,7 +133,11 @@ function calculateStatistics(orders) {
   );
 
   renderRevenueProducts(
-  productsRevenueMap
+    productsRevenueMap
+  );
+
+  renderOrdersByStatus(
+    statusMap
   );
 }
 
@@ -273,6 +290,33 @@ function renderRevenueProducts(
         <div>
           ${name}
           - ${revenue.toFixed(2)} €
+        </div>
+      `
+    ).join("");
+
+}
+
+function renderOrdersByStatus(
+  statusMap
+) {
+
+  const container =
+    document.getElementById(
+      "ordersByStatus"
+    );
+
+  const sorted =
+    Object.entries(statusMap)
+      .sort(
+        (a,b) => b[1] - a[1]
+      );
+
+  container.innerHTML =
+    sorted.map(
+      ([status, qty]) => `
+        <div>
+          ${status}
+          - ${qty} ordini
         </div>
       `
     ).join("");
