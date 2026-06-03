@@ -54,6 +54,8 @@ document
 function calculateStatistics(orders) {
 
   const statusMap = {};
+
+  const revenueStatusMap = {};
   
   const productsRevenueMap = {};
   
@@ -85,6 +87,15 @@ function calculateStatistics(orders) {
     }
     
     statusMap[status]++;
+
+    if (!revenueStatusMap[status]) {
+
+      revenueStatusMap[status] = 0;
+    
+    }
+    
+    revenueStatusMap[status] +=
+      Number(order.totalValue || 0);
 
     order.orderItems.forEach(item => {
 
@@ -155,6 +166,11 @@ function calculateStatistics(orders) {
   renderOrdersByStatus(
     statusMap
   );
+
+  renderRevenueByStatus(
+    revenueStatusMap
+  );
+
 }
 
 /* -------------*/
@@ -501,5 +517,94 @@ function applyFilter() {
   calculateStatistics(
     filteredOrders
   );
+
+}
+
+
+function renderRevenueByStatus(
+  revenueStatusMap
+) {
+
+  const container =
+    document.getElementById(
+      "revenueByStatus"
+    );
+
+  const order = [
+
+    "Nuovo",
+
+    "In lavorazione",
+
+    "Completato",
+
+    "Spedito"
+
+  ];
+
+  const sorted =
+    order.map(
+      status => [
+
+        status,
+
+        revenueStatusMap[
+          status
+        ] || 0
+
+      ]
+    );
+
+  container.innerHTML =
+    sorted.map(
+      ([status, revenue]) => {
+
+        let className =
+          "status-card";
+
+        switch(status) {
+
+          case "Nuovo":
+            className +=
+              " status-new";
+            break;
+
+          case "In lavorazione":
+            className +=
+              " status-production";
+            break;
+
+          case "Completato":
+            className +=
+              " status-delivered";
+            break;
+
+          case "Spedito":
+            className +=
+              " status-shipped";
+            break;
+
+        }
+
+        return `
+
+          <div class="${className}">
+
+            <div>
+              ${status}
+            </div>
+
+            <div>
+
+              ${revenue.toFixed(2)} €
+
+            </div>
+
+          </div>
+
+        `;
+
+      }
+    ).join("");
 
 }
