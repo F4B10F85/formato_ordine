@@ -1,0 +1,39 @@
+/* ------------- */
+/* STILE GRAFICO */
+/* ------------- */
+
+#monthlyChart {
+  margin-top: 20px;
+}
+
+.chart-row {
+  display: grid;
+  grid-template-columns:
+    100px
+    1fr
+    100px;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 12px;
+}
+
+.bar-container {
+  height: 18px;
+
+  background: #ececec;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+
+  background: #1f6556;
+
+  border-radius: 10px;
+}
