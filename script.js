@@ -1738,6 +1738,19 @@ totalValue += unitPrice * quantity;
 
 /* SALVATAGGIO FIREBASE */
 
+const now = new Date();
+
+const orderMonth =
+  `${now.getFullYear()}-${String(
+    now.getMonth() + 1
+  ).padStart(2, "0")}`;
+
+const orderYear =
+  now.getFullYear();
+
+const orderDay =
+  now.toISOString().split("T")[0];
+
 try {
 
 await addDoc(
@@ -1745,7 +1758,17 @@ await addDoc(
   {
     orderNumber,
     createdAt:
-      new Date().toISOString(),
+      now.toISOString(),
+
+    day:
+      orderDay,
+
+    month:
+      orderMonth,
+
+    year:
+      orderYear,
+
     status: "Nuovo",
     trackingCode: "",
     customerData,
@@ -1758,13 +1781,15 @@ await addDoc(
   console.log(
     "Ordine salvato su Firebase"
   );
+
 } catch (error) {
+
   console.error(
     "Errore Firebase:",
     error
   );
-}
 
+}
 
   
 /* ---------------------- */
