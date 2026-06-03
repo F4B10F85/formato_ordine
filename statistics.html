@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Statistiche KiTho</title>
+
+  <link
+    rel="stylesheet"
+    href="statistics.css"
+  >
+</head>
+
+<body>
+
+  <h1>Statistiche KiTho</h1>
+
+  <div class="stats-grid">
+
+    <div class="stat-card">
+      <h3>Fatturato Totale</h3>
+      <span id="totalRevenue">0 €</span>
+    </div>
+
+    <div class="stat-card">
+      <h3>Ordini Totali</h3>
+      <span id="totalOrders">0</span>
+    </div>
+
+    <div class="stat-card">
+      <h3>Pezzi Venduti</h3>
+      <span id="totalPieces">0</span>
+    </div>
+
+    <div class="stat-card">
+      <h3>Ordine Medio</h3>
+      <span id="averageOrder">0 €</span>
+    </div>
+
+  </div>
+
+  <h2>Top Articoli</h2>
+
+  <div id="topProducts"></div>
+
+  <script
+    type="module"
+    src="statistics.js">
+  </script>
+
+</body>
+
+</html>
