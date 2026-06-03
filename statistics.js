@@ -184,38 +184,77 @@ function renderMonthlyChart(
       )
     );
 
-  container.innerHTML =
-    entries.map(
-      ([month, value]) => {
+  let monthlyChartInstance = null;
 
-        const width =
-          (value / maxValue) * 100;
+function renderMonthlyChart(
+  monthlyRevenue
+) {
 
-        return `
-          <div class="chart-row">
+  const labels =
+    Object.keys(monthlyRevenue)
+      .sort();
 
-            <span>
-              ${month}
-            </span>
+  const values =
+    labels.map(
+      month => monthlyRevenue[month]
+    );
 
-            <div class="bar-container">
+  const ctx =
+    document
+      .getElementById("monthlyChart")
+      .getContext("2d");
 
-              <div
-                class="bar"
-                style="
-                  width:${width}%;
-                "
-              ></div>
+  if (monthlyChartInstance) {
+    monthlyChartInstance.destroy();
+  }
 
-            </div>
+  monthlyChartInstance =
+    new Chart(ctx, {
 
-            <span>
-              € ${value.toFixed(2)}
-            </span>
+      type: "bar",
 
-          </div>
-        `;
+      data: {
+
+        labels,
+
+        datasets: [
+          {
+            label:
+              "Fatturato (€)",
+
+            data: values,
+
+            borderWidth: 1,
+
+            borderRadius: 8
+          }
+        ]
+      },
+
+      options: {
+
+        responsive: true,
+
+        plugins: {
+
+          legend: {
+            display: false
+          }
+
+        },
+
+        scales: {
+
+          y: {
+
+            beginAtZero: true
+
+          }
+
+        }
+
       }
-    ).join("");
+
+    });
 
 }
