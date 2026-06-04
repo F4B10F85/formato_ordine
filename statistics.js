@@ -14,6 +14,7 @@ import { db } from "./firebase.js";
 /* CARICAMENTO ORDINI */
 /* ------------------ */
 
+let productRevenueChartInstance = null;
 let monthlyChartInstance = null;
 let allOrders = [];
 
@@ -177,6 +178,10 @@ function calculateStatistics(orders) {
     productsRevenueMap
   );
 
+  renderProductRevenueChart(
+    productsRevenueMap
+  );
+  
   renderOrdersByStatus(
     statusMap
   );
@@ -633,4 +638,58 @@ function renderRevenueByStatus(
       }
     ).join("");
 
+}
+
+function renderProductRevenueChart(
+  productsRevenueMap
+) {
+
+  const labels =
+    Object.keys(productsRevenueMap);
+
+  const values =
+    Object.values(productsRevenueMap);
+
+  const ctx =
+    document
+      .getElementById(
+        "productRevenueChart"
+      )
+      .getContext("2d");
+  if (
+    productRevenueChartInstance
+  ) {
+    productRevenueChartInstance
+      .destroy();
+  }
+
+  productRevenueChartInstance =
+    new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels,
+        datasets: [
+          {
+            label:
+              "Fatturato (€)",
+            data: values,
+            borderWidth: 1,
+            borderRadius: 8
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
 }
