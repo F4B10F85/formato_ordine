@@ -19,7 +19,7 @@
   <div class="dashboard-container">
 
   <h1>Statistiche KiTho</h1>
-    
+  
   <div class="filters">
 
   <select id="periodFilter">
@@ -72,123 +72,6 @@
 
   </div>
 
-<!DOCTYPE html>
-<html lang="it">
-
-<head>
-  <meta charset="UTF-8">
-  <title>Statistiche KiTho</title>
-
-  <link
-    rel="stylesheet"
-    href="statistics.css"
-  >
-
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
-</head>
-
-<body>
-
-  <div class="dashboard-container">
-
-  <h1>Statistiche KiTho</h1>
-
-  h1 {
-  
-    margin-bottom: 30px;
-  
-  }
-    
-  <div class="filters">
-
-  <select id="periodFilter">
-
-    <option value="all">
-      Tutto
-    </option>
-
-    <option value="today">
-      Oggi
-    </option>
-
-    <option value="30">
-      Ultimi 30 giorni
-    </option>
-
-    <option value="90">
-      Ultimi 90 giorni
-    </option>
-
-    <option value="year">
-      Anno corrente
-    </option>
-
-  </select>
-
-</div>
-  
-  <div class="stats-grid">
-
-    <div class="stat-card">
-      <h3>Fatturato Totale</h3>
-      <span id="totalRevenue">0 €</span>
-    </div>
-
-    <div class="stat-card">
-      <h3>Ordini Totali</h3>
-      <span id="totalOrders">0</span>
-    </div>
-
-    <div class="stat-card">
-      <h3>Pezzi Venduti</h3>
-      <span id="totalPieces">0</span>
-    </div>
-
-    <div class="stat-card">
-      <h3>Ordine Medio</h3>
-      <span id="averageOrder">0 €</span>
-    </div>
-
-  </div>
-
-  <h2>Top Articoli</h2>
-
-  <div id="topProducts"></div>
-
-  <h2>Fatturato per articolo</h2>
-
-  <div id="productsRevenue"></div>
-
-  <h2>Ordini per stato</h2>
-
-  <div id="ordersByStatus"></div>
-
-  <h2>Valore per stato</h2>
-  
-  <div id="revenueByStatus"
-       class="status-grid">
-  </div>
-
-  <h2>Fatturato Mensile</h2>
-
-  <div class="chart-container">
-
-  <canvas id="monthlyChart"></canvas>
-
-  </div>
-
-  
-  <script
-    type="module"
-    src="statistics.js">
-  </script>
-
-</div>
-  
-</body>
-
-</html>
 
   <div class="double-grid">
 
