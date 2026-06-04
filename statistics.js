@@ -132,7 +132,13 @@ function calculateStatistics(orders) {
   document.getElementById(
     "totalRevenue"
   ).textContent =
-    totalRevenue.toFixed(2) + " €";
+    totalRevenue.toLocaleString(
+      "it-IT",
+      {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }
+    ) + " €";
 
   document.getElementById(
     "totalOrders"
@@ -147,13 +153,21 @@ function calculateStatistics(orders) {
   document.getElementById(
     "averageOrder"
   ).textContent =
-    
+  
     orders.length
-  ? (
-      totalRevenue /
-      orders.length
-    ).toFixed(2) + " €"
-  : "0.00";
+  
+    ? (
+        totalRevenue /
+        orders.length
+      ).toLocaleString(
+        "it-IT",
+        {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }
+      ) + " €"
+  
+    : "0,00 €";
 
   renderTopProducts(
     productsMap
@@ -321,7 +335,13 @@ function renderRevenueProducts(
       ([name, revenue]) => `
         <div>
           ${name}
-          - ${revenue.toFixed(2)} €
+          - ${revenue.toLocaleString(
+              "it-IT",
+              {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              }
+            )} €
         </div>
       `
     ).join("");
@@ -596,7 +616,13 @@ function renderRevenueByStatus(
 
             <div>
 
-              ${revenue.toFixed(2)} €
+              ${revenue.toLocaleString(
+                "it-IT",
+                {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2
+                }
+              )} €
 
             </div>
 
