@@ -80,6 +80,7 @@ h1 {
       0.08
     );
   margin-top: 20px;
+  height: 400px;
 }
 
 
@@ -176,11 +177,7 @@ section {
 
 h2 {
   margin-top: 0;
-  margin-bottom: 10px;
-}
-
-.chart-container {
-  height: 400px;
+  margin-bottom: 5px;
 }
 
 .stat-card {
