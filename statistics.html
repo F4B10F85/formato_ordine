@@ -17,7 +17,7 @@
 <body>
 
   <div class="dashboard-container">
-
+    
   <h1>Statistiche KiTho</h1>
   
   <div class="filters">
@@ -72,41 +72,31 @@
 
   </div>
 
+  <h2>Top Articoli</h2>
 
-  <div class="double-grid">
+  <div id="topProducts"></div>
 
-  <div class="panel">
+  <h2>Fatturato per articolo</h2>
 
-    <h2>Ordini per stato</h2>
+  <div id="productsRevenue"></div>
 
-    <div id="ordersByStatus"></div>
+  <h2>Ordini per stato</h2>
 
+  <div id="ordersByStatus"></div>
+
+  <h2>Valore per stato</h2>
+  
+  <div id="revenueByStatus"
+       class="status-grid">
   </div>
-
-  <div class="panel">
-
-    <h2>Valore per stato</h2>
-
-    <div
-      id="revenueByStatus"
-      class="status-grid">
-    </div>
-
-  </div>
-
-</div>
-
-<div class="panel">
 
   <h2>Fatturato Mensile</h2>
 
   <div class="chart-container">
 
-    <canvas id="monthlyChart"></canvas>
+  <canvas id="monthlyChart"></canvas>
 
   </div>
-
-</div>
 
   
   <script
