@@ -172,8 +172,15 @@ body {
 
 .panel {
   background: white;
-  border-radius: 16px;
+  border-radius: 18px;
   padding: 24px;
+  box-shadow:
+    0 4px 12px rgba(
+      0,
+      0,
+      0,
+      0.05
+    );
 }
 
 h2 {
@@ -287,4 +294,18 @@ h2 {
   box-shadow:
     0 2px 6px rgba(0,0,0,0.04);
   cursor: pointer;
+}
+
+#topProducts div,
+#productsRevenue div {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom:
+    1px solid #eef1f4;
+}
+
+#topProducts div:last-child,
+#productsRevenue div:last-child {
+  border-bottom: none;
 }
