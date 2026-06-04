@@ -271,52 +271,40 @@ function renderMonthlyChart(
 
   monthlyChartInstance =
     new Chart(ctx, {
-
       type: "bar",
-
       data: {
-
         labels,
-
         datasets: [
           {
             label:
               "Fatturato (€)",
-
             data: values,
-
             borderWidth: 1,
-
             borderRadius: 8
           }
         ]
-
       },
-
       options: {
-
         responsive: true,
-
         plugins: {
-
           legend: {
             display: false
           }
-
         },
-
         scales: {
-
           y: {
-            beginAtZero: true
+            beginAtZero: true,
+            ticks: { 
+              callback: function(value) {
+                return value.toLocaleString(
+                  "it-IT"
+                ) + " €";
+              }
+            }
           }
-
         }
-
       }
-
     });
-
 }
 
 function renderRevenueProducts(
@@ -687,7 +675,14 @@ function renderProductRevenueChart(
         },
         scales: {
           y: {
-            beginAtZero: true
+            beginAtZero: true,        
+            ticks: {
+              callback: function(value) {
+                return value.toLocaleString(
+                  "it-IT"
+                ) + " €";
+              }
+            }
           }
         }
       }
