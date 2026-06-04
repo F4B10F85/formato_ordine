@@ -1,3 +1,35 @@
+body {
+  font-family:
+    "Inter",
+    sans-serif;
+
+  -webkit-font-smoothing:
+    antialiased;
+
+  -moz-osx-font-smoothing:
+    grayscale;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: #111827;
+  }
+
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+
+
+
+
+
+
+
 /* ------------- */
 /* STILE GRAFICO */
 /* ------------- */
