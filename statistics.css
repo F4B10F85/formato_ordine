@@ -309,3 +309,12 @@ h2 {
 #productsRevenue div:last-child {
   border-bottom: none;
 }
+
+#ordersByStatus,
+#revenueByStatus {
+  display: grid;
+  grid-template-columns:
+    repeat(4, 1fr);
+  gap: 15px;
+  margin-top: 15px;
+}
