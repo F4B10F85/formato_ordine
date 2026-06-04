@@ -263,30 +263,28 @@ h2 {
   }
 }
 
-.filter-card {
+.filter-row {
   display: flex;
   align-items: center;
   gap: 16px;
-  background: white;
-  padding: 18px 24px;
-  border-radius: 18px;
-  box-shadow:
-    0 4px 12px rgba(
-      0,
-      0,
-      0,
-      0.05
-    );
   margin-bottom: 30px;
 }
 
-.filter-card label {
+.filter-label {
   font-size: 15px;
   font-weight: 600;
   color: #444;
-  white-space: nowrap;
 }
 
-.filter-card select {
-  width: 240px;
+#periodFilter {
+  height: 52px;
+  padding: 0 18px;
+  border: 1px solid #d7dfe8;
+  border-radius: 14px;
+  background: white;
+  font-size: 14px;
+  font-family: Ebrima, sans-serif;
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.04);
+  cursor: pointer;
 }
