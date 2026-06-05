@@ -2049,14 +2049,14 @@ doc.text(
     9,   // Codice
     52,   // Articolo
     85,  // Taglia
-    115,  // Altezza
-    135,  // Spessore
+    110,  // Altezza
+    133,  // Spessore
     155,  // Pelle
     180,  // Foglie
-    207,  // Cristalli
-    238,  // Caramella
-    260,   // Qta
-    275,   // Totale €
+    206,  // Cristalli
+    237,  // Caramella
+    264,   // Qta
+    272,   // Totale €
   ];
 
   headers.forEach((header, index) => {
