@@ -36,8 +36,6 @@ privateBtn.addEventListener("click", () => {
 
   overlay.style.display = "none";
 
-  location.reload();
-
 });
 
 /* ---------------------- */
@@ -74,8 +72,6 @@ loginBtn.addEventListener("click", async () => {
     );
     
     overlay.style.display = "none";
-
-    location.reload();
 
   } catch (error) {
 
