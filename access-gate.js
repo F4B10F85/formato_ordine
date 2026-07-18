@@ -29,7 +29,14 @@ const loginError =
 
 privateBtn.addEventListener("click", () => {
 
+  sessionStorage.setItem(
+    "userType",
+    "private"
+  );
+
   overlay.style.display = "none";
+
+  location.reload();
 
 });
 
@@ -67,6 +74,8 @@ loginBtn.addEventListener("click", async () => {
     );
     
     overlay.style.display = "none";
+
+    location.reload();
 
   } catch (error) {
 
