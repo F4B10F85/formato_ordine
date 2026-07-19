@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head> 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Configuratore Ordini</title>
+
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="access-gate.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  
+</head>
+
+<body>
+
+<!-- PRE-PAGINA CONFIGURATORE x SCELTA CLIENTE -->
+  
+<div id="accessOverlay" class="access-overlay">
+  <div class="access-box">
+
+    <h2>Benvenuto</h2>
+
+    <p class="access-subtitle">
+      Seleziona il tipo di accesso
+    </p>
+
+    <div class="access-buttons">
+
+      <button
+        id="privateAccessBtn"
+        class="access-btn">
+        👤 Privato
+      </button>
+
+      <button
+        id="shopAccessBtn"
+        class="access-btn secondary">
+        🛍️ Negozio
+      </button>
+
+    </div>
+
+    <div
+      id="shopLoginBox"
+      class="shop-login hidden">
+
+      <input
+        type="text"
+        id="shopUsername"
+        placeholder="Username">
+
+      <input
+        type="password"
+        id="shopPassword"
+        placeholder="Password">
+
+      <button
+        id="shopLoginBtn"
+        class="login-btn">
+        Accedi
+      </button>
+
+      <p
+        id="loginError"
+        class="login-error">
+        ⛔​ Credenziali non valide ⛔​
+      </p>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- FINE PRE-PAGINA CONFIGURATORE x SCELTA CLIENTE -->
+
+
+
+  
+  <div class="page-container">
+
+    <h1 class="page-title">
+      Configuratore Ordine Cliente
+    </h1>
+
+<!-- DATI CLIENTE -->
+
+<div class="customer-data">
+
+  <!-- RIGA 1 -->
+
+  <div class="customer-item">
+
+    <label>
+      Nome cliente
+    </label>
+
+    <input
+      type="text"
+      id="customerName"
+      placeholder="Inserisci nome cliente"
+    />
+
+  </div>
+
+  <div class="customer-item">
+
+    <label>
+      Telefono
+    </label>
+
+    <input
+      type="text"
+      id="customerPhone"
+      placeholder="Inserisci telefono"
+    />
+
+  </div>
+
+  <div class="customer-item">
+
+    <label>
+      Email
+    </label>
+
+    <input
+      type="email"
+      id="customerEmail"
+      placeholder="Inserisci email"
+    />
+
+  </div>
+
+  <!-- RIGA 2 -->
+
+  <div class="customer-item customer-address">
+
+    <label>
+      Indirizzo spedizione
+    </label>
+
+    <input
+      type="text"
+      id="customerAddress"
+      placeholder="Inserisci indirizzo spedizione"
+    />
+
+  </div>
+
+</div>
+
+
+
+
+  
+</div> 
+    
+    <!-- HEADER COLONNE -->
+
+    <div class="table-header">
+
+      <div>Articolo</div>
+      <div>Immagine</div>
+      <div>Taglia / Lunghezza</div>
+      <div>Altezza Collare</div>
+      <div>Spessore Guinzaglio</div>
+      <div>Colore Pelle</div>
+      <div>Colore Foglie</div>
+      <div>Colore Cristalli</div>
+      <div>Opzioni Caramella</div>
+      <div>Quantità</div>
+      <div class="price-header">Prezzo</div>
+      <div>Codice</div>
+      <div>Note</div>
+      <div>Azioni</div>
+
+    </div>
+   
+    <!-- RIGHE ORDINE -->
+
+    <div id="orderRows"></div>
+
+    <!-- RIEPILOGO ORDINE -->
+
+    <div class="summary-box">
+
+      <div class="summary-title">
+        Riepilogo Ordine
+      </div>
+
+
+<div class="summary-grid">
+
+  <div class="summary-card">
+
+    <span class="summary-label">
+      Righe ordine
+    </span>
+
+    <span
+      class="summary-value"
+      id="summaryRows"
+    >
+      0
+    </span>
+
+  </div>
+
+  <div class="summary-card">
+
+    <span class="summary-label">
+      Totale pezzi
+    </span>
+
+    <span
+      class="summary-value"
+      id="summaryQuantity"
+    >
+      0
+    </span>
+
+  </div>
+
+  <div class="summary-card">
+
+    <span class="summary-label">
+      Righe incomplete
+    </span>
+
+    <span
+      class="summary-value warning"
+      id="summaryIncomplete"
+    >
+      0
+    </span>
+
+  </div>
+
+  <div class="summary-card">
+
+    <span class="summary-label">
+      Valore ordine
+    </span>
+
+    <span
+      class="summary-value"
+      id="summaryTotal"
+    >
+      0,00 €
+    </span>
+
+  </div>
+
+</div>  
+
+
+
+
+      
+
+      <div
+        class="summary-products"
+        id="summaryProducts"
+      >
+        Nessun articolo inserito
+      </div>
+
+    </div>
+
+    <!-- BOTTONI -->
+
+    <div class="add-row-container">
+
+      <button id="addRowBtn">
+
+        <span class="plus-icon">+</span>
+
+        <span>Aggiungi riga</span>
+
+      </button>
+
+      <button id="clearAllBtn">
+        🗑 Cancella tutto
+      </button>
+
+      <button id="validateBtn">
+        ✅ Verifica ordine
+      </button>
+<!--
+      <button id="previewPdfBtn">
+        👁 Anteprima PDF
+      </button>
+      -->
+      
+      <button id="exportPdfBtn">
+        📄 Esporta e invia ordine
+      </button>
+
+    </div>
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <script type="module" src="firebase.js"></script>
+  
+  <div id="imageModal" class="image-modal">
+
+  <img id="modalImage" />
+
+  </div>
+
+  <script type="module" src="script.js"></script>
+  <script type="module" src="access-gate.js"></script>
+  
+  </body>
+
+</html>
