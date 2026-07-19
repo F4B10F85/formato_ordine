@@ -686,9 +686,6 @@ priceInput?.addEventListener("input", () => {
 const notesTextarea =
   row.querySelector("textarea");
 
-const priceInput =
-  row.querySelector(".price-input");
-
 pelleSelect?.addEventListener(
   "change",
   async () => {
@@ -721,15 +718,7 @@ priceInput?.addEventListener("input", () => {
   /* UPDATE PREZZO */
   /* ---------------------- */
   
-const triggerPriceUpdate = async () => {
 
-  saveOrders();
-
-  updateSummary();
-
-  await updateRowPrice(row);
-
-};
 
   
   /* ---------------------- */
@@ -866,9 +855,12 @@ const caramellaSelect =
 
 if (caramellaSelect) {
 
-  caramellaSelect.addEventListener(
-    "change",
-    triggerPriceUpdate
+  caramellaSelect.addEventListener("change", () => {
+
+  saveOrders();
+  updateSummary();
+
+});
   );
 
 }
@@ -887,9 +879,12 @@ const foglieSelect =
 
 if (foglieSelect) {
 
-  foglieSelect.addEventListener(
-    "change",
-    triggerPriceUpdate
+  foglieSelect.addEventListener("change", () => {
+
+  saveOrders();
+  updateSummary();
+
+});
   );
 
 }
@@ -917,9 +912,12 @@ if (product.cristalliDisabled) {
 
 if (cristalliSelect) {
 
-  cristalliSelect.addEventListener(
-    "change",
-    triggerPriceUpdate
+  cristalliSelect.addEventListener("change", () => {
+
+  saveOrders();
+  updateSummary();
+
+});
   );
 }
 }
@@ -976,19 +974,22 @@ if (
 
   if (foglieSelect) {
 
-    foglieSelect.addEventListener(
-      "change",
-      triggerPriceUpdate
+    foglieSelect.addEventListener("change", () => {
+
+    saveOrders();
+    updateSummary();
     );
 
   }
 }
 
-await triggerPriceUpdate();
+saveOrders();
+updateSummary();
     });
     }
 
-await updateRowPrice(row);
+saveOrders();
+updateSummary();
 
   });
 
@@ -2920,6 +2921,9 @@ if (codeInput) {
     generateProductCode(row);
 
 }
+
+saveOrders();
+updateSummary();
 
   /* NOME ARTICOLO */
 
