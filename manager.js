@@ -608,9 +608,15 @@ function createOrderRow() {
 <!-- PREZZO -->
 
 <div class="field-box price-box">
-  <span class="price-value">
-    —
-  </span>
+
+  <input
+    type="number"
+    class="price-input"
+    step="0.01"
+    min="0"
+    placeholder="0,00"
+  />
+
 </div>
 
 
@@ -659,7 +665,7 @@ function createOrderRow() {
 
   const deleteBtn = row.querySelector(".delete-row-btn");
 
-  /* ---------------------- */
+/* ---------------------- */
 /* LISTENER STATICI */
 /* ---------------------- */
 
@@ -668,6 +674,9 @@ const pelleSelect =
 
 const quantityInput =
   row.querySelector(".quantity-input");
+
+const priceInput =
+  row.querySelector(".price-input");
 
 const notesTextarea =
   row.querySelector("textarea");
@@ -684,6 +693,14 @@ pelleSelect?.addEventListener(
 quantityInput?.addEventListener("input", () => {
   saveOrders();
   updateSummary();
+});
+
+priceInput?.addEventListener("input", () => {
+
+  saveOrders();
+
+  updateSummary();
+
 });
 
 notesTextarea?.addEventListener("input", () => {
