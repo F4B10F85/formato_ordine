@@ -678,6 +678,14 @@ const quantityInput =
 const priceInput =
   row.querySelector(".price-input");
 
+const priceInput =
+  row.querySelector(".price-input");
+
+priceInput?.addEventListener("input", () => {
+  saveOrders();
+  updateSummary();
+});  
+
 const notesTextarea =
   row.querySelector("textarea");
 
@@ -695,13 +703,6 @@ quantityInput?.addEventListener("input", () => {
   updateSummary();
 });
 
-priceInput?.addEventListener("input", () => {
-
-  saveOrders();
-
-  updateSummary();
-
-});
 
 notesTextarea?.addEventListener("input", () => {
   saveOrders();
@@ -1295,6 +1296,9 @@ function saveOrders() {
       quantita:
         row.querySelector(".quantity-input")?.value || "",
 
+      prezzo:
+        row.querySelector(".price-input")?.value || "",
+
       note:
         row.querySelector("textarea")?.value || "",
 
@@ -1418,6 +1422,12 @@ function loadOrders() {
       if (quantity)
         quantity.value = data.quantita;
 
+      const prezzo =
+        row.querySelector(".price-input");
+      
+      if (prezzo)
+        prezzo.value = data.prezzo || "";
+
       const notes =
         row.querySelector("textarea");
 
@@ -1511,17 +1521,10 @@ const customerAddress =
       productsMap[articolo] += quantity || 1;
     }
 
-const priceText =
-  row.querySelector(".price-value")
-    ?.textContent || "";
-
 const unitPrice =
   parseFloat(
-    priceText
-      .replace("€", "")
-      .replace(",", ".")
-      .trim()
-  ) || 0;
+    row.querySelector(".price-input")?.value || 0
+  );
 
 totalValue += unitPrice * quantity;
 
@@ -1682,15 +1685,14 @@ document
   .forEach(row => {
 
 
-const priceText =
-  row.querySelector(".price-value")
-    ?.textContent || "0";
+const unitPrice =
+  parseFloat(
+    row.querySelector(".price-input")?.value || 0
+  );
 
 const unitPrice =
   parseFloat(
     priceText
-      .replace("€", "")
-      .replace(",", ".")
       .trim()
   ) || 0;
 
