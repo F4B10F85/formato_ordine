@@ -675,6 +675,14 @@ const pelleSelect =
 const quantityInput =
   row.querySelector(".quantity-input");
 
+const priceInput =
+  row.querySelector(".price-input");
+
+priceInput?.addEventListener("input", () => {
+  saveOrders();
+  updateSummary();
+});
+
 const notesTextarea =
   row.querySelector("textarea");
 
@@ -1292,6 +1300,9 @@ function saveOrders() {
 
       quantita:
         row.querySelector(".quantity-input")?.value || "",
+      
+      prezzo:
+        row.querySelector(".price-input")?.value || "",
 
       note:
         row.querySelector("textarea")?.value || "",
@@ -1416,6 +1427,12 @@ function loadOrders() {
       if (quantity)
         quantity.value = data.quantita;
 
+      const prezzo =
+        row.querySelector(".price-input");
+      
+      if (prezzo)
+        prezzo.value = data.prezzo || "";
+
       const notes =
         row.querySelector("textarea");
 
@@ -1509,17 +1526,10 @@ const customerAddress =
       productsMap[articolo] += quantity || 1;
     }
 
-const priceText =
-  row.querySelector(".price-value")
-    ?.textContent || "";
-
 const unitPrice =
   parseFloat(
-    priceText
-      .replace("€", "")
-      .replace(",", ".")
-      .trim()
-  ) || 0;
+    row.querySelector(".price-input")?.value || 0
+  );
 
 totalValue += unitPrice * quantity;
 
@@ -1680,17 +1690,11 @@ document
   .forEach(row => {
 
 
-const priceText =
-  row.querySelector(".price-value")
-    ?.textContent || "0";
-
 const unitPrice =
   parseFloat(
-    priceText
-      .replace("€", "")
-      .replace(",", ".")
-      .trim()
-  ) || 0;
+    row.querySelector(".price-input")?.value || 0
+  );
+
 
 const quantity =
   parseInt(
@@ -2837,10 +2841,10 @@ function validateOrder() {
   return isValid;
 }
 
-  /* ---------------------- */
-  /* TEST PER PREZZI CONFIGURATORE */
-  /* ---------------------- */
-
+/* ---------------------- */
+/* TEST PER PREZZI CONFIGURATORE */
+/* ---------------------- */
+/*
 async function testFirestore() {
   const snapshot =
     await getDocs(
@@ -2853,13 +2857,13 @@ async function testFirestore() {
 }
 
 testFirestore();
+*/
 
+/* ---------------------- */
+/* RICERCA COMBINAZIONI PER PREZZI CONFIGURATORE */
+/* ---------------------- */
 
-  /* ---------------------- */
-  /* RICERCA COMBINAZIONI PER PREZZI CONFIGURATORE */
-  /* ---------------------- */
-
-
+/*
 async function findPrice(config) {
 
   const q = query(
@@ -2885,15 +2889,12 @@ async function findPrice(config) {
 
 }
 
-
-
-
-
+*/
 
 /* ---------------------- */
 /* UPDATE PREZZO LIVE */
 /* ---------------------- */
-
+/*
 async function updateRowPrice(row) {
 
   const articoloSelect =
@@ -2905,8 +2906,8 @@ async function updateRowPrice(row) {
     products[articoloSelect.value];
 
   if (!product) return;
-
-  /* ---------------------- */
+*/
+/* ---------------------- */
 /* GENERAZIONE CODICE */
 /* ---------------------- */
 
